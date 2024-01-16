@@ -1,0 +1,136 @@
+html{
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+}
+
+.bg{
+  height: 100dvh;
+  background-color: #18A5A7;
+  background-image: linear-gradient(0deg, #18A5A7, #BFFFC7);
+  display: grid;
+  grid-template-rows: 15% 70% 15%;
+  grid-template-areas: '.'
+                        'card'
+                        '.';
+}
+
+.card{
+  grid-area: card;
+  margin-left: 15%;
+  margin-right: 15%;
+  background: #faffff;
+  border-radius:20px;
+  box-shadow: 0px 20px 10px -18px black;
+
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-areas: 'contact info';
+}
+
+.contact{
+  grid-area: contact;
+  background-color: #7ad4b8;
+  border: 1px solid #7ad4b8;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: grid;
+  grid-template-rows: 40% 30% 5% 25%;
+  grid-template-areas: '.'
+                       'c1'
+                       'rule'
+                       'c2';
+}
+
+.info{
+  grid-area: info;
+  background-color: #faffff;
+  border: 1px solid #faffff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 2.5dvh;
+  display: grid;
+  grid-template-rows: 45% 55%;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: 'name name name'
+                       'lang tech frame';
+}
+
+.c1{
+ grid-area: c1;
+ margin-bottom: 1%;
+}
+
+.c2{
+  grid-area: c2;
+}
+
+.c1,.c2{
+  margin-left: 8%;
+  margin-right: 8%;
+  font-size: 2dvh;
+  color: #02457a;  
+}
+
+.rule{ 
+  grid-area: rule;
+  height:15px;
+  width: 100%;
+  background-color: #faffff;
+  border: 1px solid #faffff;
+  margin-top: 1%;
+}
+
+span{
+  font-size: 2.5dvh;
+}
+
+a{
+  text-decoration: none;
+}
+
+.name{
+  grid-area: name;
+  font-size: 6dvh;
+  color: #001b48;
+  margin-block-end: 0em;
+}
+
+.fn{
+  color: #18A5A7;
+  font-size: 6dvh;
+}
+
+ul{
+  padding-inline-start: 10%;
+}
+
+li{
+  font-size: 2.4dvh;
+  font-weight: normal;
+  text-align: left;
+}
+
+.lang{
+  grid-area: lang;
+  margin: 1%;
+}
+
+.tech{
+  grid-area: tech;
+  margin: 1%;
+}
+
+.frame{
+  grid-area: frame;
+  margin: 1%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones:*/ 
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
+

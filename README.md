@@ -32,7 +32,7 @@ Welcome to my **Project Repository**, a collection showcasing my expertise in **
 
 ## 👨‍💻 Author
 **Sagan Deep Singh**  
-[GitHub](https://github.com/yourusername) | [LinkedIn](https://www.linkedin.com/in/sagan-deep-singh) | [Portfolio](https://sin12559.github.io/portfolio)
+[GitHub](https://github.com/Sin12559) | [LinkedIn](https://www.linkedin.com/in/sagan-deep-singh) | [Portfolio](https://saganportfolio.site/)
 
 ---
 Feel free to explore, contribute, or connect with me for collaboration!

@@ -30,3 +30,13 @@ This repo gives one place to browse **all** my work.
 - Email: **sagandeep348@gmail.com**
 - LinkedIn: https://www.linkedin.com/in/sagan-deep-singh/
 - Portfolio: https://saganportfolio.site
+
+---
+
+## 📌 Recent Updates (Aug 20, 2025)
+- **Merged `overhaul`** — added **ServiDesk-Lite** (ServiceNow-inspired API)
+  - Tech: .NET 9, EF Core, SQLite, Swagger, Docker
+  - Includes Dockerfile and `docker-compose.yml`
+  - EF Core migrations created and verified
+  - Local run: `dotnet run --project Advanced/ServiDesk-Lite/src/ServiDesk.Api`
+  - API: `GET /api/tickets`, `POST /api/tickets`

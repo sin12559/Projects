@@ -1,0 +1,16 @@
+checks:
+  - name: "Git available"
+    type: shell
+    command: "git --version"
+
+  - name: "Internet reachability"
+    type: http
+    url: "https://example.com"
+
+  - name: "Hosts file exists"
+    type: file
+    path: "/etc/hosts"
+
+  - name: "Disk below 95%"
+    type: disk
+    threshold: 95

@@ -1,0 +1,28 @@
+# macOS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Node / web
+node_modules/
+dist/
+build/
+*.log
+
+# Java / Gradle
+target/
+*.class
+*.jar
+.gradle/
+build/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Android
+local.properties
+*.iml
+captures/

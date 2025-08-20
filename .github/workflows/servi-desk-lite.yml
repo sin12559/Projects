@@ -1,0 +1,32 @@
+name: ServiDesk Lite CI
+on:
+  push:
+    paths:
+      - 'Advanced/ServiDesk-Lite/**'
+      - '.github/workflows/servi-desk-lite.yml'
+  pull_request:
+    paths:
+      - 'Advanced/ServiDesk-Lite/**'
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Advanced/ServiDesk-Lite
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - run: dotnet restore
+      - run: dotnet build -c Release --no-restore
+      - run: dotnet test -c Release --no-build
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-test
+    defaults:
+      run:
+        working-directory: Advanced/ServiDesk-Lite
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t servidesk-lite:ci .

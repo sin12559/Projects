@@ -1,26 +1,27 @@
 # SRE-Checklist-CLI
 
-A lightweight CLI to run SRE/DevOps troubleshooting checklists (YAML) and output a pass/fail report.
+A lightweight **CLI** to run SRE/DevOps **troubleshooting checklists** written in YAML and output a pass/fail summary (text or JSON). Great for quick node health checks, smoke tests, and runbooks.
 
-## Features
-- Run **prebuilt or custom YAML** checklists
-- Built-in checks: `shell`, `http`, `file`, `disk`
-- **Exit code** signals success/failure (CI-friendly)
-- Output formats: **text** (pretty) or **json** (machine-readable)
+---
 
-## Install & Run
+## ✨ Features
+- ✅ Run **prebuilt or custom YAML** checklists
+- 🔧 Built-in checks: **shell command**, **HTTP GET**, **file exists**, **disk usage**
+- 🧪 **Exit code** ⇒ 0 on success, non-zero on failure (CI-friendly)
+- 📤 Output **text** (human) or **JSON** (machine-readable)
+
+---
+
+## 🛠 Requirements
+- Python 3.10+ (recommended)  
+- macOS/Linux/WSL work fine
+
+---
+
+## 🚀 Quick Start
+
+### 1) Create & activate venv
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r Advanced/SRE-Checklist-CLI/requirements.txt
-python Advanced/SRE-Checklist-CLI/src/cli.py run Advanced/SRE-Checklist-CLI/configs/basic.yml --format text
+python3 -m venv Advanced/SRE-Checklist-CLI/.venv
+source Advanced/SRE-Checklist-CLI/.venv/bin/activate
 
-checks:
-  - name: "Human friendly name"
-    type: shell|http|file|disk
-    # shell:   command: "echo ok"
-    # http:    url: "https://example.com"
-    # file:    path: "/etc/hosts"
-    # disk:    threshold: 90   # percent
-
-md
-mg

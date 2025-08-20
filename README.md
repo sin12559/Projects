@@ -1,5 +1,8 @@
 # 🚀 Sagan Deep Singh's Project Repository
 
+![Lint](https://github.com/sin12559/Projects/actions/workflows/lint.yml/badge.svg)
+
+
 ## 📌 Overview
 Welcome to my **Project Repository**, a collection showcasing my expertise in **IT support, troubleshooting, web development, software engineering, and system administration**. This repository serves as a portfolio of my hands-on experience with different technologies, problem-solving, and innovation.
 

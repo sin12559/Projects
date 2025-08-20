@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Kubernetes-ready Node/Express health, readiness, and Prometheus metrics service",
-  "main": "src/server.js",
   "type": "module",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "lint": "eslint .",
-    "test": "jest --runInBand",
-    "test:watch": "jest --watch"
+    "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
+    "test:watch": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "engines": {
     "node": ">=20"
@@ -33,10 +33,10 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "transform": {},
+    "testMatch": ["**/tests/**/*.test.js"],
     "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
+    "collectCoverageFrom": ["src/**/*.js"],
     "coverageDirectory": "coverage"
   }
 }

@@ -40,3 +40,5 @@ This repo gives one place to browse **all** my work.
   - EF Core migrations created and verified
   - Local run: `dotnet run --project Advanced/ServiDesk-Lite/src/ServiDesk.Api`
   - API: `GET /api/tickets`, `POST /api/tickets`
+
+- **SRE-Checklist-CLI** — CLI for YAML-based SRE/DevOps checks (see `Advanced/SRE-Checklist-CLI/README.md`)

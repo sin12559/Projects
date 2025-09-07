@@ -1,12 +1,22 @@
 # Advanced — Projects Index
 
-Each project below links to its own README with quickstart instructions.
-- [HealthPulse](HealthPulse/README.md)
-- [KanbanLite](KanbanLite/README.md)
-- [Monitoring-in-a-Box](Monitoring-in-a-Box/README.md)
-- [Pipeline-Lab](Pipeline-Lab/README.md)
-- [QA-Automation-Pack](QA-Automation-Pack/README.md)
-- [Release-Tracker](Release-Tracker/README.md)
-- [ServiDesk-Lite](ServiDesk-Lite/README.md)
-- [SRE-Checklist-CLI](SRE-Checklist-CLI/README.md)
-- [Sysadmin-Toolkit](Sysadmin-Toolkit/README.md)
+> Auto-synced on 2025-09-07 02:04:37. This list reflects what actually exists under `Advanced/`.
+
+## Projects
+
+| Project | Path | Type |
+|---|---|---|
+d=''
+| **HealthPulse** | `Advanced/HealthPulse` | Node.js App |
+| **KanbanLite** | `Advanced/KanbanLite` | Unknown |
+| **Monitoring-in-a-Box** | `Advanced/Monitoring-in-a-Box` | Unknown |
+| **Pipeline-Lab** | `Advanced/Pipeline-Lab` | Unknown |
+| **QA-Automation-Pack** | `Advanced/QA-Automation-Pack` | Unknown |
+| **Release-Tracker** | `Advanced/Release-Tracker` | Unknown |
+| **ServiDesk-Lite** | `Advanced/ServiDesk-Lite` | .NET/C# |
+| **SRE-Checklist-CLI** | `Advanced/SRE-Checklist-CLI` | Python |
+| **Sysadmin-Toolkit** | `Advanced/Sysadmin-Toolkit` | Unknown |
+
+## Notes
+- If an old README mentioned projects you don't have, this replaces it with the truth.
+- Add/remove folders and re-run this script any time.

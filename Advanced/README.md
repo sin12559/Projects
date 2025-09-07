@@ -2,7 +2,7 @@
 
 Polished, production-minded projects. Placeholders live in `Advanced/_archive/`.
 
-## ✅ Active Projects
+## Active Projects
 
 | Project | Stack | Quick Start |
 |---|---|---|

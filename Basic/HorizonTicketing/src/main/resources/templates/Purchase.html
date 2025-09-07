@@ -1,134 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        header {
-            background-color: rgb(24, 24, 24);
-            color: aliceblue;
-            line-height: 175px;
-            text-align: center;
-            font-size: xx-large;
-        }
-
-        div {
-            border: solid black;
-            text-align: center;
-        }
-
-        html {
-            font-size: large;
-            background-color:#ffc266;
-        }
-
-        .navigation {
-            text-align: center;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .navigation a {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            display: inline-block;
-            line-height: 1;
-        }
-
-        .navigation a:hover {
-            background-color: #555;
-        }
-
-        .image-grid {
-            display: grid;
-            gap: 20px;
-        }
-
-        .image-grid img {
-            margin: 50px;
-            width: 1000px;
-            height: 600px;
-            border: 5px solid black;
-            border-radius: 5px;
-            object-fit: auto;
-        }
-        .fm{
-            border: solid #333;
-            padding: 10px;
-            background-color: white;
-        }
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgb(24, 24, 24);
-            color: aliceblue;
-            line-height: 100px;
-            text-align: center;
-            font-size: x-large;
-            align-content: flex-end;
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <title>Purchase</title>
+  <link rel="stylesheet" href="/css/site.css"/>
 </head>
-
 <body>
-    <header>
-        HORIZON FESTIVAL!!
-    </header>
-    <nav class="navigation">
-        <a href="/">Home</a>
-        <a href="/Purchase Tickets">Buy Tickets</a>
-        <a href="/view">View tickets</a>
-    </nav>
-    <form class="fm" action="/Response" method="post">
-    <h3>Payment Details</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
+  <header class="wrap">
+    <h1>Purchase</h1>
+    <div class="toolbar">
+      <a class="btn" href="/inventory">← Inventory</a>
+      <a class="btn" href="/">🏠 Home</a>
+    </div>
+  </header>
 
-    <label for="age">Age:</label>
-    <input type="number" id="Age" name="Age"><br><br>
-
-    <label for="Address">Address:</label>
-    <input type="text" id="Address" name="Address"><br><br>
-
-    <label for="SEX">Sex:</label>
-    <input type="text" id="SEX" name="SEX" required><br><br>
-
-    <h3>Payment Details</h3>
-    <label for="Payment">Payment Method:</label><br>
-	<input type="radio" id="creditCard" name="Payment" value="Credit Card">
-	<label for="creditCard">Credit Card</label><br>
-
-	<input type="radio" id="debitCard" name="Payment" value="Debit Card">
-	<label for="debitCard">Debit Card</label><br><br>
-
-
-    <label for="cardnumber">Card Number:</label>
-    <input type="number" id="cardnumber" name="cardnumber"><br><br>
-
-    <label for="expiry">Expiry:</label>
-    <input type="text" id="expiry" name="expiry"><br><br>
-
-    <label for="CVV">CVV:</label>
-    <input type="number" id="CVV" name="CVV"><br><br>
-
-    <input type="submit" value="Submit">
-</form>
-
-    <footer>
-        &copy; 2023 Horizon Festival. All Rights Reserved.
-    </footer>
+  <div class="wrap card">
+    <div class="content">
+      <form method="post">
+        <input type="hidden" name="vehicleId" th:value="${vehicleId}"/>
+        <label>Full Name
+          <input type="text" name="name" required/>
+        </label>
+        <label>Card Number (demo)
+          <input type="text" name="card" required/>
+        </label>
+        <button class="btn btn-primary" type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
 </body>
-
 </html>

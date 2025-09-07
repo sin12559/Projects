@@ -1,9 +1,15 @@
 # Projects Monorepo
 
-[![.NET Build & Test](https://github.com/sin12559/Projects/actions/workflows/dotnet.yml/badge.svg)](https://github.com/sin12559/Projects/actions/workflows/dotnet.yml)
-[![Node CI](https://github.com/sin12559/Projects/actions/workflows/node.yml/badge.svg)](https://github.com/sin12559/Projects/actions/workflows/node.yml)
+## Featured
+- HorizonTicketing — Spring Boot + Thymeleaf demo
+  https://github.com/sin12559/HorizonTicketing
 
-**Advanced** – portfolio builds • **Basic** – coursework/labs.
+## Directory
+```
+Projects/
+  Advanced/
+  Basic/
+```
 
 ### Advanced
 - KanbanLite

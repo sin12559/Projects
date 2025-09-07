@@ -1,7 +1,9 @@
 # Projects Monorepo
 
-## Featured
-- [HorizonTicketing](https://github.com/sin12559/HorizonTicketing) — Spring Boot + Thymeleaf car inventory/shop demo
+Clean portfolio-ready projects (**Advanced**) and coursework (**Basic**).
+
+## Highlights
+- Advanced/HorizonTicketing — Spring Boot + Thymeleaf car shop demo
 
 ## Directory
 ```
@@ -14,6 +16,7 @@ Projects/
 - KanbanLite
 - ServiDesk-Lite
 - SRE-Checklist-CLI
+- HorizonTicketing
 - HealthPulse
 
 ### Basic

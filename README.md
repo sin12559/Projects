@@ -1,44 +1,43 @@
-# 🚀 Projects Portfolio — Sagan Deep Singh
+# Projects Portfolio
 
-This repo gives one place to browse **all** my work.
-- **Advanced/**: real-world, impact projects for DevOps • QA • SysAdmin • Software Dev
-- **Basic/**: earlier learning projects & coursework
+This repo collects projects I’ve built while learning and improving my software skills.
+I keep the focus on building, testing, and automating — mainly with Node.js, .NET, Python, and Docker.
 
----
+## Featured Projects
 
-## 🌟 Highlighted Projects (with standalone repos)
-> Standalone links can be added later if not created yet.
+### 🌐 HealthPulse (Node.js, Express, Jest, Docker)
+A small service with health, readiness, and metrics endpoints.
+Good for practicing API design, logging, and automated tests.
 
-| Project | Folder | Tech | Standalone Repo |
-|---|---|---|---|
-| ServiDesk Lite | [Advanced/ServiDesk-Lite](Advanced/ServiDesk-Lite/) | .NET 8, EF Core, SQLite, Docker, CI | https://github.com/sin12559/servidesk-lite |
-| Release Tracker | [Advanced/Release-Tracker](Advanced/Release-Tracker/) | React, .NET, Postgres, Docker Compose, CI | https://github.com/sin12559/release-tracker |
-| QA Automation Pack | [Advanced/QA-Automation-Pack](Advanced/QA-Automation-Pack/) | Playwright, Selenium, CI | https://github.com/sin12559/qa-automation-pack |
-| Pipeline Lab | [Advanced/Pipeline-Lab](Advanced/Pipeline-Lab/) | Node/.NET, Docker, Trivy, GHCR, CI | https://github.com/sin12559/pipeline-lab |
-| Monitoring in a Box | [Advanced/Monitoring-in-a-Box](Advanced/Monitoring-in-a-Box/) | Grafana, Loki, Promtail, Docker | https://github.com/sin12559/monitoring-in-a-box |
-| Sysadmin Toolkit | [Advanced/Sysadmin-Toolkit](Advanced/Sysadmin-Toolkit/) | Bash, PowerShell, Ansible | https://github.com/sin12559/sysadmin-toolkit |
+### 📋 KanbanLite (.NET Web API, xUnit)
+A minimal Kanban API in .NET.
+Built to learn clean architecture, DTOs, and containerization.
 
----
+### ⚙️ SRE-Checklist-CLI (Python CLI, Pytest)
+A command-line tool to run SRE checklists and routines.
+Helps with automation, reliability, and test-driven development.
 
-## 📂 Browse everything quickly
-- **Advanced/** → impact projects (recommended for recruiters)
-- **Basic/** → small apps and assignments
+### 🛠️ ServiDesk-Lite (.NET solution)
+A lightweight service desk skeleton with layered architecture (API/Core/Infra/Tests).
+Useful for practicing separation of concerns and working with larger solutions.
 
----
+## Tech I Use
+- Node.js / Express with Jest
+- .NET 9 with xUnit
+- Python 3 with pytest
+- Docker / Docker Compose
+- GitHub Actions for CI/CD
 
-## 📬 Contact
-- Email: **sagandeep348@gmail.com**
-- LinkedIn: https://www.linkedin.com/in/sagan-deep-singh/
+## Running the Projects
+Each project has its own README. Most follow this pattern:
+    make install
+    make test
+    make run
+
+## About Me
+I’m Sagan Deep Singh (Sheridan College, Brampton). I’m focused on backend development, DevOps, and automation.
+Open to feedback and ways to improve.
+
 - Portfolio: https://saganportfolio.site
-
----
-
-## 📌 Recent Updates (Aug 20, 2025)
-- **Merged `overhaul`** — added **ServiDesk-Lite** (ServiceNow-inspired API)
-  - Tech: .NET 9, EF Core, SQLite, Swagger, Docker
-  - Includes Dockerfile and `docker-compose.yml`
-  - EF Core migrations created and verified
-  - Local run: `dotnet run --project Advanced/ServiDesk-Lite/src/ServiDesk.Api`
-  - API: `GET /api/tickets`, `POST /api/tickets`
-
-- **SRE-Checklist-CLI** — CLI for YAML-based SRE/DevOps checks (see `Advanced/SRE-Checklist-CLI/README.md`)
+- LinkedIn: https://www.linkedin.com/in/sagan-deep-singh
+- GitHub:  https://github.com/sin12559

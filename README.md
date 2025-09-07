@@ -1,25 +1,21 @@
 # Projects Portfolio
 
-This repo collects projects I’ve built while learning and improving my software skills.
-I keep the focus on building, testing, and automating — mainly with Node.js, .NET, Python, and Docker.
+This repo collects projects I've built while learning and improving my software skills.
+I focus on building, testing, and automation — mainly with Node.js, .NET, Python, and Docker.
 
 ## Featured Projects
 
-### 🌐 HealthPulse (Node.js, Express, Jest, Docker)
-A small service with health, readiness, and metrics endpoints.
-Good for practicing API design, logging, and automated tests.
+### HealthPulse (Node.js, Express, Jest, Docker)
+Small service with health, readiness, and metrics endpoints. Good practice for API design, logging, and automated tests.
 
-### 📋 KanbanLite (.NET Web API, xUnit)
-A minimal Kanban API in .NET.
-Built to learn clean architecture, DTOs, and containerization.
+### KanbanLite (.NET Web API, xUnit)
+Minimal Kanban API in .NET. Built to learn clean architecture, DTOs, and containerization.
 
-### ⚙️ SRE-Checklist-CLI (Python CLI, Pytest)
-A command-line tool to run SRE checklists and routines.
-Helps with automation, reliability, and test-driven development.
+### SRE-Checklist-CLI (Python CLI, Pytest)
+CLI to run SRE checklists and routines. Focus on automation, reliability, and TDD.
 
-### 🛠️ ServiDesk-Lite (.NET solution)
-A lightweight service desk skeleton with layered architecture (API/Core/Infra/Tests).
-Useful for practicing separation of concerns and working with larger solutions.
+### ServiDesk-Lite (.NET solution)
+Lightweight service desk skeleton with layered architecture (API/Core/Infra/Tests).
 
 ## Tech I Use
 - Node.js / Express with Jest
@@ -29,15 +25,15 @@ Useful for practicing separation of concerns and working with larger solutions.
 - GitHub Actions for CI/CD
 
 ## Running the Projects
-Each project has its own README. Most follow this pattern:
-    make install
-    make test
-    make run
+Each project has its own README. Most follow:
+  make install
+  make test
+  make run
 
 ## About Me
-I’m Sagan Deep Singh (Sheridan College, Brampton). I’m focused on backend development, DevOps, and automation.
+I'm Sagan Deep Singh (Sheridan College, Brampton). Focused on backend development, DevOps, and automation.
 Open to feedback and ways to improve.
 
-- Portfolio: https://saganportfolio.site
-- LinkedIn: https://www.linkedin.com/in/sagan-deep-singh
-- GitHub:  https://github.com/sin12559
+Portfolio: https://saganportfolio.site
+LinkedIn: https://www.linkedin.com/in/sagan-deep-singh
+GitHub:  https://github.com/sin12559

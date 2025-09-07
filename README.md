@@ -15,6 +15,7 @@ Projects/
 - KanbanLite
 - ServiDesk-Lite
 - SRE-Checklist-CLI
+- HorizonTicketing
 - HealthPulse
 
 ### Basic
@@ -22,5 +23,4 @@ Projects/
 - Sagan_Deep_Singh_Assignment_2_java
 - Focus-Gaming-Prototype
 - Tech-Store
-- HorizonTicketing
 - BusinessCard

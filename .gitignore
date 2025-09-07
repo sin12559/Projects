@@ -26,3 +26,4 @@ obj/
 local.properties
 *.iml
 captures/
+*.zip

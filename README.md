@@ -23,10 +23,10 @@ It reflects my journey across **Java, .NET, Node.js, Python, and front-end devel
 
 | Project | Path | Tech Stack | Description |
 |---------|------|------------|-------------|
-| [**Cars4Sale**](Basic/Cars4Sale) | `Basic/Cars4Sale` | Java, Spring Boot | Simple car listing application |
-| [**Focus-Gaming-Prototype**](Basic/Focus-Gaming-Prototype) | `Basic/Focus-Gaming-Prototype` | JavaScript, Web | Gaming prototype/demo |
-| [**Tech-Store**](Basic/Tech-Store) | `Basic/Tech-Store` | Java, Spring Boot | Tech store coursework app |
-| [**BusinessCard**](Basic/BusinessCard) | `Basic/BusinessCard` | Web | Simple business card web project |
+| [Cars4Sale](Basic/Cars4Sale) | `Basic/Cars4Sale` | ![Java](https://img.shields.io/badge/Java-21-blue) ![Spring Boot](https://img.shields.io/badge/SpringBoot-3-brightgreen) | Simple car listing application |
+| [Focus-Gaming-Prototype](Basic/Focus-Gaming-Prototype) | `Basic/Focus-Gaming-Prototype` | ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow) ![Web](https://img.shields.io/badge/Web-Frontend-orange) | Gaming prototype/demo |
+| [Tech-Store](Basic/Tech-Store) | `Basic/Tech-Store` | ![Java](https://img.shields.io/badge/Java-21-blue) ![Spring Boot](https://img.shields.io/badge/SpringBoot-3-brightgreen) | Tech store coursework app |
+| [BusinessCard](Basic/BusinessCard) | `Basic/BusinessCard` | ![Web](https://img.shields.io/badge/Web-HTML/CSS-lightgrey) ![JavaScript](https://img.shields.io/badge/JS-Optional-yellow) | Simple business card web project |
 
 ---
 

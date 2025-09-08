@@ -1,29 +1,38 @@
 name: lint
+
 on:
   push:
   pull_request:
+
 jobs:
-  super-linter:
+  lint:
     runs-on: ubuntu-latest
+
+    # 🔑 Job-level env works for every step below
+    env:
+      LINTER_RULES_PATH: ${{ github.workspace }}
+      MARKDOWN_LINTER_RULES: .markdownlint.json
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Super Linter
         uses: github/super-linter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: true
-          # Enable only what we use here
           VALIDATE_MARKDOWN: true
           VALIDATE_HTML: true
           VALIDATE_CSS: true
           VALIDATE_JAVA: true
-          # Point to our config files
-          MARKDOWN_LINTER_RULES: .markdownlint.json
+
           HTML_HINT_CONFIG_FILE: .htmlhintrc
           CSS_LINTER_RULES_PATH: .stylelintrc.json
           JAVACHECKSTYLE_CONFIG_FILE: .github/linters/java_checkstyle.xml
-          # Ignore images/binaries
-          FILTER_REGEX_EXCLUDE: "Advanced/HorizonTicketing/src/main/resources/static/.*"
+
+          # Ignore bundled static assets
+          FILTER_REGEX_EXCLUDE: Advanced/HorizonTicketing/src/main/resources/static/.*

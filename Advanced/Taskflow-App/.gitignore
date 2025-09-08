@@ -1,0 +1,9 @@
+node_modules/
+.angular/
+dist/
+build/
+coverage/
+.cache/
+.tmp/
+.DS_Store
+.env

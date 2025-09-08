@@ -16,7 +16,7 @@ Spring Boot + Thymeleaf demo app for a simple ticketing/car shop scenario.
 ./mvnw spring-boot:run
 ```
 
-Then open <http://localhost:8080>
+Then open <[http://localhost:8080](http://localhost:8080)>
 
 ## Build a jar
 

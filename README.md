@@ -24,7 +24,6 @@ It reflects my journey across **Java, .NET, Node.js, Python, and front-end devel
 | Project | Path | Tech Stack | Description |
 |---------|------|------------|-------------|
 | [**Cars4Sale**](Basic/Cars4Sale) | `Basic/Cars4Sale` | Java, Spring Boot | Simple car listing application |
-| [**Sagan_Deep_Singh_Assignment_2_java**](Basic/Sagan_Deep_Singh_Assignment_2_java) | `Basic/Sagan_Deep_Singh_Assignment_2_java` | Java | Coursework assignment project |
 | [**Focus-Gaming-Prototype**](Basic/Focus-Gaming-Prototype) | `Basic/Focus-Gaming-Prototype` | JavaScript, Web | Gaming prototype/demo |
 | [**Tech-Store**](Basic/Tech-Store) | `Basic/Tech-Store` | Java, Spring Boot | Tech store coursework app |
 | [**BusinessCard**](Basic/BusinessCard) | `Basic/BusinessCard` | Web | Simple business card web project |

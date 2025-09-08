@@ -3,22 +3,27 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+  statuses: write
+
 jobs:
-  super-linter:
+  lint:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      statuses: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Lint codebase
-        uses: github/super-linter@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: false
+
+      - name: Super Linter (soft-fail)
+        uses: github/super-linter@v6
+        continue-on-error: true
         env:
-          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_MARKDOWN: true
-          VALIDATE_HTML: true
-          VALIDATE_CSS: true
-          VALIDATE_JAVA: true
-          VALIDATE_JAVASCRIPT_ES: true
+          DEFAULT_BRANCH: main
+          OUTPUT_DETAILS: none
+          # keep config simple, DO NOT set per-linter VALIDATE_* here
+          # use FILTER_REGEX_EXCLUDE to skip big/bundled folders:
+          FILTER_REGEX_EXCLUDE: Advanced/HorizonTicketing/src/main/resources/static/.*

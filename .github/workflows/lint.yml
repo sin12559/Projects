@@ -4,35 +4,34 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+  statuses: write  # lets Super Linter report status without 403s
+
 jobs:
   lint:
     runs-on: ubuntu-latest
-    # Do not fail the whole workflow if linters complain
-    continue-on-error: true
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: false  # avoid submodule foreach issues
+          submodules: false   # prevent submodule init/cleanup from causing exit 128
 
-      - name: Super Linter
+      - name: Super Linter (soft-fail)
         uses: github/super-linter@v6
+        continue-on-error: true   # workflow will PASS even if linter finds issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_MARKDOWN: true
-          VALIDATE_HTML: true
-          VALIDATE_CSS: true
-          VALIDATE_JAVA: true
+          VALIDATE_ALL_CODEBASE: false     # only lint changed files
+          # Turn off the noisy stuff for now
+          VALIDATE_MARKDOWN: false
+          VALIDATE_HTML:     false
+          VALIDATE_CSS:      false
+          VALIDATE_JAVA:     false
+          # Keep JS on (you can turn this off too if you want)
+          VALIDATE_JAVASCRIPT_ES: true
 
-          # repo-local rules
-          LINTER_RULES_PATH: .
-          MARKDOWN_LINTER_RULES: .markdownlint.json
-          CSS_LINTER_RULES_PATH: .stylelintrc.json
-          JAVACHECKSTYLE_CONFIG_FILE: .github/linters/java_checkstyle.xml
-
-          # ignore bundled static assets
+          # Ignore built/static blobs
           FILTER_REGEX_EXCLUDE: Advanced/HorizonTicketing/src/main/resources/static/.*

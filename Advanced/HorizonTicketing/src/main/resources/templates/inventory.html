@@ -1,32 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Inventory</title>
-  <link rel="stylesheet" href="/css/site.css"/>
-</head>
-<body>
-  <header class="wrap">
-    <h1>Inventory</h1>
-    <div class="toolbar">
-      <a class="btn" href="/">🏠 Home</a>
-      <a class="btn" href="/orders">📋 Orders</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventory</title>
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>Inventory</h1>
+      <div class="toolbar">
+        <a class="btn" href="/">🏠 Home</a>
+        <a class="btn" href="/orders">📋 Orders</a>
+      </div>
+    </header>
 
-  <div class="wrap grid grid-3">
-    <div class="card" th:each="v : ${vehicles}">
-      <img th:src="${v.image}" alt="car"/>
-      <div class="content">
-        <h3 th:text="${v.make} + ' ' + ${v.model}">Make Model</h3>
-        <p class="muted" th:text="${v.description}">desc</p>
-        <p th:text="${v.price}">$0</p>
-        <div class="toolbar">
-          <a class="btn btn-primary" th:href="@{/vehicle/{id}(id=${v.id})}">View</a>
-          <a class="btn" th:href="@{/purchase(vehicleId=${v.id})}">Purchase</a>
+    <div class="wrap grid grid-3">
+      <div class="card" th:each="v : ${vehicles}">
+        <img th:src="${v.image}" alt="car" />
+        <div class="content">
+          <h3 th:text="${v.make} + ' ' + ${v.model}">Make Model</h3>
+          <p class="muted" th:text="${v.description}">desc</p>
+          <p th:text="${v.price}">$0</p>
+          <div class="toolbar">
+            <a class="btn btn-primary" th:href="@{/vehicle/{id}(id=${v.id})}"
+              >View</a
+            >
+            <a class="btn" th:href="@{/purchase(vehicleId=${v.id})}"
+              >Purchase</a
+            >
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

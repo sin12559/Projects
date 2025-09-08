@@ -3,6 +3,7 @@
 Spring Boot + Thymeleaf demo app for a simple ticketing/car shop scenario.
 
 ## Tech stack
+
 - Java 21 (or 17+)
 - Spring Boot (Maven wrapper ./mvnw)
 - Thymeleaf templates
@@ -10,12 +11,15 @@ Spring Boot + Thymeleaf demo app for a simple ticketing/car shop scenario.
 - Static assets (HTML/CSS/images)
 
 ## Run locally
+
 ```bash
 ./mvnw spring-boot:run
 ```
-Then open http://localhost:8080
+
+Then open <http://localhost:8080>
 
 ## Build a jar
+
 ```bash
 ./mvnw clean package -DskipTests
 java -jar target/*-SNAPSHOT.jar

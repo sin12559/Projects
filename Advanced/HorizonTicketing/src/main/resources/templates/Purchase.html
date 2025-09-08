@@ -1,32 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Purchase</title>
-  <link rel="stylesheet" href="/css/site.css"/>
-</head>
-<body>
-  <header class="wrap">
-    <h1>Purchase</h1>
-    <div class="toolbar">
-      <a class="btn" href="/inventory">← Inventory</a>
-      <a class="btn" href="/">🏠 Home</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Purchase</title>
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>Purchase</h1>
+      <div class="toolbar">
+        <a class="btn" href="/inventory">← Inventory</a>
+        <a class="btn" href="/">🏠 Home</a>
+      </div>
+    </header>
 
-  <div class="wrap card">
-    <div class="content">
-      <form method="post">
-        <input type="hidden" name="vehicleId" th:value="${vehicleId}"/>
-        <label>Full Name
-          <input type="text" name="name" required/>
-        </label>
-        <label>Card Number (demo)
-          <input type="text" name="card" required/>
-        </label>
-        <button class="btn btn-primary" type="submit">Submit Order</button>
-      </form>
+    <div class="wrap card">
+      <div class="content">
+        <form method="post">
+          <input type="hidden" name="vehicleId" th:value="${vehicleId}" />
+          <label
+            >Full Name
+            <input type="text" name="name" required />
+          </label>
+          <label
+            >Card Number (demo)
+            <input type="text" name="card" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Submit Order</button>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

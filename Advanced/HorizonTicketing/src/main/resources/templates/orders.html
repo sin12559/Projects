@@ -1,38 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Orders</title>
-  <link rel="stylesheet" href="/css/site.css"/>
-</head>
-<body>
-  <header class="wrap">
-    <h1>Orders</h1>
-    <div class="toolbar">
-      <a class="btn" href="/">🏠 Home</a>
-      <a class="btn" href="/inventory">🚗 Inventory</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Orders</title>
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>Orders</h1>
+      <div class="toolbar">
+        <a class="btn" href="/">🏠 Home</a>
+        <a class="btn" href="/inventory">🚗 Inventory</a>
+      </div>
+    </header>
 
-  <div class="wrap card">
-    <div class="content">
-      <table>
-        <thead>
-          <tr><th>ID</th><th>Name</th><th>Card</th><th>Vehicle</th></tr>
-        </thead>
-        <tbody>
-          <tr th:each="o : ${orders}">
-            <td th:text="${o.id}">1</td>
-            <td th:text="${o.name}">Jane</td>
-            <td th:text="${o.maskedCard}">****</td>
-            <td th:text="${nameBy.apply(o.vehicleId)}">Tesla Model S</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="toolbar" style="margin-top:12px">
-        <a class="btn" href="/purchase?vehicleId=1">➕ New Purchase</a>
+    <div class="wrap card">
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Card</th>
+              <th>Vehicle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="o : ${orders}">
+              <td th:text="${o.id}">1</td>
+              <td th:text="${o.name}">Jane</td>
+              <td th:text="${o.maskedCard}">****</td>
+              <td th:text="${nameBy.apply(o.vehicleId)}">Tesla Model S</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="toolbar" style="margin-top: 12px">
+          <a class="btn" href="/purchase?vehicleId=1">➕ New Purchase</a>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

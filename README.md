@@ -6,11 +6,11 @@ Clean portfolio-ready projects (**Advanced**) and coursework (**Basic**).
 - Advanced/HorizonTicketing — Spring Boot + Thymeleaf car shop demo
 
 ## Directory
-```
+```bash
 Projects/
   Advanced/
   Basic/
-```
+```bash
 
 ### Advanced
 - KanbanLite

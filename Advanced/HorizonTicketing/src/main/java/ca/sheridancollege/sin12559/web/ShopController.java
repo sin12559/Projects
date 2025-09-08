@@ -20,6 +20,8 @@ public class ShopController {
 
   @GetMapping("/vehicle/{id}")
   public String vehicle(@PathVariable Long id, Model model) {
+    Vehicle v =
+        InMemoryStore.byId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     Vehicle v = InMemoryStore.byId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     model.addAttribute("v", v);
     return "vehicle";
@@ -27,6 +29,9 @@ public class ShopController {
 
   @GetMapping("/purchase")
   public String purchaseForm(@RequestParam Long vehicleId, Model model) {
+    Vehicle v =
+        InMemoryStore.byId(vehicleId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     Vehicle v = InMemoryStore.byId(vehicleId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     model.addAttribute("v", v);
     model.addAttribute("vehicleId", vehicleId);
@@ -34,6 +39,8 @@ public class ShopController {
   }
 
   @PostMapping("/purchase")
+  public String submitPurchase(
+      @RequestParam Long vehicleId, @RequestParam String name, @RequestParam String card) {
   public String submitPurchase(@RequestParam Long vehicleId,
                                @RequestParam String name,
                                @RequestParam String card) {
@@ -44,6 +51,10 @@ public class ShopController {
   @GetMapping("/orders")
   public String orders(Model model) {
     model.addAttribute("orders", InMemoryStore.orders());
+    model.addAttribute(
+        "nameBy",
+        (java.util.function.Function<Long, String>)
+            id -> InMemoryStore.byId(id).map(Vehicle::fullName).orElse("-"));
     model.addAttribute("nameBy", (java.util.function.Function<Long,String>) id ->
         InMemoryStore.byId(id).map(Vehicle::fullName).orElse("-"));
     return "orders";

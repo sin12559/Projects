@@ -1,1 +1,10 @@
-* text=auto
+*.min.js linguist-vendored
+*.map linguist-vendored
+*.dll linguist-vendored
+*.so linguist-vendored
+*.a linguist-vendored
+*.o linguist-vendored
+*.class linguist-vendored
+*.jar linguist-vendored
+Basic/** linguist-vendored=false
+Advanced/** linguist-vendored=false

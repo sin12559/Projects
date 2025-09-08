@@ -1,44 +1,27 @@
-# 🚀 Projects Portfolio — Sagan Deep Singh
+# Projects Monorepo
 
-This repo gives one place to browse **all** my work.
-- **Advanced/**: real-world, impact projects for DevOps • QA • SysAdmin • Software Dev
-- **Basic/**: earlier learning projects & coursework
+Clean portfolio-ready projects (**Advanced**) and coursework (**Basic**).
 
----
+## Highlights
+- Advanced/HorizonTicketing — Spring Boot + Thymeleaf car shop demo
 
-## 🌟 Highlighted Projects (with standalone repos)
-> Standalone links can be added later if not created yet.
+## Directory
+```bash
+Projects/
+  Advanced/
+  Basic/
+```bash
 
-| Project | Folder | Tech | Standalone Repo |
-|---|---|---|---|
-| ServiDesk Lite | [Advanced/ServiDesk-Lite](Advanced/ServiDesk-Lite/) | .NET 8, EF Core, SQLite, Docker, CI | https://github.com/sin12559/servidesk-lite |
-| Release Tracker | [Advanced/Release-Tracker](Advanced/Release-Tracker/) | React, .NET, Postgres, Docker Compose, CI | https://github.com/sin12559/release-tracker |
-| QA Automation Pack | [Advanced/QA-Automation-Pack](Advanced/QA-Automation-Pack/) | Playwright, Selenium, CI | https://github.com/sin12559/qa-automation-pack |
-| Pipeline Lab | [Advanced/Pipeline-Lab](Advanced/Pipeline-Lab/) | Node/.NET, Docker, Trivy, GHCR, CI | https://github.com/sin12559/pipeline-lab |
-| Monitoring in a Box | [Advanced/Monitoring-in-a-Box](Advanced/Monitoring-in-a-Box/) | Grafana, Loki, Promtail, Docker | https://github.com/sin12559/monitoring-in-a-box |
-| Sysadmin Toolkit | [Advanced/Sysadmin-Toolkit](Advanced/Sysadmin-Toolkit/) | Bash, PowerShell, Ansible | https://github.com/sin12559/sysadmin-toolkit |
+### Advanced
+- KanbanLite
+- ServiDesk-Lite
+- SRE-Checklist-CLI
+- HorizonTicketing
+- HealthPulse
 
----
-
-## 📂 Browse everything quickly
-- **Advanced/** → impact projects (recommended for recruiters)
-- **Basic/** → small apps and assignments
-
----
-
-## 📬 Contact
-- Email: **sagandeep348@gmail.com**
-- LinkedIn: https://www.linkedin.com/in/sagan-deep-singh/
-- Portfolio: https://saganportfolio.site
-
----
-
-## 📌 Recent Updates (Aug 20, 2025)
-- **Merged `overhaul`** — added **ServiDesk-Lite** (ServiceNow-inspired API)
-  - Tech: .NET 9, EF Core, SQLite, Swagger, Docker
-  - Includes Dockerfile and `docker-compose.yml`
-  - EF Core migrations created and verified
-  - Local run: `dotnet run --project Advanced/ServiDesk-Lite/src/ServiDesk.Api`
-  - API: `GET /api/tickets`, `POST /api/tickets`
-
-- **SRE-Checklist-CLI** — CLI for YAML-based SRE/DevOps checks (see `Advanced/SRE-Checklist-CLI/README.md`)
+### Basic
+- Cars4Sale
+- Sagan_Deep_Singh_Assignment_2_java
+- Focus-Gaming-Prototype
+- Tech-Store
+- BusinessCard

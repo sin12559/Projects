@@ -1,16 +1,12 @@
 # HealthPulse
+Health/readiness/metrics microservice.
 
-> Temporary README generated to align with root docs. Replace the quickstart with exact commands if needed.
+Run:
+- `npm install`
+- `npm test`
+- `npm start`
 
-## Quickstart
-
-
-```bash
-npm ci --prefix "Advanced/HealthPulse"
-npm start --prefix "Advanced/HealthPulse"   # adjust if different
-```
-
-
-## Notes
-- Update commands if your entrypoint differs.
-- Add screenshot/GIF or Swagger link here when available.
+Endpoints:
+- `GET /healthz` → `{ ok: true }`
+- `GET /readyz` → `{ ready: true }`
+- `GET /metrics` → Prometheus metrics

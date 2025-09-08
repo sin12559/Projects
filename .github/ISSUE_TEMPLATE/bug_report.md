@@ -1,3 +1,5 @@
+# Bug report
+
 ---
 name: Bug report
 about: Help me improve

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title th:text="${pageTitle} ?: 'Horizon Motors'">Horizon Motors</title>
+    <link rel="stylesheet" th:href="@{/css/site.css}" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="brand" th:href="@{/}">Horizon<span>Motors</span></a>
+        <nav class="links">
+          <a th:href="@{/}">Home</a>
+          <a th:href="@{/cars}">Browse Cars</a>
+          <a href="#">Financing</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" th:insert="${content}"></main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          ©
+          <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}"
+            >2025</span
+          >
+          Horizon Motors
+        </div>
+        <div class="footer__links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title th:text="${pageTitle} ?: 'Horizon Motors'">Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" th:href="@{/}">Horizon<span>Motors</span></a>
+      <nav class="links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/cars}">Browse Cars</a>
+        <a href="#">Financing</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" th:insert="${content}"></main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors</div>
+      <div class="footer__links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

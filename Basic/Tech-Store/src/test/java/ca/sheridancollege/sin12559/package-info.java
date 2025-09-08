@@ -1,4 +1,4 @@
 /**
- * Test package for Tech-Store.
+ * Test package documentation.
  */
 package ca.sheridancollege.sin12559;

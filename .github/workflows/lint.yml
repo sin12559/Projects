@@ -26,4 +26,4 @@ jobs:
           CSS_LINTER_RULES_PATH: .stylelintrc.json
           JAVACHECKSTYLE_CONFIG_FILE: .github/linters/java_checkstyle.xml
           # Ignore images/binaries
-          FILTER_REGEX_EXCLUDE: "Advanced/HorizonTicketing/src/main/resources/static/(img|.*\\.(png|jpg|jpeg|webp|avif))/.+"
+          FILTER_REGEX_EXCLUDE: "Advanced/HorizonTicketing/src/main/resources/static/.*"

@@ -1,14 +1,9 @@
-# build + caches
+node_modules/
+.angular/
 dist/
 build/
 coverage/
-.angular/
 .cache/
 .tmp/
-# deps + OS cruft
-node_modules/
 .DS_Store
 .env
-.angular/
-.cache/
-node_modules/

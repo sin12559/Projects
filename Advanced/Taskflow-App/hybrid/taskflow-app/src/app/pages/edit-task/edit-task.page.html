@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input formControlName="title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Due Date</ion-label>
+        <ion-datetime formControlName="dueDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Priority</ion-label>
+        <ion-select formControlName="priority">
+          <ion-select-option value="Low">Low</ion-select-option>
+          <ion-select-option value="Medium">Medium</ion-select-option>
+          <ion-select-option value="High">High</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Status</ion-label>
+        <ion-select formControlName="status">
+          <ion-select-option value="Pending">Pending</ion-select-option>
+          <ion-select-option value="In Progress">In Progress</ion-select-option>
+          <ion-select-option value="Completed">Completed</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button type="submit" expand="full" [disabled]="!taskForm.valid">Save</ion-button>
+  </form>
+</ion-content>

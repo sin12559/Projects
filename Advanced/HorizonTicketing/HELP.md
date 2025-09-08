@@ -11,7 +11,7 @@ For further reference, please consider the following sections:
 - [Thymeleaf](https://docs.spring.io/spring-boot/docs/3.1.4/reference/htmlsingle/index.html#web.servlet.spring-mvc.template-engines)
 - [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.4/reference/htmlsingle/index.html#web)
 
-### Guides
+## Guides
 
 The following guides illustrate how to use some features concretely:
 

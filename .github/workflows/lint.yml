@@ -1,12 +1,11 @@
 name: lint
-
 on:
   push:
   pull_request:
 
 permissions:
   contents: read
-  statuses: write  # lets Super Linter report status without 403s
+  statuses: write
 
 jobs:
   lint:
@@ -16,22 +15,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: false   # prevent submodule init/cleanup from causing exit 128
+          submodules: false
 
       - name: Super Linter (soft-fail)
         uses: github/super-linter@v6
-        continue-on-error: true   # workflow will PASS even if linter finds issues
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
-          VALIDATE_ALL_CODEBASE: false     # only lint changed files
-          # Turn off the noisy stuff for now
-          VALIDATE_MARKDOWN: false
-          VALIDATE_HTML:     false
-          VALIDATE_CSS:      false
-          VALIDATE_JAVA:     false
-          # Keep JS on (you can turn this off too if you want)
-          VALIDATE_JAVASCRIPT_ES: true
-
-          # Ignore built/static blobs
+          OUTPUT_DETAILS: none
+          # keep config simple, DO NOT set per-linter VALIDATE_* here
+          # use FILTER_REGEX_EXCLUDE to skip big/bundled folders:
           FILTER_REGEX_EXCLUDE: Advanced/HorizonTicketing/src/main/resources/static/.*

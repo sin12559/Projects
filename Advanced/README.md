@@ -11,3 +11,4 @@ Polished, production-minded projects. Placeholders live in `Advanced/_archive/`.
 | **SRE-Checklist-CLI** | Python 3, pytest | `cd Advanced/SRE-Checklist-CLI && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && pytest -q` |
 | **ServiDesk-Lite** | .NET Solution (API/Core/Infra/Tests) | `cd Advanced/ServiDesk-Lite && dotnet restore && dotnet build && dotnet test && dotnet run --project ServiDesk.Api.csproj` |
 
+- Advanced/HorizonTicketing — Spring Boot + Thymeleaf ticketing demo

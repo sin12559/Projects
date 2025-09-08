@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title th:text="${pageTitle} ?: 'Horizon Motors'">Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/site.css}">
+  <script defer src="/js/site.js"></script>
+</head>
+<body>
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" th:href="@{/}">Horizon<span>Motors</span></a>
+    <nav class="links">
+      <a th:href="@{/}">Home</a>
+      <a th:href="@{/cars}">Browse Cars</a>
+      <a th:href="@{/financing}">Financing</a>
+      <a th:href="@{/contact}">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__img reveal">
+      <img loading="lazy" th:src="@{/img/hero/garage.jpg}" alt="Showroom">
+    </div>
+    <div class="hero__text reveal">
+      <h1>Find your next ride.</h1>
+      <p>Hand-picked cars. Transparent pricing. Drive today.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" th:href="@{/cars}">Browse Inventory</a>
+        <a class="btn" th:href="@{/financing}">Get Pre-Approved</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>Featured Cars</h2>
+      <a class="link" th:href="@{/cars}">View all →</a>
+    </div>
+
+    <div class="grid">
+      <div class="card reveal" th:each="c : ${featured}">
+        <div class="card__img">
+          <img loading="lazy" th:src="${c.imageUrl}" th:alt="${c.year + ' ' + c.make + ' ' + c.model}"
+               onerror="this.src='/img/cars/placeholder.jpg'">
+          <div class="badge" th:text="${c.year}">2022</div>
+        </div>
+        <div class="card__body">
+          <h3 th:text="${c.make + ' ' + c.model}">Car</h3>
+          <p class="muted" th:text="${c.mileage + ' • ' + c.transmission}">,,</p>
+          <div class="card__meta">
+            <div class="price" th:text="${c.price}">$0</div>
+            <a class="btn btn--ghost" th:href="@{'/cars#' + ${c.id}}">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors</div>
+    <div class="footer__links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,6 +1,13 @@
 {
-  "extends": ["stylelint-config-standard"],
   "rules": {
-    "at-rule-no-unknown": [ true, { "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"] } ]
+    "color-no-invalid-hex": true,
+    "font-family-no-duplicate-names": true,
+    "function-calc-no-unspaced-operator": true,
+    "block-no-empty": true,
+    "selector-pseudo-class-no-unknown": true,
+    "selector-pseudo-element-colon-notation": "double",
+    "no-duplicate-selectors": true,
+    "declaration-block-no-duplicate-properties": true,
+    "string-no-newline": true
   }
 }

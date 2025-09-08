@@ -1,7 +1,0 @@
-{
-  "name": "taskFlow",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

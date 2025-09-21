@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Buy Now — Horizon Motors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#0f141c; --muted:#a9b4c0; --text:#e6edf3; --line:rgba(255,255,255,.08);
+      --gold1:#c8a44d; --gold2:#f0d37a; --accent:#1f2733; --ok:#27c07d;
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+    .hero{position:relative;margin-top:16px;margin-bottom:28px;overflow:hidden;background:
+      radial-gradient(1200px 380px at 35% -10%,rgba(240,211,122,.14),transparent 60%),
+      linear-gradient(180deg,#0b0f14 0%, #0f141c 100%); border:1px solid var(--line); border-radius:20px}
+    .hero-inner{padding:44px 28px 36px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#0c1117}
+    h1{font-size:38px;margin:10px 0 8px;letter-spacing:.3px}
+    .muted{color:var(--muted)}
+    .badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+    .badge{border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:#0c1117}
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 18px;text-decoration:none;border:1px solid var(--line);background:#151b24;color:#fff;cursor:pointer;transition:transform .12s, box-shadow .2s, filter .2s}
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
+    .btn-gold{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#0b0f14;border:none;font-weight:800;box-shadow:0 10px 30px rgba(240,211,122,.25)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-weight:600}
+    .inp{background:#0c1117;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px 12px;outline:none;transition:border .15s, box-shadow .15s}
+    .inp:focus{border-color:rgba(240,211,122,.45); box-shadow:0 0 0 3px rgba(240,211,122,.12)}
+    .hint{font-size:12px;color:var(--muted)}
+    .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    .stat{border:1px solid var(--line);background:#0c1117;border-radius:14px;padding:14px;text-align:center}
+    .stat strong{font-size:20px}
+    .price{font-size:28px;font-weight:800}
+    .small{font-size:12px;color:var(--muted)}
+    @media(max-width:980px){ .hero-inner{grid-template-columns:1fr} .grid{grid-template-columns:1fr} .cols{grid-template-columns:1fr 1fr} }
+    @media(max-width:640px){ .cols{grid-template-columns:1fr} }
+
+    /* Animations */
+    .fade-up{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease}
+    .fade-up.show{opacity:1; transform:none}
+    .shimmer{position:relative; overflow:hidden}
+    .shimmer:before{content:""; position:absolute; top:0; left:-150%; width:50%; height:100%;
+      background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.08) 30%, transparent 60%);
+      animation:shine 2.8s ease-in-out infinite}
+    @keyframes shine { 0%{ left:-150% } 60%{ left:120% } 100%{ left:120% } }
+  </style>
+</head>
+<body>
+  <th:block th:replace="~{fragments :: header}"></th:block>
+
+  <div class="wrap">
+
+    <!-- Selected vehicle summary (shown when coming from Browse with params) -->
+    <div class="card" th:if="${param.vid}">
+      <div style="display:flex;gap:16px;align-items:center">
+        <img th:if="${param.img}" th:src="${param.img}" alt="" style="width:160px;height:100px;object-fit:cover;border-radius:12px">
+        <div>
+          <h2 th:text="${param.year + ' ' + param.make + ' ' + param.model}">Selected Vehicle</h2>
+          <div class="muted" th:text="${'$' + #numbers.formatInteger(@java.lang.Integer::parseInt(param.price[0]), 3, 'COMMA')}">$0</div>
+          <input type="hidden" name="vehicleId" th:value="${param.vid}"/>
+        </div>
+      </div>
+    </div>
+    
+    <!-- HERO -->
+    <section class="hero card fade-up shimmer" role="banner">
+      <div class="hero-inner">
+        <div>
+          <div class="pill">✨ Luxury Checkout</div>
+          <h1>Reserve Your Next <span style="background:linear-gradient(90deg,var(--gold1),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent">Legendary Ride</span></h1>
+          <div class="muted">Secure your vehicle in minutes. Transparent pricing. No hidden fees. Fully refundable reservation.</div>
+          <div class="badges">
+            <div class="badge">✔ 45-Point Inspection</div>
+            <div class="badge">✔ 7-Day Exchange</div>
+            <div class="badge">✔ Free Delivery (GTA)</div>
+          </div>
+          <div class="cta-row">
+            <a href="#checkout" class="btn btn-gold">Start Checkout</a>
+            <a th:href="@{/browse}" class="btn">Browse More</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="price" id="priceDisplay" th:text="${price != null ? '$' + #numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT') : '$—'}">$—</div>
+          <div class="small">Estimated total • Taxes/fees calculated at checkout</div>
+          <div class="cols" style="margin-top:10px">
+            <div class="stat"><div class="small">APR (from)</div><strong>0.9%</strong></div>
+            <div class="stat"><div class="small">Partners</div><strong>24+</strong></div>
+            <div class="stat"><div class="small">Approval</div><strong>≈5 min</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section id="checkout" class="grid fade-up">
+      <div class="card">
+        <h3 style="margin:6px 0 14px 0">Driver Details</h3>
+        <form th:action="@{/purchase}" method="post" onsubmit="return Lux.validate(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="field"><label>Full Name</label><input class="inp" name="name" placeholder="John Doe" required></div>
+          <div class="field"><label>Email</label><input class="inp" name="email" type="email" placeholder="you@example.com" required></div>
+          <div class="field"><label>Phone</label><input class="inp" name="phone" type="tel" placeholder="(555) 555-5555" required></div>
+
+          <div class="field">
+            <label>Vehicle</label>
+            <select class="inp" name="vehicle" id="vehicleSelect" required>
+              <option value="" disabled selected>Select vehicle</option>
+              <option th:each="v : ${vehicles}"
+                      th:value="${v.id}"
+                      th:data-price="${v.price}"
+                      th:text="${v.year} + ' ' + ${v.make} + ' ' + ${v.model}">
+                2024 Porsche 911 Turbo
+              </option>
+            </select>
+            <div class="hint">Don’t see it? Continue—your advisor will confirm availability.</div>
+          </div>
+
+          <div class="field">
+            <label>Payment Preference</label>
+            <select class="inp" name="payment" required>
+              <option value="cash">Cash</option>
+              <option value="finance" selected>Finance</option>
+              <option value="lease">Lease</option>
+            </select>
+          </div>
+
+          <div class="field" style="grid-column:1/-1">
+            <label>Notes (optional)</label>
+            <textarea class="inp" name="notes" rows="4" placeholder="Anything we should know?"></textarea>
+          </div>
+
+          <div style="grid-column:1/-1;display:flex;gap:12px;align-items:center;margin-top:4px">
+            <span class="pill" style="border-color:rgba(39,192,125,.35);background:rgba(39,192,125,.08)">No impact on credit</span>
+            <span class="pill">Fully refundable reservation</span>
+          </div>
+
+          <div style="grid-column:1/-1;display:flex;gap:12px;margin-top:10px">
+            <button class="btn btn-gold" type="submit">Place Reservation</button>
+            <a th:href="@{/financing}" class="btn">Get Pre-Approved</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:6px 0 14px 0">Order Summary</h3>
+        <div class="field">
+          <label>Vehicle</label>
+          <div class="pill" id="summaryVehicle" th:text="${selected != null ? selected : 'Select a vehicle above'}">Select a vehicle above</div>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
+        <div class="field"><label>Subtotal</label><div class="pill" id="summarySubtotal" th:text="${price != null ? '$' + #numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT') : '$—'}">$—</div></div>
+        <div class="field"><label>Total (est.)</label>
+          <div class="pill" id="summaryTotal" style="background:linear-gradient(90deg,rgba(200,164,77,.15),rgba(240,211,122,.15));border-color:rgba(240,211,122,.35)"><strong>$—</strong></div>
+        </div>
+        <div class="hint">Final numbers provided by your sales advisor.</div>
+      </div>
+    </section>
+  </div>
+
+  <th:block __FOOTER__></th:block>
+
+  <script>
+    // Fade-in on view
+    const reveal = () => {
+      const els = document.querySelectorAll('.fade-up');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+      },{ threshold:.15 });
+      els.forEach(el=>io.observe(el));
+    };
+
+    // Price + summary updates on vehicle change
+    const money = v => v==null ? null : '$' + Number(v).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+    const hookupVehicle = () => {
+      const sel = document.getElementById('vehicleSelect');
+      const priceEl = document.getElementById('priceDisplay');
+      const sumVeh = document.getElementById('summaryVehicle');
+      const sumSub = document.getElementById('summarySubtotal');
+      const sumTot = document.getElementById('summaryTotal').querySelector('strong');
+      if(!sel) return;
+      const update = () => {
+        const opt = sel.options[sel.selectedIndex];
+        if(!opt || !opt.value) return;
+        const price = opt.getAttribute('data-price');
+        const label = opt.textContent.trim();
+        if(priceEl) priceEl.textContent = money(price) || '$—';
+        if(sumVeh) sumVeh.textContent = label;
+        if(sumSub) sumSub.textContent = money(price) || '$—';
+        if(sumTot) sumTot.textContent = money(price) || '$—';
+      };
+      sel.addEventListener('change', update);
+      if(!sel.value && sel.options.length > 1){ sel.selectedIndex = 1; update(); } else { update(); }
+    };
+
+    const Lux = {
+      validate(e){
+        const form = e.target; const req = form.querySelectorAll('[required]');
+        for(const f of req){ if(!f.value){ f.focus(); return false; } }
+        return true; // let controller handle POST
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', ()=>{ reveal(); hookupVehicle(); });
+  </script>  
+  <div __FOOTER__></div>
+
+__FOOTER__
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Browse — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .grid{display:grid;gap:16px}
+    .cars{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{overflow:hidden}
+    .card img{width:100%;height:170px;object-fit:cover;filter:saturate(.95)}
+    .card .body{padding:12px}
+    .lux-hero{display:flex;justify-content:space-between;align-items:end;gap:10px}
+    .controls{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:10px}
+    .pager{display:flex;justify-content:center;gap:8px;margin-top:14px}
+    .pager a,.pager span{border:1px solid #283444;border-radius:10px;padding:6px 10px}
+    .compare-drawer{position:fixed;left:0;right:0;bottom:16px;display:none;justify-content:center;z-index:50}
+    .compare-inner{background:#0b1118;border:1px solid #283444;border-radius:16px;padding:10px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+    .chip{border:1px solid #283444;border-radius:999px;padding:4px 8px;font-size:12px}
+    @media (max-width:1200px){.cars{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:900px){.cars{grid-template-columns:repeat(2,1fr)} .controls{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width:620px){.cars{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main class="section">
+  <div class="container">
+    <div class="lux-hero">
+      <div>
+        <h1>Inventory</h1>
+        <div class="badge"><span class="dot"></span><span th:text="${total} + ' vehicles available'">12 vehicles available</span></div>
+      </div>
+      <div class="badge">Refined by premium inspection</div>
+    </div>
+
+    <!-- FILTERS / SORT -->
+    <form method="get" class="card" style="padding:12px;margin:12px 0">
+      <div class="controls">
+        <input name="q" th:value="${q}" placeholder="Search make / model / trim">
+        <input name="minPrice" th:value="${minPrice}" type="number" placeholder="Min $" min="0" step="500">
+        <input name="maxPrice" th:value="${maxPrice}" type="number" placeholder="Max $" min="0" step="500">
+        <select name="drive">
+          <option value="" th:selected="${drive==null or drive==''}">Any Drive</option>
+          <option value="AWD" th:selected="${drive=='AWD'}">AWD</option>
+          <option value="FWD" th:selected="${drive=='FWD'}">FWD</option>
+          <option value="RWD" th:selected="${drive=='RWD'}">RWD</option>
+        </select>
+        <select name="fuel">
+          <option value="" th:selected="${fuel==null or fuel==''}">Any Fuel</option>
+          <option value="Gas" th:selected="${fuel=='Gas'}">Gas</option>
+          <option value="Hybrid" th:selected="${fuel=='Hybrid'}">Hybrid</option>
+          <option value="EV" th:selected="${fuel=='EV'}">EV</option>
+        </select>
+        <select name="sort">
+          <option value="priceAsc"  th:selected="${sort=='priceAsc'}">Price ↑</option>
+          <option value="priceDesc" th:selected="${sort=='priceDesc'}">Price ↓</option>
+          <option value="yearDesc"  th:selected="${sort=='yearDesc'}">Newest</option>
+          <option value="mileageAsc" th:selected="${sort=='mileageAsc'}">Lowest Mileage</option>
+        </select>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <div class="chip" th:text="'Page ' + ${page} + ' / ' + ${totalPages}">Page 1 / 3</div>
+        <div>
+          <button class="btn secondary" type="reset" onclick="location.href='/browse'">Reset</button>
+          <button class="btn primary" type="submit">Apply</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- CARS GRID -->
+    <div class="grid cars">
+      <div class="card" th:each="v : ${vehicles}">
+        <img th:src="${v.img}" onerror="this.onerror=null;this.src='/img/placeholder.jpg'" alt="">
+        <div class="body">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <strong th:text="${v.year + ' ' + v.make + ' ' + v.model}">2019 Mercedes C300</strong>
+            <div style="font-weight:700" th:text="${'$' + #numbers.formatInteger(v.price, 3, 'COMMA')}">$32,990</div>
+          </div>
+          <div class="muted" th:text="${v.trim + ' • ' + v.drive + ' • ' + #numbers.formatInteger(v.mileage, 3, 'COMMA') + ' km'}">4MATIC • 58,000 km</div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+            <span class="badge">ID&nbsp;<span th:text="${#strings.substring(v.id,0,6)}">abc123</span></span>
+            <div style="display:flex;gap:8px">
+              <button class="btn" type="button" onclick="addCompare(this)"
+                th:attr="data-id=${v.id},data-title=${v.year+' '+v.make+' '+v.model},data-price=${v.price},data-mileage=${v.mileage},data-year=${v.year},data-drive=${v.drive},data-img=${v.img}">
+                Compare
+              </button>
+              <a class="btn primary" href="/contact">Ask</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pager">
+      <a th:if="${page>1}" th:href="@{/browse(page=${page-1},size=${size},q=${q},minPrice=${minPrice},maxPrice=${maxPrice},drive=${drive},fuel=${fuel},sort=${sort})}">Prev</a>
+      <span th:if="${page==1}">Prev</span>
+      <span class="chip" th:text="'Page ' + ${page} + ' / ' + ${totalPages}">Page 1 / 3</span>
+      <a th:if="${page<totalPages}" th:href="@{/browse(page=${page+1},size=${size},q=${q},minPrice=${minPrice},maxPrice=${maxPrice},drive=${drive},fuel=${fuel},sort=${sort})}">Next</a>
+      <span th:if="${page==totalPages}">Next</span>
+    </div>
+  </div>
+</main>
+
+<!-- COMPARE DRAWER -->
+<div class="compare-drawer" id="cmpWrap">
+  <div class="compare-inner">
+    <div id="cmpItems" style="display:flex;gap:8px"></div>
+    <button class="btn primary" type="button" onclick="openCompare()">Compare</button>
+    <button class="btn secondary" type="button" onclick="clearCompare()">Clear</button>
+  </div>
+</div>
+
+<!-- Simple Modal -->
+<div id="cmpModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;align-items:center;justify-content:center">
+  <div class="card" style="background:#0b1118;padding:16px;min-width:60vw;max-width:900px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>Compare</h3>
+      <button class="btn" onclick="closeCompare()">Close</button>
+    </div>
+    <div id="cmpTable" style="overflow:auto;margin-top:10px"></div>
+  </div>
+</div>
+
+<script>
+  const cmpKey = 'hm_compare';
+  function getCMP(){ try{return JSON.parse(sessionStorage.getItem(cmpKey)||'[]')}catch(e){return[]} }
+  function setCMP(arr){ sessionStorage.setItem(cmpKey, JSON.stringify(arr)); renderCMP(); }
+  function addCompare(btn){
+    const v = { id:btn.dataset.id, title:btn.dataset.title, price:+btn.dataset.price, mileage:+btn.dataset.mileage, year:+btn.dataset.year, drive:btn.dataset.drive, img:btn.dataset.img };
+    let list = getCMP();
+    if(list.find(x=>x.id===v.id)) return;
+    if(list.length>=3){ alert('You can compare up to 3 vehicles.'); return; }
+    list.push(v); setCMP(list);
+  }
+  function removeCMP(id){ setCMP(getCMP().filter(x=>x.id!==id)); }
+  function clearCompare(){ setCMP([]); }
+  function renderCMP(){
+    const list=getCMP(), w=document.getElementById('cmpWrap'), c=document.getElementById('cmpItems');
+    c.innerHTML = list.map(x=>`
+      <div class="chip" style="display:flex;gap:6px;align-items:center">
+        <img src="${x.img}" alt="" style="width:28px;height:20px;object-fit:cover;border-radius:4px;border:1px solid #283444">
+        <span>${x.title}</span>
+        <button class="btn" onclick="removeCMP('${x.id}')">×</button>
+      </div>`).join('');
+    w.style.display = list.length? 'flex':'none';
+  }
+  function openCompare(){
+    const list=getCMP(), host=document.getElementById('cmpTable');
+    if(!list.length){ alert('Add vehicles to compare first.'); return; }
+    const cols = list.map(x=>`
+      <div style="text-align:center">
+        <img src="${x.img}" style="width:100%;max-width:220px;height:140px;object-fit:cover;border-radius:12px;border:1px solid #283444">
+        <div style="margin-top:6px;font-weight:700">${x.title}</div>
+      </div>`).join('');
+    const row = (label, valFn) => `
+      <div style="display:grid;grid-template-columns:180px repeat(${list.length},1fr);gap:10px;padding:8px 0;border-bottom:1px solid #1e2833">
+        <div class="muted">${label}</div>
+        ${list.map(valFn).join('')}
+      </div>`;
+    host.innerHTML = `
+      <div style="display:grid;grid-template-columns:180px repeat(${list.length},1fr);gap:10px;margin-bottom:10px">
+        <div></div>${cols}
+      </div>
+      ${row('Price', v=>`<div>$${v.price.toLocaleString()}</div>`)}
+      ${row('Mileage', v=>`<div>${v.mileage.toLocaleString()} km</div>`)}
+      ${row('Year', v=>`<div>${v.year}</div>`)}
+      ${row('Drive', v=>`<div>${v.drive}</div>`)}
+    `;
+    document.getElementById('cmpModal').style.display='flex';
+  }
+  function closeCompare(){ document.getElementById('cmpModal').style.display='none'; }
+  renderCMP();
+</script>
+
+
+  <script defer src="/js/buy-now.js"></script>  <div __FOOTER__></div>
+
+__FOOTER__
+</body>
+</html>

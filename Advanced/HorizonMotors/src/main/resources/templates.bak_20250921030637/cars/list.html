@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Browse — HorizonMotors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/site.css">
+  <script defer src="/js/app.js"></script>
+  <script defer src="/js/browse.js"></script>
+  <style>
+    /* page-local micro styles */
+    .inventory-wrap{max-width:1200px;margin:32px auto;padding:0 20px}
+    .filters{position:sticky;top:72px;z-index:2;background:#0f1217cc;backdrop-filter:blur(8px);border:1px solid #1f2430;border-radius:16px;padding:14px;display:grid;gap:12px;grid-template-columns:1fr 160px 160px 200px}
+    .filters input,.filters select{background:#0b0e13;border:1px solid #232937;color:#e8f0ff;border-radius:10px;padding:10px 12px;outline:none}
+    .filters .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{font-size:12px;border:1px solid #2a3242;padding:6px 10px;border-radius:999px;cursor:pointer;user-select:none}
+    .chip.active{background:#5b7cfa22;border-color:#6b7cff}
+    .grid{display:grid;gap:18px;margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)} .filters{grid-template-columns:1fr 1fr}}
+    @media (max-width:700px){.grid{grid-template-columns:1fr} .filters{grid-template-columns:1fr}}
+    .card{background:#0c1016;border:1px solid #1d2430;border-radius:18px;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.35)}
+    .imgbox{aspect-ratio:16/9;position:relative;overflow:hidden}
+    .imgbox img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+    .card:hover .imgbox img{transform:scale(1.06)}
+    .badge{position:absolute;left:12px;top:12px;background:#0b1222cc;border:1px solid #23304a;color:#dbe5ff;padding:6px 10px;border-radius:999px;font-size:12px}
+    .body{padding:14px}
+    .title{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .title h3{margin:0;font-size:18px}
+    .price{font-weight:700}
+    .specs{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .spec{background:#0a111b;border:1px solid #1d2635;font-size:12px;padding:5px 8px;border-radius:8px}
+    .pager{display:flex;justify-content:center;align-items:center;gap:10px;margin:22px 0}
+    .pager button{background:#101826;border:1px solid #263247;color:#e6eeff;border-radius:10px;padding:8px 12px}
+    .hidden{display:none !important}
+    .muted{color:#a7b0c3}
+    .heading{margin:18px 0 10px;font-size:28px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <a href="/" class="brand">
+        <img src="/img/logo.svg" alt="" class="logo"><span>Horizon<span class="accent">Motors</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/browse" class="active">Browse</a>
+        <a href="/financing">Financing</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div class="nav-cta"><a href="/contact" class="btn small">Sell / Trade</a></div>
+    </div>
+  </header>
+
+  <main class="page inventory-wrap">
+    <h1 class="heading">Browse Inventory</h1>
+
+    <!-- Filter / Sort bar -->
+    <section class="filters">
+      <input id="q" type="search" placeholder="Search make / model / trim… (e.g., Supra, GT-R, M3)">
+      <input id="minPrice" type="number" min="0" step="1000" placeholder="Min $" />
+      <input id="maxPrice" type="number" min="0" step="1000" placeholder="Max $" />
+      <select id="sort">
+        <option value="featured">Sort: Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="year-desc">Year: Newest</option>
+        <option value="year-asc">Year: Oldest</option>
+        <option value="mileage-asc">Mileage: Low</option>
+        <option value="mileage-desc">Mileage: High</option>
+      </select>
+      <div class="chips" style="grid-column:1/-1">
+        <div class="chip" data-chip="awd">AWD</div>
+        <div class="chip" data-chip="rwd">RWD</div>
+        <div class="chip" data-chip="manual">Manual</div>
+        <div class="chip" data-chip="auto">Auto</div>
+        <div class="chip" data-chip="turbo">Turbo</div>
+        <div class="chip" data-chip="electric">Electric</div>
+        <div class="chip" data-chip="new">New Arrival</div>
+        <div class="chip" data-chip="certified">Certified</div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section id="cards" class="grid" th:with="items=${vehicles}">
+      <article class="card"
+        th:each="v : ${items}"
+        th:with="img=${#strings.defaultString(v.image,'/img/cars/placeholder.jpg')}"
+        th:data-id="${v.id}"
+        th:data-make="${v.make}"
+        th:data-model="${v.model}"
+        th:data-trim="${v.trim}"
+        th:data-year="${v.year}"
+        th:data-price="${v.price}"
+        th:data-mileage="${v.mileage}"
+        th:data-drivetrain="${v.drivetrain}"
+        th:data-trans="${v.transmission}"
+        th:data-tags="${#strings.arrayJoin(v.tags, ',')}"
+      >
+        <div class="imgbox">
+          <img th:src="${img}" th:alt="${v.make + ' ' + v.model}">
+          <span class="badge" th:text="${v.year}">2022</span>
+        </div>
+        <div class="body">
+          <div class="title">
+            <h3 th:text="${v.make + ' ' + v.model}">Toyota Supra</h3>
+            <div class="price" th:text="'$' + ${#numbers.formatDecimal(v.price, 0, 'COMMA', 0, 'POINT')}">\$49,995</div>
+          </div>
+          <div class="muted" th:text="${v.trim}">3.0 Premium</div>
+          <div class="specs">
+            <span class="spec" th:text="${v.drivetrain}">RWD</span>
+            <span class="spec" th:text="${v.transmission}">Auto</span>
+            <span class="spec" th:text="${v.engine}">Turbo I6</span>
+            <span class="spec" th:text="${#numbers.formatDecimal(v.mileage, 0, 'COMMA', 0, 'POINT')} + ' km'">18,500 km</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pagination -->
+    <div class="pager">
+      <button id="prev">Prev</button>
+      <span id="pageInfo" class="muted">Page 1</span>
+      <button id="next">Next</button>
+    </div>
+
+    <p class="muted" style="text-align:center;margin:26px 0">
+      Tip: combine search + chips (e.g., <em>BMW</em> + <em>Manual</em>) then sort by price.
+    </p>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <div>© <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> HorizonMotors — All rights reserved.</div>
+      <div class="foot-links">
+        <a href="/contact">Contact</a>
+        <a href="/financing">Financing</a>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>

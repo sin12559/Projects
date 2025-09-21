@@ -1,20 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
     <meta charset="UTF-8" />
     <title>Orders</title>
     <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body>
-    <header class="wrap">
-      <h1>Orders</h1>
-      <div class="toolbar">
-        <a class="btn" href="/">🏠 Home</a>
-        <a class="btn" href="/inventory">🚗 Inventory</a>
-      </div>
-    </header>
-
-    <div class="wrap card">
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+    <div th:replace="~{fragments :: header}"></div>
+<div class="wrap card">
       <div class="content">
         <table>
           <thead>
@@ -39,20 +36,30 @@
         </div>
       </div>
     </div>
-  </body>
+  </main>
+<div __FOOTER__></div>
+
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
   <meta charset="UTF-8"/>
   <title>Orders</title>
   <link rel="stylesheet" href="/css/site.css"/>
 </head>
 <body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
   <header class="wrap">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
     <h1>Orders</h1>
     <div class="toolbar">
       <a class="btn" href="/">🏠 Home</a>
-      <a class="btn" href="/inventory">🚗 Inventory</a>
+      <a class="btn" href="/browse">🚗 Inventory</a>
     </div>
   </header>
 
@@ -76,5 +83,8 @@
       </div>
     </div>
   </div>
+</main>
+<div __FOOTER__></div>
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
 </body>
 </html>

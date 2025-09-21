@@ -1,0 +1,76 @@
+<!-- fragments/footer.html -->
+<section th:fragment="siteFooter">
+  <footer class="hm-footer">
+    <div class="hm-footer__inner">
+      <div class="hm-footer__brand">
+        <!-- SAME LOGO AS NAVBAR -->
+        <div class="hm-footer__logo">
+          <img src="/images/logo.svg" alt="Horizon Motors" class="hm-footer__logoimg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <!-- Fallback if the image is missing (styled to match header typography) -->
+          <div class="hm-footer__logotext" style="display:none;">
+            <span class="hm-footer__mark">M</span>
+            <span class="hm-footer__name">Horizon<span>Motors</span></span>
+          </div>
+        </div>
+        <p class="hm-footer__tagline">
+          Performance & premium used vehicles. Serving GTA and beyond.
+        </p>
+      </div>
+
+      <div class="hm-footer__spacer"></div>
+
+      <div class="hm-footer__cols">
+        <div class="hm-footer__col">
+          <div class="hm-footer__label">Visit</div>
+          <div class="hm-footer__text">1200 Lakeshore Blvd W<br/>Toronto, ON</div>
+        </div>
+        <div class="hm-footer__col">
+          <div class="hm-footer__label">Contact</div>
+          <div class="hm-footer__text">
+            (416) 555-1234<br/>
+            <a href="mailto:sales@horizonmotors.ca">sales@horizonmotors.ca</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hm-footer__legal">
+      <span>© 2025 Horizon Motors</span>
+      <nav class="hm-footer__links">
+        <a href="#" onclick="return false;">Privacy</a>
+        <a href="#" onclick="return false;">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <style>
+    .hm-footer{margin-top:64px;border-top:1px solid rgba(255,255,255,.06);background:#0f1419}
+    .hm-footer__inner{max-width:1120px;margin:0 auto;padding:32px 20px;display:flex;align-items:flex-start;gap:32px}
+    .hm-footer__brand{min-width:260px}
+    .hm-footer__logo{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .hm-footer__logoimg{height:28px;width:auto;display:block}
+    .hm-footer__mark{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#ffe08a;color:#0d1117;font-weight:700}
+    .hm-footer__name{font-weight:700;color:#e5e7eb;letter-spacing:.2px}
+    .hm-footer__name span{color:#d1b354}
+    .hm-footer__tagline{color:#9aa4af;margin:6px 0 0}
+    .hm-footer__spacer{flex:1}
+    .hm-footer__cols{display:flex;gap:40px;flex-wrap:wrap}
+    .hm-footer__col{min-width:180px}
+    .hm-footer__label{color:#c7ced6;font-size:.9rem;margin-bottom:6px}
+    .hm-footer__text{color:#e5e7eb}
+    .hm-footer__text a{color:#d1b354;text-decoration:none}
+    .hm-footer__text a:hover{text-decoration:underline}
+    .hm-footer__legal{max-width:1120px;margin:0 auto;padding:14px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:16px;color:#9aa4af}
+    .hm-footer__links{margin-left:auto;display:flex;gap:16px}
+    .hm-footer__links a{color:#9aa4af;text-decoration:none}
+    .hm-footer__links a:hover{color:#e5e7eb;text-decoration:underline}
+    @media (max-width:840px){
+      .hm-footer__inner{flex-direction:column;gap:20px}
+      .hm-footer__spacer{display:none}
+      .hm-footer__cols{gap:20px}
+      .hm-footer__legal{flex-direction:column;align-items:flex-start}
+      .hm-footer__links{margin-left:0}
+    }
+  </style>
+</section>

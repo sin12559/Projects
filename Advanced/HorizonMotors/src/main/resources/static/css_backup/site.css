@@ -1,0 +1,10 @@
+:root{--card:#1f2837;--panel:#0f172a;--brand:#2563eb}
+body{background:#0b1220}
+.navbar{backdrop-filter:saturate(160%) blur(6px)}
+.container{max-width:1160px}
+.card{background:var(--card)}
+.fade-up{opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.fade-up.in{opacity:1;transform:none}
+.btn{background:var(--brand);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.25)}

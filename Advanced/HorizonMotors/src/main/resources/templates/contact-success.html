@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><title>Thanks — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main class="section">
+  <div class="container card" style="padding:18px;max-width:800px">
+    <h1>Thanks — we’ve got your message</h1>
+    <p class="muted">We’ll reach out shortly.</p>
+    <div class="grid" style="display:grid;gap:8px;margin-top:10px">
+      <div><strong>Name:</strong> <span th:text="${name}">Alex</span></div>
+      <div><strong>Email:</strong> <span th:text="${email}">alex@email.com</span></div>
+      <div><strong>Message:</strong><br><pre style="white-space:pre-wrap" th:text="${message}">Hi!</pre></div>
+    </div>
+    <div style="margin-top:12px"><a class="btn" href="/">Back Home</a></div>
+  </div>
+</main>
+
+
+
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

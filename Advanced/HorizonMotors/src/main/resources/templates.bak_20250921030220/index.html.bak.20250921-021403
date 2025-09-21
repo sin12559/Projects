@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Horizon Motors — Performance & Premium Used Cars</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <script defer src="/js/app.js" th:src="@{/js/app.js}"></script>
+</head>
+<body>
+  <div th:replace="~{fragments :: header}"></div>
+<section class="hero">
+    <div class="container content">
+      <h1>Find Your Next Legendary Ride</h1>
+      <p>Premium cars. Flexible financing. Trusted service.</p>
+      <div class="cta-row">
+        <a href="/browse" class="btn primary">Browse Inventory</a>
+        <a href="/financing" class="btn secondary">Get Pre-Approved</a>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><div class="num">150+</div><div class="lbl">Happy Owners</div></div>
+        <div class="kpi"><div class="num">45-Point</div><div class="lbl">Inspection</div></div>
+        <div class="kpi"><div class="num">0%*</div><div class="lbl">Intro APR (OAC)</div></div>
+        <div class="kpi"><div class="num">24/7</div><div class="lbl">Support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Buy From Horizon Motors?</h2>
+      <div class="trust">
+        <div class="card">
+          <h3>Transparent Pricing</h3>
+          <p class="muted">No hidden fees. Every vehicle includes a free Carfax and inspection report.</p>
+        </div>
+        <div class="card">
+          <h3>Flexible Financing</h3>
+          <p class="muted">Prime, sub-prime, new-to-credit — we work with multiple lenders to get you approved.</p>
+        </div>
+        <div class="card">
+          <h3>Certified Quality</h3>
+          <p class="muted">Each car passes our 45-point check: drivetrain, brakes, tires, electronics and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Featured Vehicles</h2>
+      <div class="inventory">
+        <article class="vehicle">
+          <img src="/img/cars/supra.avif" alt="Toyota Supra" style="width:100%;height:220px;object-fit:cover;">
+          <div class="info">
+            <strong>Toyota Supra</strong>
+            <div class="badges"><span class="badge">RWD</span><span class="badge">Auto</span><span class="badge">Turbo</span></div>
+            <div class="price">Starting at $32,995</div>
+          </div>
+        </article>
+        <article class="vehicle">
+          <img src="/img/cars/gtr.png" alt="Nissan GT-R" style="width:100%;height:220px;object-fit:cover;">
+          <div class="info">
+            <strong>Nissan GT-R</strong>
+            <div class="badges"><span class="badge">AWD</span><span class="badge">Twin-Turbo</span></div>
+            <div class="price">Starting at $125,540</div>
+          </div>
+        </article>
+        <article class="vehicle">
+          <img src="/img/cars/m3.webp" alt="BMW M3" style="width:100%;height:220px;object-fit:cover;">
+          <div class="info">
+            <strong>BMW M3</strong>
+            <div class="badges"><span class="badge">RWD</span><span class="badge">Manual</span></div>
+            <div class="price">Starting at $55,995</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Customers Love Us</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          “Easiest car purchase I’ve made. Transparent fees and they delivered next day.”
+          <div class="who">— A. Kumar</div>
+        </div>
+        <div class="testimonial">
+          “Financing team got me approved fast. Love my M3!”
+          <div class="who">— S. Park</div>
+        </div>
+        <div class="testimonial">
+          “Inspection report gave me confidence. Highly recommend Horizon Motors.”
+          <div class="who">— J. Martinez</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container cols">
+      <div>
+        <div class="brand"><img src="/img/logo.svg" alt="" width="22" height="22"><span>Horizon<span class="accent">Motors</span></span></div>
+        <p class="muted" style="max-width:520px">Performance & premium used vehicles. Serving GTA and beyond.</p>
+      </div>
+      <div>
+        <div class="muted">Visit</div>
+        <div>1200 Lakeshore Blvd W<br>Toronto, ON</div>
+      </div>
+      <div>
+        <div class="muted">Contact</div>
+        <div><a href="tel:+14165551234">(416) 555-1234</a><br><a href="mailto:sales@horizonmotors.ca">sales@horizonmotors.ca</a></div>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/js/compare-redirect.js"></script>
+  <script defer src="/js/buy-now.js"></script>
+</body>
+</html>

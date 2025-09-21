@@ -1,0 +1,4 @@
+<!-- fragments/footer.html -->
+<section th:fragment="siteFooter">
+
+</section>

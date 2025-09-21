@@ -1,0 +1,18 @@
+<!— fragments/legend.html —>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+    <div th:fragment="maybe">
+      <blockquote class="legend-quote">
+        Maybe the right car finds you first.
+        <small>&mdash; Horizon Motors</small>
+      </blockquote>
+    </div>
+  </main>
+<div __FOOTER__></div>
+
+__FOOTER__
+</body>
+</html>

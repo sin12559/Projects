@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Featured — Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="hm-bg">
+  <header th:replace="~{fragments/navbar :: navbar}"></header>
+
+  <main class="hm-container">
+    <!-- Hero / header -->
+    <section class="legend-hero">
+      <div class="legend-hero__eyebrow">Concierge · Verified provenance</div>
+      <h1 class="legend-hero__title">Limited Edition Legends</h1>
+      <p class="legend-hero__sub">Ultra-rare builds curated by Horizon’s concierge team.</p>
+      <div class="legend-hero__chips" th:with="list=${(vehicles != null) ? vehicles : cars}">
+        <span class="chip" th:text="${#lists.size(list)} + ' vehicles'">0 vehicles</span>
+        <span class="chip">Premium inspection</span>
+        <span class="chip">Private viewing</span>
+      </div>
+    </section>
+
+    <!-- Cards grid -->
+    <section class="legend-grid" th:with="list=${(vehicles != null) ? vehicles : cars}">
+      <article class="legend-card" th:each="car : ${list}">
+        <div class="legend-card__media">
+          <!-- IMPORTANT: no nested @{${...}} -->
+          <img th:src="${car.image}" th:alt="${car.name}" />
+          <div class="legend-card__overlay"></div>
+          <div class="legend-card__badge">Featured</div>
+        </div>
+        <div class="legend-card__body">
+          <h3 class="legend-card__title" th:text="${car.name}">Car Name</h3>
+          <div class="legend-card__subtitle" th:text="${car.subtitle}">Year • units</div>
+          <div class="legend-card__spec" th:text="${car.spec}">specs</div>
+          <p class="legend-card__blurb" th:text="${car.blurb}">blurb</p>
+          <div class="legend-card__cta">
+            <a class="btn btn-gold" th:href="@{/contact}">Concierge</a>
+            <a class="btn btn-ghost" th:href="@{/browse}">Compare</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Empty state -->
+      <div class="legend-empty" th:if="${#lists.isEmpty(list)}">
+        No featured vehicles are published yet. Check back soon — or
+        <a th:href="@{/browse}">browse inventory</a>.
+      </div>
+    </section>
+  </main>
+
+  <th:block __FOOTER__></th:block>
+  <script defer src="/js/compare-redirect.js"></script>
+  <script defer src="/js/buy-now.js"></script>  <div __FOOTER__></div>
+
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

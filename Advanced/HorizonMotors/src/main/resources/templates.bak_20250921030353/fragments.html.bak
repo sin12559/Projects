@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <!-- header fragment used site-wide -->
+    <div th:fragment="header">
+      <div th:replace="~{fragments/navbar}"></div>
+</div>
+  </body>
+</html>

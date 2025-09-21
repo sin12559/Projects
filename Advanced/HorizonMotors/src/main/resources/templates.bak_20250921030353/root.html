@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Horizon Festival · Showroom</title>
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo"></div>
+          <span>Horizon Festival</span>
+        </div>
+        <div style="display: flex; gap: 10px">
+          <a class="btn" href="/orders">Orders</a>
+          <a class="btn btn-primary" href="/purchase">Buy Now</a>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="badge">LIVE · SUNSET BOULEVARD STAGE</div>
+        <h1>Clutch-grade supercars. <br />Built for the festival.</h1>
+        <p>
+          Browse the showroom and place a demo order. (Training app — do not use
+          real card data.)
+        </p>
+        <div class="pillbar">
+          
+          
+          
+        </div>
+        <div class="grid grid-2" style="margin-top: 14px">
+          <a class="btn btn-primary" href="/purchase">➕ Make a Purchase</a>
+          <a class="btn" href="/orders">📋 View Orders</a>
+        </div>
+        <div class="ticker">
+          <div class="tape">
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 style="margin: 0 0 12px">Featured Grid</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <img
+              class="img"
+              src="/pagani-imola-blue-geneva-car-south-africa-2020-1.png"
+              alt="Pagani Imola"
+            />
+            <div class="body">
+              <h3>Pagani Imola <span class="price">$3.0M</span></h3>
+              <p class="muted">Track-focused hypercar.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="img"
+              src="/geneva-switzerland-march-bmw-m-car-presented-th-international-motor-show-112292420.webp"
+              alt="BMW M"
+            />
+            <div class="body">
+              <h3>BMW M Series <span class="price">$110K</span></h3>
+              <p class="muted">Daily performance sedan.</p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="img"
+              src="/Lamborghini-Aventador-Nazionale-at-2014-Beijing-Auto-Show-front-three-quarter.jpg"
+              alt="Aventador"
+            />
+            <div class="body">
+              <h3>Aventador <span class="price">$500K</span></h3>
+              <p class="muted">V12 icon. Loud & proud.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+    </div>
+  </main>
+<div __FOOTER__></div>
+
+__FOOTER__
+</body>
+=======
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Horizon Festival · Showroom</title>
+  <link rel="stylesheet" href="/css/site.css"/>
+</head>
+<body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand"><div class="logo"></div> <span>Horizon Festival</span></div>
+      <div style="display:flex;gap:10px">
+        <a class="btn" href="/orders">Orders</a>
+        <a class="btn btn-primary" href="/purchase">Buy Now</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="badge">LIVE · SUNSET BOULEVARD STAGE</div>
+      <h1>Clutch-grade supercars. <br/>Built for the festival.</h1>
+      <p>Browse the showroom and place a demo order. (Training app — do not use real card data.)</p>
+      <div class="pillbar">
+        
+        
+        
+      </div>
+      <div class="grid grid-2" style="margin-top:14px">
+        <a class="btn btn-primary" href="/purchase">➕ Make a Purchase</a>
+        <a class="btn" href="/orders">📋 View Orders</a>
+      </div>
+      <div class="ticker"><div class="tape">
+        
+        
+        
+        
+        
+        
+      </div></div>
+    </section>
+
+    <section class="section">
+      <h2 style="margin:0 0 12px">Featured Grid</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <img class="img" src="/pagani-imola-blue-geneva-car-south-africa-2020-1.png" alt="Pagani Imola">
+          <div class="body"><h3>Pagani Imola <span class="price">$3.0M</span></h3><p class="muted">Track-focused hypercar.</p></div>
+        </div>
+        <div class="card">
+          <img class="img" src="/geneva-switzerland-march-bmw-m-car-presented-th-international-motor-show-112292420.webp" alt="BMW M">
+          <div class="body"><h3>BMW M Series <span class="price">$110K</span></h3><p class="muted">Daily performance sedan.</p></div>
+        </div>
+        <div class="card">
+          <img class="img" src="/Lamborghini-Aventador-Nazionale-at-2014-Beijing-Auto-Show-front-three-quarter.jpg" alt="Aventador">
+          <div class="body"><h3>Aventador <span class="price">$500K</span></h3><p class="muted">V12 icon. Loud & proud.</p></div>
+        </div>
+      </div>
+    </section>
+
+    
+  </div>
+</main>
+<div __FOOTER__></div>
+</body>
+</html>

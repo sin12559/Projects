@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+    <meta charset="UTF-8">
+    <title>Browse Cars - HorizonMotors</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main class="page container">
+<header class="topbar">
+  <div class="container inner">
+    <a th:href="@{/}" class="brand">
+      <img src="/img/logo.svg" width="28" height="28" alt="">
+      <span>Horizon<span class="accent">Motors</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a th:href="@{/}" th:classappend="${#httpServletRequest.requestURI == '/' ? ' active' : ''}">Home</a>
+      <a th:href="@{/browse}" th:classappend="${#httpServletRequest.requestURI.startsWith('/browse') ? ' active' : ''}">Browse</a>
+      <a th:href="@{/featured}" th:classappend="${#httpServletRequest.requestURI.startsWith('/featured') ? ' active' : ''}">Featured</a>
+      <a th:href="@{/financing}" th:classappend="${#httpServletRequest.requestURI.startsWith('/financing') ? ' active' : ''}">Financing</a>
+      <a th:href="@{/contact}" th:classappend="${#httpServletRequest.requestURI.startsWith('/contact') ? ' active' : ''}">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+    <h1>Browse Cars</h1>
+    <div class="car-grid">
+        <div class="car" th:each="car : ${cars}">
+            <img th:src="@{${car.image}}" th:alt="${car.make} + ' ' + ${car.model}">
+            <h2 th:text="${car.make} + ' ' + ${car.model}"></h2>
+            <p th:text="${car.description}"></p>
+            <p th:text="${car.price}"></p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 Horizon Motors</p>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+</footer>
+</main>
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

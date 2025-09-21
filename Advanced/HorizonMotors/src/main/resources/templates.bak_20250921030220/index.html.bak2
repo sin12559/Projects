@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Horizon Motors — Performance & Premium Used Cars</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <script defer src="/js/app.js" th:src="@{/js/app.js}"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container inner">
+      <a href="/" class="brand">
+        <img src="/img/logo.svg" alt="" width="28" height="28">
+        <span>Horizon<span class="accent">Motors</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/cars">Browse</a>
+        <a href="/financing">Financing</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/contact" class="btn">Sell / Trade</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO (uses Unsplash background) -->
+  <section class="hero parallax" 
+           style="--hero:url('/img/cars/hero.jpg');">
+    <div class="container content">
+      <h1 class="reveal">Find Your Next Legendary Ride</h1>
+      <p class="reveal delay-1">Premium cars. Flexible financing. Trusted service.</p>
+      <div class="cta-row reveal delay-2">
+        <a href="/cars" class="btn primary bump">Browse Inventory</a>
+        <a href="/financing" class="btn secondary">Get Pre-Approved</a>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi reveal delay-3">
+          <div class="num" data-count="150">0</div><div class="lbl">Happy Owners</div>
+        </div>
+        <div class="kpi reveal delay-4">
+          <div class="num" data-count="45">0</div><div class="lbl">Inspection</div>
+        </div>
+        <div class="kpi reveal delay-5">
+          <div class="num" data-count="0">0</div><div class="lbl">Intro APR (OAC)</div>
+        </div>
+        <div class="kpi reveal delay-6">
+          <div class="num" data-count="24">0</div><div class="lbl">Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal">Why Buy From Horizon Motors?</h2>
+      <div class="trust">
+        <div class="card reveal"><h3>Transparent Pricing</h3><p class="muted">No hidden fees. Every vehicle includes a free Carfax and inspection report.</p></div>
+        <div class="card reveal delay-1"><h3>Flexible Financing</h3><p class="muted">Prime, sub-prime, new-to-credit — we work with multiple lenders to get you approved.</p></div>
+        <div class="card reveal delay-2"><h3>Certified Quality</h3><p class="muted">Each car passes our 45-point check: drivetrain, brakes, tires, electronics and more.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED INVENTORY (all high-quality Unsplash photos) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal">Featured Vehicles</h2>
+      <div class="inventory">
+        <article class="vehicle reveal">
+          <img src="/img/cars/supra.jpg" alt="Toyota Supra (A90)">
+          <div class="info">
+            <strong>Toyota Supra</strong>
+            <div class="badges"><span class="badge">RWD</span><span class="badge">Auto</span><span class="badge">Turbo</span></div>
+            <div class="price">Starting at $49,995</div>
+          </div>
+        </article>
+        <article class="vehicle reveal delay-1">
+          <img src="/img/cars/gtr.jpg" alt="Nissan GT-R">
+          <div class="info">
+            <strong>Nissan GT-R</strong>
+            <div class="badges"><span class="badge">AWD</span><span class="badge">Twin-Turbo</span></div>
+            <div class="price">Starting at $113,540</div>
+          </div>
+        </article>
+        <article class="vehicle reveal delay-2">
+          <img src="https://images.unsplash.com/photo-1606669322449-8023d3e3f3f7?q=80&w=1600&auto=format&fit=crop" alt="BMW M3">
+          <div class="info">
+            <strong>BMW M3</strong>
+            <div class="badges"><span class="badge">RWD</span><span class="badge">Manual</span></div>
+            <div class="price">Starting at $76,995</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="cta-band reveal">
+        <div class="row">
+          <h3>Want a quick payment estimate?</h3>
+          <div>
+            <a href="/financing" class="btn primary bump">Open Financing</a>
+            <a href="/contact" class="btn secondary" style="margin-left:8px">Talk to an Advisor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal">Customers Love Us</h2>
+      <div class="testimonials">
+        <div class="testimonial reveal">“Easiest car purchase I’ve made. Transparent fees and they delivered next day.”<div class="who">— A. Kumar</div></div>
+        <div class="testimonial reveal delay-1">“Financing team got me approved fast. Love my M3!”<div class="who">— S. Park</div></div>
+        <div class="testimonial reveal delay-2">“Inspection report gave me confidence. Highly recommend Horizon Motors.”<div class="who">— J. Martinez</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container cols">
+      <div>
+        <div class="brand"><img src="/img/logo.svg" alt="" width="22" height="22"><span>Horizon<span class="accent">Motors</span></span></div>
+        <p class="muted" style="max-width:520px">Performance & premium used vehicles. Serving GTA and beyond.</p>
+      </div>
+      <div><div class="muted">Visit</div><div>1200 Lakeshore Blvd W<br>Toronto, ON</div></div>
+      <div><div class="muted">Contact</div><div><a href="tel:+14165551234">(416) 555-1234</a><br><a href="mailto:sales@horizonmotors.ca">sales@horizonmotors.ca</a></div></div>
+    </div>
+  </footer>
+</body>
+</html>

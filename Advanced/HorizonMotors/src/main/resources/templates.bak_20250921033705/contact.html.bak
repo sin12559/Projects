@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact — Horizon Motors</title>
+  <style>
+    /* ===== LUXE CONTACT (scoped) ===== */
+    :root{
+      --bg:#0b0f14; --panel:#0f141c; --muted:#a7b1bc; --line:rgba(255,255,255,.08);
+      --gold1:#c8a44d; --gold2:#f0d37a; --chip:#111823; --txt:#e6edf3;
+    }
+    body.contact{background:var(--bg); color:var(--txt); margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+
+    /* HERO */
+    .c-hero{position:relative; min-height:56vh; display:grid; place-items:end center; overflow:hidden; background:#0a0f14}
+    .c-hero::before{
+      content:""; position:absolute; inset:0;
+      background:
+        url('/images/garage.jpeg') center/cover no-repeat;
+      transform:translateZ(0);
+      will-change:background-position;
+    }
+    .c-hero::after{
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 600px at 75% 120%, rgba(0,0,0,.7) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(11,15,20,0) 0%, rgba(11,15,20,.6) 50%, rgba(11,15,20,1) 100%);
+      pointer-events:none;
+    }
+    .c-hero .inner{position:relative; z-index:2; padding:64px 20px}
+    .badge{display:inline-block; padding:6px 12px; border-radius:999px; font-size:12px; background:rgba(255,255,255,.08); border:1px solid var(--line); color:#cfd8e3; backdrop-filter:blur(6px)}
+    .c-title{margin:10px 0 0; font-size:clamp(32px,4.2vw,56px); line-height:1.04; letter-spacing:.3px;
+      background:linear-gradient(90deg,var(--gold1),var(--gold2)); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 12px 50px rgba(0,0,0,.6)
+    }
+    .c-sub{margin-top:8px; color:#d7dee6; opacity:.9}
+
+    .wrap{max-width:1150px; margin:0 auto; padding:0 20px 64px}
+    .grid{display:grid; gap:22px; grid-template-columns:1fr; margin-top:-54px}
+    @media (min-width:980px){ .grid{grid-template-columns:1fr 1fr} }
+
+    .card{background:linear-gradient(180deg, rgba(19,24,32,.88), rgba(14,19,27,.88)); border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:0 30px 80px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); animation:fadeUp .5s ease both}
+    h3{margin:0 0 10px 0; font-size:18px; color:#e9eef5}
+    .subtle{color:var(--muted); font-size:12px; letter-spacing:.12em}
+    .divider{height:1px; background:var(--line); margin:12px 0 10px}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--line); font-size:12px; color:#cbd5e1}
+
+    /* Concierge/Showroom + actions */
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .btn{padding:10px 16px; border-radius:999px; text-decoration:none; border:1px solid var(--line); background:#151c26; color:#e6edf3; display:inline-flex; align-items:center; gap:8px}
+    .btn.primary{background:linear-gradient(90deg,var(--gold1),var(--gold2)); color:#0b0f14; font-weight:800; border:none; box-shadow:0 12px 40px rgba(240,211,122,.25)}
+
+    /* Floating-label form */
+    .form .row{display:grid; gap:12px}
+    @media (min-width:720px){ .form .row.two{grid-template-columns:1fr 1fr} }
+    .field{position:relative}
+    .field input,.field select,.field textarea{
+      width:100%; background:#0d131b; color:var(--txt); border:1px solid var(--line); border-radius:12px; padding:14px 14px 14px; outline:none; transition:border .15s, box-shadow .15s
+    }
+    .field textarea{min-height:140px; resize:vertical}
+    .field label{
+      position:absolute; left:12px; top:12px; color:#9aa6b2; font-size:13px; padding:0 6px; background:#0d131b; transform-origin:left top; transition:all .15s
+    }
+    .field:focus-within label, .field input:not(:placeholder-shown)+label, .field textarea:not(:placeholder-shown)+label, .field select:focus+label{
+      top:-8px; font-size:11px; color:var(--gold2)
+    }
+    .field:focus-within input,.field:focus-within textarea,.field:focus-within select{
+      border-color:rgba(240,211,122,.55); box-shadow:0 0 0 4px rgba(240,211,122,.12)
+    }
+
+    /* Map (darkened mood) */
+    .map{border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-top:18px; height:280px; position:relative}
+    .map iframe{width:100%; height:100%; border:0; filter:grayscale(100%) contrast(1.05) brightness(.78)}
+
+    /* Brand strip */
+    .brands{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px}
+    .brand{padding:6px 10px; border:1px solid var(--line); border-radius:12px; color:#cbd5e1; background:#0d131b}
+    .brand:hover{color:#0b0f14; background:linear-gradient(90deg,var(--gold1),var(--gold2)); border-color:transparent}
+
+    /* Testimonials carousel */
+    .carousel{margin-top:18px; position:relative}
+    .caro-track{display:flex; gap:12px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:6px}
+    .caro-item{min-width:260px; scroll-snap-align:start; background:#0d131b; border:1px solid var(--line); border-radius:14px; padding:14px}
+    .caro-item .who{font-size:13px; color:#cbd5e1; margin-top:6px}
+
+    /* Bottom CTA banner */
+    .cta{max-width:1150px; margin:28px auto 64px; padding:0 20px}
+    .cta .bar{border:1px solid var(--line); border-radius:18px; background:linear-gradient(180deg, rgba(18,22,30,.85), rgba(12,16,23,.92)); padding:18px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between}
+    .cta .title{font-size:18px; background:linear-gradient(90deg,var(--gold1),var(--gold2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    /* Chat bubble */
+    .chat-btn{position:fixed; right:20px; bottom:20px; border:none; border-radius:999px; padding:12px 16px; background:linear-gradient(90deg,var(--gold1),var(--gold2)); color:#0b0f14; font-weight:800; box-shadow:0 18px 50px rgba(240,211,122,.25); z-index:9999; cursor:pointer}
+    .chat-panel{position:fixed; right:20px; bottom:76px; width:320px; max-width:calc(100vw - 40px); background:#0d131b; border:1px solid var(--line); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.5); padding:12px; display:none; z-index:9999}
+    .chat-panel textarea{width:100%; height:110px; background:#0b1118; color:var(--txt); border:1px solid var(--line); border-radius:10px; padding:10px}
+    .chat-panel .row{display:flex; gap:8px; margin-top:8px}
+    .chat-panel .row .btn{flex:1; justify-content:center}
+
+    /* Animations */
+    @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+
+    /* Small sugar */
+    .muted{opacity:.85}
+    a{color:inherit}
+  </style>
+</head>
+<body class="contact">
+  <!-- keep your existing header/footer fragments -->
+  <th:block th:replace="~{fragments :: header}"></th:block>
+
+  <section class="c-hero" id="hero">
+    <div class="inner">
+      <div class="badge">Concierge • By Appointment</div>
+      <h1 class="c-title">Talk to a Specialist</h1>
+      <div class="c-sub">Exotics • Financing • Trade-In • Private Viewing</div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="grid">
+      <!-- Left: Showroom & concierge -->
+      <div class="card">
+        <div class="subtle">SHOWROOM</div>
+        <h3>Horizon Motors — Toronto</h3>
+        <div class="divider"></div>
+        <div style="display:grid; gap:10px; font-size:14px">
+          <div><span class="pill">Visit</span> 1200 Lakeshore Blvd W, Toronto, ON</div>
+          <div><span class="pill">Call</span> (416) 555-1234 &nbsp;•&nbsp; <a href="https://wa.me/14165551234" class="pill" target="_blank" rel="noreferrer">WhatsApp</a></div>
+          <div><span class="pill">Email</span> sales@horizonmotors.ca</div>
+          <div><span class="pill">Hours</span> Mon–Fri 10–19 · Sat 10–17 · Sun by appt.</div>
+        </div>
+
+        <div class="brands">
+          <div class="brand">Ferrari</div>
+          <div class="brand">Lamborghini</div>
+          <div class="brand">McLaren</div>
+          <div class="brand">Porsche</div>
+          <div class="brand">Aston Martin</div>
+          <div class="brand">Bentley</div>
+        </div>
+
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=1200%20Lake%20Shore%20Blvd%20W%2C%20Toronto%2C%20ON&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="actions">
+          <a th:href="@{/browse}" class="btn">Browse Inventory</a>
+          <a th:href="@{/purchase}" class="btn primary">Book Private Viewing</a>
+        </div>
+
+        <div class="carousel">
+          <div class="subtle">WHAT OWNERS SAY</div>
+          <div class="caro-track" id="caro">
+            <div class="caro-item">“Immaculate delivery. Felt like a supercar launch.”<div class="who">— R. Malik · 296 GTB</div></div>
+            <div class="caro-item">“Financing was seamless. Concierge is legit.”<div class="who">— E. Park · Huracán Evo</div></div>
+            <div class="caro-item">“Sold my 720S on consignment in 72 hrs.”<div class="who">— N. Patel · McLaren 720S</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="card form">
+        <div class="subtle">CONTACT</div>
+        <h3>Send a Message</h3>
+        <div class="divider"></div>
+        <form method="post" th:action="@{/contact}">
+          <div class="row two">
+            <div class="field">
+              <input type="text" name="name" placeholder=" " required/>
+              <label>Name*</label>
+            </div>
+            <div class="field">
+              <input type="email" name="email" placeholder=" " required/>
+              <label>Email*</label>
+            </div>
+          </div>
+          <div class="row two" style="margin-top:12px;">
+            <div class="field">
+              <input type="tel" name="phone" placeholder=" "/>
+              <label>Phone</label>
+            </div>
+            <div class="field">
+              <select name="reason">
+                <option value="Sales">Sales Inquiry</option>
+                <option value="Financing">Financing</option>
+                <option value="Trade-In">Trade-In</option>
+                <option value="Consignment">Consignment</option>
+                <option value="VIP Viewing">VIP Viewing</option>
+              </select>
+              <label>Reason</label>
+            </div>
+          </div>
+          <div class="row" style="margin-top:12px;">
+            <div class="field">
+              <textarea name="message" placeholder=" "></textarea>
+              <label>Message</label>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" type="submit">Send Message</button>
+            <a class="btn" th:href="@{/}">Back to Home</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="cta">
+    <div class="bar">
+      <div class="title">Ready to experience your next exotic?</div>
+      <div class="actions">
+        <a th:href="@{/purchase}" class="btn primary">Book Test Drive</a>
+        <a th:href="@{/browse}" class="btn">Explore Featured</a>
+      </div>
+    </div>
+  </div>
+
+  <th:block th:replace="~{fragments :: footer}"></th:block>
+
+  <!-- Chat bubble -->
+  <button class="chat-btn" id="chatBtn">Concierge</button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="subtle">Concierge</div>
+    <textarea placeholder="Tell us the car you’re eyeing…"></textarea>
+    <div class="row">
+      <a class="btn" href="mailto:sales@horizonmotors.ca">Email</a>
+      <a class="btn" href="https://wa.me/14165551234" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    // Parallax effect (background-position shift)
+    const hero = document.querySelector('.c-hero');
+    const par = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      hero && (hero.style.setProperty('--y', y));
+      // simulate parallax by moving pseudo background
+      const before = getComputedStyle(hero, '::before').backgroundPosition;
+      hero.style.backgroundPosition = `center ${Math.min(40, y*0.08)}px`;
+    };
+    window.addEventListener('scroll', par, {passive:true});
+
+    // Carousel gentle auto-scroll
+    const track = document.getElementById('caro');
+    if (track) {
+      let dir = 1;
+      setInterval(() => {
+        if (!track.isConnected) return;
+        if (track.scrollLeft + track.clientWidth >= track.scrollWidth-4) dir = -1;
+        if (track.scrollLeft <= 0) dir = 1;
+        track.scrollBy({left: 2*dir, behavior: 'smooth'});
+      }, 32);
+    }
+
+    // Chat bubble toggle
+    const chatBtn = document.getElementById('chatBtn');
+    const chatPanel = document.getElementById('chatPanel');
+    chatBtn && chatBtn.addEventListener('click', () => {
+      chatPanel.style.display = chatPanel.style.display === 'block' ? 'none' : 'block';
+    });
+  </script>
+</body>
+</html>

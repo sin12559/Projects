@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cars | HorizonMotors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+  <header class="bg-gray-800 border-b border-gray-700">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-extrabold text-xl">Horizon<span class="text-blue-400">Motors</span></a>
+      <nav class="space-x-6">
+        <a href="/" class="hover:text-blue-400">Home</a>
+        <a href="/cars" class="hover:text-blue-400">Cars</a>
+        <a href="/financing" class="hover:text-blue-400">Financing</a>
+        <a href="/contact" class="hover:text-blue-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-8">Available Cars</h1>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Tesla -->
+      <article class="bg-gray-800 rounded-xl overflow-hidden shadow">
+        <img src="/images/tesla.jpg" alt="Tesla Model S" class="h-44 w-full object-cover">
+        <div class="p-5 space-y-2">
+          <h2 class="font-semibold text-lg">Tesla Model S</h2>
+          <p class="text-sm text-gray-300">Year: 2022 • Mileage: 24,500 km</p>
+          <p class="text-blue-400 font-semibold">$89,990</p>
+          <a href="/financing" class="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm">Finance</a>
+        </div>
+      </article>
+
+      <!-- Ferrari -->
+      <article class="bg-gray-800 rounded-xl overflow-hidden shadow">
+        <img src="/images/ferrari.jpg" alt="Ferrari 488 GTB" class="h-44 w-full object-cover">
+        <div class="p-5 space-y-2">
+          <h2 class="font-semibold text-lg">Ferrari 488 GTB</h2>
+          <p class="text-sm text-gray-300">Year: 2019 • Mileage: 12,300 km</p>
+          <p class="text-blue-400 font-semibold">$279,900</p>
+          <a href="/financing" class="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm">Finance</a>
+        </div>
+      </article>
+
+      <!-- BMW -->
+      <article class="bg-gray-800 rounded-xl overflow-hidden shadow">
+        <img src="/images/bmw.jpg" alt="BMW M3" class="h-44 w-full object-cover">
+        <div class="p-5 space-y-2">
+          <h2 class="font-semibold text-lg">BMW M3</h2>
+          <p class="text-sm text-gray-300">Year: 2021 • Mileage: 18,200 km</p>
+          <p class="text-blue-400 font-semibold">$86,500</p>
+          <a href="/financing" class="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm">Finance</a>
+        </div>
+      </article>
+
+      <!-- Mercedes -->
+      <article class="bg-gray-800 rounded-xl overflow-hidden shadow">
+        <img src="/images/merc.jpg" alt="Mercedes C300" class="h-44 w-full object-cover">
+        <div class="p-5 space-y-2">
+          <h2 class="font-semibold text-lg">Mercedes C300</h2>
+          <p class="text-sm text-gray-300">Year: 2020 • Mileage: 22,000 km</p>
+          <p class="text-blue-400 font-semibold">$42,900</p>
+          <a href="/financing" class="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm">Finance</a>
+        </div>
+      </article>
+
+      <!-- Lamborghini -->
+      <article class="bg-gray-800 rounded-xl overflow-hidden shadow">
+        <img src="/images/lambo.jpg" alt="Lamborghini Huracán" class="h-44 w-full object-cover">
+        <div class="p-5 space-y-2">
+          <h2 class="font-semibold text-lg">Lamborghini Huracán</h2>
+          <p class="text-sm text-gray-300">Year: 2018 • Mileage: 9,100 km</p>
+          <p class="text-blue-400 font-semibold">$319,900</p>
+          <a href="/financing" class="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm">Finance</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-6 py-10 text-sm text-gray-400">
+    © <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors
+  </footer>
+</body>
+</html>

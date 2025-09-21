@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Browse Inventory • Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/site.css}"/>
+  <script defer th:src="@{/js/browse.js}"></script>
+</head>
+<body>
+  <div th:replace="~{fragments/layout :: topbar}"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs"><a th:href="@{/}">Home</a> &nbsp;/&nbsp; Inventory</div>
+      <h1 class="h1">Browse Inventory</h1>
+      <p class="sub">Premium cars curated for performance, comfort, and style.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Controls -->
+    <form class="controls" method="get" th:action="@{/browse}" id="browseForm">
+      <div class="field">
+        <label for="q">Search</label>
+        <input id="q" name="q" type="text" placeholder="Search make, model…" th:value="${q}">
+      </div>
+      <div class="field">
+        <label for="make">Make</label>
+        <select id="make" name="make">
+          <option th:value="All" th:selected="${selectedMake=='All'}">All</option>
+          <option th:each="m : ${makes}" th:value="${m}" th:text="${m}" th:selected="${selectedMake==m}"></option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="min">Min price ($)</label>
+        <input id="min" name="min" type="number" min="0" step="1000" th:value="${min}">
+      </div>
+      <div class="field">
+        <label for="max">Max price ($)</label>
+        <input id="max" name="max" type="number" min="0" step="1000" th:value="${max}">
+      </div>
+      <div class="field">
+        <label for="sort">Sort</label>
+        <select id="sort" name="sort" th:value="${sort}">
+          <option value="priceAsc"  th:selected="${sort=='priceAsc'}">Price ↑</option>
+          <option value="priceDesc" th:selected="${sort=='priceDesc'}">Price ↓</option>
+          <option value="makeAsc"   th:selected="${sort=='makeAsc'}">Make A–Z</option>
+          <option value="makeDesc"  th:selected="${sort=='makeDesc'}">Make Z–A</option>
+        </select>
+      </div>
+      <div class="field" style="align-self:end">
+        <button class="btn" type="submit" style="width:100%">Apply</button>
+      </div>
+    </form>
+
+    <!-- Grid -->
+    <section class="inventory-grid" th:if="${vehicles}">
+      <article class="card" th:each="v : ${vehicles}">
+        <div class="img-wrap">
+          <span class="badge" th:text="${v.make} + ' ' + ${v.model}">Make Model</span>
+          <img th:src="${v.image}" alt="" onerror="this.src='/img/cars/placeholder.svg'"/>
+        </div>
+        <div class="body">
+          <div class="title" th:text="${v.make} + ' ' + ${v.model}">Title</div>
+          <p class="desc" th:text="${v.description}">Short description</p>
+          <div class="row">
+            <div class="price" th:text="${v.price}">$00,000</div>
+            <div class="row" style="gap:8px">
+              <span class="tag">In stock</span>
+              <button class="btn ghost" type="button">Save</button>
+              <button class="btn" type="button">View</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div th:if="${#lists.isEmpty(vehicles)}" class="sub">No cars match your filters.</div>
+
+    <!-- Pager (UI only; hook up later if needed) -->
+    <div class="pager">
+      <a href="#" class="active">1</a><a href="#">2</a><a href="#">3</a>
+    </div>
+  </main>
+
+  <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

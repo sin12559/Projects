@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Oops — Something went wrong</title>
+  <link rel="stylesheet" href="/css/custom.css"/>
+  <style>
+    :root{--bg:#0b0f14;--panel:#0f141c;--text:#e6edf3;--muted:#9fb0c3;--line:rgba(255,255,255,.08);--gold1:#c8a44d;--gold2:#f0d37a}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+    .bar{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);background:#0e141b;position:sticky;top:0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800}
+    .brand-dot{width:28px;height:28px;border-radius:8px;background:linear-gradient(180deg,#111b24,#0a0f14);border:1px solid var(--line);position:relative}
+    .brand-dot::after{content:"M";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;color:#82a0ff}
+    .brand span{background:linear-gradient(90deg,var(--gold1),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    .card{margin:40px auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+    h1{margin:0 0 12px 0;font-size:36px}
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    a.btn{display:inline-block;padding:10px 16px;border-radius:999px;text-decoration:none;background:#1f2733;color:#fff}
+    a.btn.primary{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#0b0f14;font-weight:800}
+    pre{white-space:pre-wrap;background:#0b1118;border:1px solid var(--line);padding:12px;border-radius:12px;max-height:280px;overflow:auto}
+    footer{margin:40px 0;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand"><div class="brand-dot"></div><span>Horizon Motors</span></div>
+    <nav class="nav">
+      <a href="/" class="btn">Home</a>
+      <a href="/browse" class="btn">Browse</a>
+          <a href="/about" class="hover:text-yellow-500 transition">About</a>
+      <a href="/contact" class="btn">Contact</a>
+      <a href="/purchase" class="btn primary">Buy Now</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>Something went wrong</h1>
+      <p class="muted">That one's on us. Our team has been notified. Try again or head back home.</p>
+      <div class="row">
+        <a href="/" class="btn primary">Back to Home</a>
+        <a href="/browse" class="btn">Browse Inventory</a>
+      </div>
+    </div>
+    <footer>© 2025 Horizon Motors</footer>
+  </div>
+
+
+
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

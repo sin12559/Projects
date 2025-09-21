@@ -1,39 +1,13 @@
 package ca.sheridancollege.sin12559.beans;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import lombok.*;
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data // @Getter @Setter @ToString @EqualsAndHashCode
 public class Horizon {
-
-  private String name;
-  private int Age;
-  private String Address;
-  private String SEX;
-  private String cardnumber;
-  private String expiry;
-  private int CVV;
-}
-
-
-import lombok.*;
-
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data  //@Getter @Setter @ToString @EqualsAndHashCode
-
-public class Horizon {
-	
-	private String name;
-	private int Age;
-	private String Address;
-	private String SEX;
-	private String cardnumber;
-	private String expiry;
-	private int CVV;
-	
-	
+    private String name;
+    private int value;
 }

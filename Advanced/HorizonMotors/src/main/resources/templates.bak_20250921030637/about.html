@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>About Us — Horizon Motors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    :root { --bg:#0b0f14; --panel:#0f141c; --text:#e6edf3; --gold:#c8a44d; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto; }
+    .wrap { max-width:960px; margin:0 auto; padding:40px 24px; }
+    h1 { font-size:36px; margin-bottom:12px; background:linear-gradient(90deg,var(--gold),#f0d37a); -webkit-background-clip:text; color:transparent; }
+    p { line-height:1.6; font-size:18px; opacity:.9; }
+    .card { margin-top:32px; padding:28px; background:var(--panel); border-radius:16px; border:1px solid rgba(255,255,255,.1); box-shadow:0 12px 40px rgba(0,0,0,.4); }
+  </style>
+</head>
+<body>
+  <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
+  <div class="wrap">
+    <h1>About Horizon Motors</h1>
+    <p>At Horizon Motors, we believe buying a car should feel like stepping into luxury. Our mission is to combine premium vehicles, flexible financing, and first-class support into one seamless experience.</p>
+    <div class="card">
+      <h2>Our Promise</h2>
+      <p>✔ Transparent pricing with no hidden fees</p>
+      <p>✔ Curated inventory with certified inspections</p>
+      <p>✔ Financing options for all credit tiers</p>
+      <p>✔ Dedicated 24/7 customer care</p>
+    </div>
+  </div>
+  <th:block __FOOTER__></th:block>
+
+
+</body>
+</html>

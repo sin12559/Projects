@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Featured — Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="bg-slate-950">
+  <header th:replace="~{fragments/navbar :: navbar}"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <h1 class="title">Limited Edition Legends</h1>
+      <p class="subtitle">Ultra-rare builds curated by Horizon’s concierge team.</p>
+      <div class="badges"
+           th:with="list=${(vehicles != null) ? vehicles : cars}">
+        <span class="badge" th:text="${#lists.size(list)} + ' vehicles'">0 vehicles</span>
+        <span class="badge">Verified provenance</span>
+        <span class="badge">Premium inspection</span>
+      </div>
+    </section>
+
+    <!-- Use a single, safe list variable for iteration -->
+    <section class="card-grid"
+             th:with="list=${(vehicles != null) ? vehicles : cars}">
+      <div class="car-card" th:each="car : ${list}">
+        <div class="thumb">
+          <!-- IMPORTANT: do NOT nest @{${...}} -->
+          <img th:src="${car.image}" th:alt="${car.name}" />
+        </div>
+        <div class="info">
+          <h3 th:text="${car.name}">Name</h3>
+          <div class="sub" th:text="${car.subtitle}">Year • units</div>
+          <div class="spec" th:text="${car.spec}">specs</div>
+          <p class="blurb" th:text="${car.blurb}">blurb</p>
+          <div class="cta">
+            <a class="btn btn-gold" th:href="@{/contact}">Concierge</a>
+            <a class="btn btn-ghost" th:href="@{/browse}">Compare</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty" th:if="${#lists.isEmpty(list)}">
+        No featured vehicles are published yet. Check back soon — or
+        <a th:href="@{/browse}">browse inventory</a>.
+      </div>
+    </section>
+  </main>
+
+  <th:block th:replace="~{fragments :: footer}"></th:block>
+</body>
+</html>

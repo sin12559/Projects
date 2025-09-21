@@ -1,0 +1,68 @@
+:root{--bg:#0b1220;--fg:#d9e6ff;--muted:#92a0ba;--card:#121a2c;--accent:#6b7cff;--accent-2:#2fd3a6;--ring:#2b3652;--line:rgba(255,255,255,.06)}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+
+.topbar{position:sticky;top:0;z-index:40;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{max-width:1200px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:16px}
+.topbar .brand{font-weight:800;letter-spacing:.3px}
+.nav-links{display:flex;gap:10px;margin-left:auto}
+.nav-links a{padding:8px 12px;border-radius:12px;border:1px solid transparent;transition:transform .35s ease,opacity .35s ease,background .2s ease}
+.nav-links a:hover{transform:translateY(-1px);opacity:.95}
+.nav-links a.active{background:var(--accent);color:#fff}
+.topbar-bg{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(11,18,32,.88),rgba(11,18,32,.70)),
+  url('/img/topbar.jpg') center/cover no-repeat;opacity:0;transform:translateY(-8px) scale(1.02);pointer-events:none}
+body.loaded .topbar-bg{animation:topbarFade .7s ease forwards}
+@keyframes topbarFade{to{opacity:1;transform:translateY(0) scale(1)}}
+body.scrolled .topbar{box-shadow:0 8px 30px rgba(0,0,0,.35)}
+
+.hero{position:relative;min-height:68vh;display:grid;place-items:center;background:
+  radial-gradient(1200px 600px at 80% -10%, rgba(107,124,255,.25), transparent 60%),
+  radial-gradient(900px 500px at -10% 20%, rgba(47,211,166,.18), transparent 60%),
+  linear-gradient(180deg, #0d1529 0%, #0b1220 60%)}
+.hero-overlay{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(9,14,26,.2),rgba(9,14,26,.7)),
+  url('/img/hero.jpg') center/cover no-repeat;opacity:.92}
+.hero-content{position:relative;text-align:center;padding:24px}
+.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.05;margin:0 0 10px}
+.hero p{font-size:clamp(16px,2.3vw,20px);color:var(--muted);margin:0 0 20px}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;text-decoration:none;font-weight:600}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{border-color:#2a3755;color:var(--fg);background:transparent}
+
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-36px}
+.feature{background:var(--card);border:1px solid var(--ring);border-radius:18px;padding:20px;display:grid;gap:6px}
+.feature-ico{font-size:22px}
+.feature h3{margin:0;font-size:18px}
+.feature p{margin:0;color:var(--muted)}
+
+.showcase{padding-top:28px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.section-head h2{margin:0;font-size:22px}
+.link{color:var(--fg);text-decoration:none;opacity:.85}
+.link:hover{opacity:1}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--ring);border-radius:18px;overflow:hidden}
+.card .img{height:150px;background:
+  radial-gradient(400px 160px at 70% -30%, rgba(107,124,255,.35), transparent 60%),
+  radial-gradient(320px 140px at -10% 50%, rgba(47,211,166,.22), transparent 60%),
+  linear-gradient(180deg,#1a2236,#141c30)}
+.card-body{padding:14px}
+.card-body .title{font-weight:700}
+.card-body .meta{color:var(--muted);font-size:14px;margin-top:4px}
+
+.cta{padding:30px 0}
+.cta-box{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(90deg,rgba(107,124,255,.22),rgba(47,211,166,.18));border:1px solid var(--ring);border-radius:18px;padding:18px 20px}
+.cta-copy h2{margin:0 0 6px}
+.cta-copy p{margin:0;color:var(--muted)}
+
+.footer{max-width:1200px;margin:24px auto;padding:20px 16px;border-top:1px solid var(--ring);color:var(--muted);display:flex;justify-content:space-between}
+
+@media (max-width:900px){
+  .features{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .cta-box{flex-direction:column;align-items:stretch}
+}

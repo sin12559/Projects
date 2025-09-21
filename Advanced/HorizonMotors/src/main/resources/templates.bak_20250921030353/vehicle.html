@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+    <meta charset="UTF-8" />
+    <title>Vehicle</title>
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+    <div th:replace="~{fragments :: header}"></div>
+<div class="wrap">
+      <div class="card">
+        <img th:src="${v.image}" alt="car" />
+        <div class="content">
+          <p th:text="${v.description}">desc</p>
+          <p><strong th:text="${v.price}">$0</strong></p>
+          <a class="btn btn-primary" th:href="@{/purchase(vehicleId=${v.id})}"
+            >Purchase</a
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+<div __FOOTER__></div>
+
+__FOOTER__
+</body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+  <meta charset="UTF-8"/>
+  <title>Vehicle</title>
+  <link rel="stylesheet" href="/css/site.css"/>
+</head>
+<body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+  <header class="wrap">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+    <h1 th:text="${v.make} + ' ' + ${v.model}">Vehicle</h1>
+    <div class="toolbar">
+      <a class="btn" href="/inventory">← Inventory</a>
+      <a class="btn" href="/">🏠 Home</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="card">
+      <img th:src="${v.image}" alt="car"/>
+      <div class="content">
+        <p th:text="${v.description}">desc</p>
+        <p><strong th:text="${v.price}">$0</strong></p>
+        <a class="btn btn-primary" th:href="@{/purchase(vehicleId=${v.id})}">Purchase</a>
+      </div>
+    </div>
+  </div>
+</main>
+<div __FOOTER__></div>
+</body>
+</html>

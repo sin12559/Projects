@@ -1,0 +1,76 @@
+:root{
+  --bg:#070b12; --panel:#0b111b; --line:#1b2535; --text:#e9eefb; --muted:#9ab0cf; --brand:#2f6cff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:18px}
+
+.site-header{position:sticky;top:0;z-index:20;background:rgba(6,10,16,.6);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.5px}
+.brand span{color:var(--brand)}
+.nav a{padding:10px 12px;border-radius:8px}
+.nav a:hover{background:#0f1726}
+
+.footer{border-top:1px solid var(--line);margin-top:24px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+
+.section{margin-top:18px}
+.section-title{margin:4px 0 12px}
+
+/* Forza-ish accent lines */
+.fx-lines{position:relative;display:inline-block;padding-right:14px}
+.fx-lines:after{
+  content:""; position:absolute; right:0; top:52%; transform:translateY(-50%);
+  width:36px; height:2px; background:linear-gradient(90deg,var(--brand),transparent);
+  pointer-events:none
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--brand);color:#fff;
+  padding:10px 16px;border-radius:12px;font-weight:600;border:0;box-shadow:0 10px 24px rgba(47,108,255,.32);cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent;border:1px solid var(--brand);color:var(--text);box-shadow:none}
+.btn.pill{border-radius:999px;padding:.45rem .8rem;font-size:.95rem}
+.btn.block{width:100%}
+
+/* Inputs */
+.input,.textarea{width:100%;background:#0e1826;border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:12px}
+.textarea{min-height:120px;resize:vertical}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center;margin-top:10px}
+.hero-copy .headline{font-size:2.2rem;margin:.25rem 0}
+.hero-copy .sub{color:var(--muted);margin:.25rem 0 1rem}
+.hero .cta{display:flex;gap:10px}
+.hero-media img{width:100%;height:100%;max-height:360px;object-fit:cover;border-radius:16px;border:1px solid var(--line);display:block}
+
+/* GRID / CARDS */
+.grid.auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.grid.cards-compact{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.media{position:relative;overflow:hidden;background:#0e1826}
+.media img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .25s ease}
+.media:hover img{transform:scale(1.03)}
+.card-body{padding:14px}
+.card .meta{color:var(--muted);font-size:.92rem}
+.price{font-weight:800;margin:.45rem 0 .7rem}
+
+/* Cars page */
+.toolbar-sticky{
+  position:sticky;top:64px;z-index:5;margin:8px 0 14px;padding:10px 12px;border:1px solid var(--line);
+  background:rgba(8,12,20,.75);backdrop-filter:blur(6px);border-radius:12px;display:flex;gap:12px;justify-content:space-between;align-items:center
+}
+.searchbar{display:flex;gap:8px;flex:1}
+.sorter{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sorter .muted{color:var(--muted);margin-right:2px;font-size:.9rem}
+.sort-btn{padding:8px 10px}
+
+/* Clickability guards */
+.fx-lines:after{pointer-events:none;z-index:0}
+.btn{pointer-events:auto}
+
+/* Responsive */
+@media (max-width:900px){ .hero{grid-template-columns:1fr} .media img{height:180px} }
+@media (max-width:600px){ .media img{height:160px} }

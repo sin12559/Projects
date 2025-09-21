@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Financing — Horizon Motors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+</head>
+<body>
+  <div th:replace="~{fragments :: header}"></div>
+  <main class="page container">
+    <h2>Financing Options</h2>
+    <p>We offer competitive loan and lease options to get you driving today.</p>
+    <ul>
+      <li>Low interest car loans</li>
+      <li>Flexible leasing plans</li>
+      <li>Trade-in credit program</li>
+    </ul>
+  </main>
+  <div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

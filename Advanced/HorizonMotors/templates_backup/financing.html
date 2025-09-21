@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Financing | HorizonMotors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+  <header class="bg-gray-800 border-b border-gray-700">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-extrabold text-xl">Horizon<span class="text-blue-400">Motors</span></a>
+      <nav class="space-x-6">
+        <a href="/" class="hover:text-blue-400">Home</a>
+        <a href="/cars" class="hover:text-blue-400">Cars</a>
+        <a href="/financing" class="hover:text-blue-400">Financing</a>
+        <a href="/contact" class="hover:text-blue-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-8">
+      <section class="bg-gray-800 p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-bold mb-4">Rates & Terms</h2>
+        <ul class="space-y-2 text-gray-300">
+          <li>APR from <span class="font-semibold text-blue-400">4.9% OAC</span></li>
+          <li>Terms up to <span class="font-semibold">84 months</span></li>
+          <li>Early payout with no penalties</li>
+          <li>Zero-down options</li>
+          <li>Trade-in equity applied instantly</li>
+          <li>Newcomer & student-friendly programs</li>
+        </ul>
+      </section>
+
+      <section class="bg-gray-800 p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-bold mb-4">Estimate Your Payment</h2>
+        <form method="get" class="space-y-4">
+          <input name="price"  th:value="${price}"  type="number" placeholder="Vehicle price" class="w-full p-3 rounded bg-gray-700 text-white">
+          <input name="rate"   th:value="${rate}"   step="0.01" type="number" placeholder="APR %" class="w-full p-3 rounded bg-gray-700 text-white">
+          <input name="months" th:value="${months}" type="number" placeholder="Term (months)" class="w-full p-3 rounded bg-gray-700 text-white">
+          <button class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded font-semibold">Calculate</button>
+        </form>
+        <p th:if="${payment}" class="mt-4 text-lg">Estimated payment: <span class="font-semibold text-blue-400" th:text="${payment}">$0.00</span>/mo</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-6 py-10 text-sm text-gray-400">
+    © <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors
+  </footer>
+</body>
+</html>

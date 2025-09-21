@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><title>Browse — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <script defer src="/js/app.js" th:src="@{/js/app.js}"></script>
+</head>
+<body>
+  <div th:replace="~{~{fragments :: header}}"></div>
+  <main class="page container">
+    <h2>Browse inventory</h2>
+    <p class="muted">Use the filters to find your ride.</p>
+    <div class="card">Inventory grid goes here.</div>
+  </main>
+  <div th:replace="~{~{fragments :: footer}}"></div>
+
+__FOOTER__
+</body>
+</html>

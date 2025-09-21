@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Featured — Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/featured.css}"/>
+</head>
+<body class="featured-page">
+  <th:block th:replace="~{fragments :: header}"></th:block>
+
+  <div class="wrap">
+    <section class="featured-hero">
+      <h1>Limited Edition Legends</h1>
+      <p>Ultra-rare builds curated by Horizon’s concierge team.</p>
+      <div class="featured-ribbon">
+        <span class="tag" th:text="${(cars != null ? #lists.size(cars) : 0)} + ' vehicles'">6 vehicles</span>
+        <span class="tag">Verified provenance</span>
+        <span class="tag">Premium inspection</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- empty state when no cars are provided -->
+      <div class="empty-state" th:if="${cars == null or #lists.isEmpty(cars)}" style="grid-column:1/-1;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:#0f141c;color:#e6edf3;">No featured vehicles are published yet. Come back soon — or <a th:href="@{/browse}" style="color:#f0d37a;text-decoration:none;font-weight:700;">browse inventory</a>.</div>
+      <article class="card" th:each="c : ${cars}">
+        <div class="thumb">
+          <img th:src="@{${c.image}}" th:alt="${c.name}"/>
+          <span class="corner" th:text="${c.subtitle}">2015 • 25 units</span>
+        </div>
+
+        <div class="meta">
+          <h3 th:text="${c.name}">Koenigsegg Agera RS</h3>
+          <div class="price-line">
+            <span class="subtitle" th:text="${c.spec}">5.0L TT V8 · 1160+ hp · RWD</span>
+            <span class="price" th:text="${c.estimate != null ? c.estimate : 'POA'}">POA</span>
+          </div>
+
+          <div class="badges">
+            <span class="badge">Concierge</span>
+            <span class="badge">By Appt.</span>
+            <span class="badge" th:if="${c.country != null}" th:text="${c.country}">EU</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn primary" th:href="@{/contact}" aria-label="Inquire about [[${c.name}]]">Inquire</a>
+            <a class="btn" th:href="@{/browse}" aria-label="Compare with inventory">Compare</a>
+          </div>
+
+          <div class="small" th:text="${c.blurb}">Former top-speed record holder; highly collectible.</div>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <th:block th:replace="~{fragments :: footer}"></th:block>
+  <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

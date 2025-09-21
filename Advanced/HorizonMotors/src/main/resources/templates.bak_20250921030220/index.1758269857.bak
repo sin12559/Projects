@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizon Motors — Home</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+</head>
+<body>
+  <div th:replace="~{fragments :: header}"></div>
+
+  <!-- Hero Section -->
+  <section class="hero" style="text-align:center;padding:40px;background:#111;color:#fff;">
+    <h1 style="font-size:2.5em;margin-bottom:10px;">Find Your Next Legendary Ride</h1>
+    <p style="font-size:1.2em;margin-bottom:20px;">Premium cars. Flexible financing. Trusted service.</p>
+    <a href="/cars" class="btn primary" style="margin-right:10px;">Browse Cars</a>
+    <a href="/financing" class="btn secondary">Financing</a>
+  </section>
+
+  <!-- Featured Cars -->
+  <section class="container" style="padding:40px 0;">
+    <h2 style="text-align:center;margin-bottom:20px;">Featured Vehicles</h2>
+    <div class="grid" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <div class="card" style="width:250px;text-align:center;">
+        <img src="/img/cars/supra.jpg" alt="Toyota Supra" style="width:100%;border-radius:8px;">
+        <h3>Toyota Supra</h3>
+        <p>Starting at $49,995</p>
+      </div>
+      <div class="card" style="width:250px;text-align:center;">
+        <img src="/img/cars/gtr.jpg" alt="Nissan GT-R" style="width:100%;border-radius:8px;">
+        <h3>Nissan GT-R</h3>
+        <p>Starting at $113,540</p>
+      </div>
+      <div class="card" style="width:250px;text-align:center;">
+        <img src="/img/cars/m3.jpg" alt="BMW M3" style="width:100%;border-radius:8px;">
+        <h3>BMW M3</h3>
+        <p>Starting at $76,995</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section style="background:#f7f7f7;padding:40px;text-align:center;">
+    <h2>Why Choose Horizon Motors?</h2>
+    <p style="max-width:600px;margin:auto;">
+      We’re passionate about cars and committed to helping you find the perfect match. 
+      From high-performance sports cars to reliable daily drivers, Horizon Motors makes car buying easy and exciting.
+    </p>
+  </section>
+
+  <div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HorizonMotors</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/" class="logo">Horizon<span>Motors</span></a>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/shop}">Browse Cars</a></li>
+            <li><a th:href="@{/financing}">Financing</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <img th:src="@{/images/supra.jpg}" alt="Car">
+        <div class="hero-text">
+            <h1>Find your next ride.</h1>
+            <p>Hand-picked cars. Transparent pricing. Drive today.</p>
+            <a class="btn" th:href="@{/shop}">Browse Inventory</a>
+            <a class="btn secondary" th:href="@{/financing}">Get Pre-Approved</a>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2>Featured Cars</h2>
+        <a th:href="@{/shop}">View all →</a>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Horizon Motors</p>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,212 @@
+:root{
+  --bg:#0b0f14;--panel:#0f141b;--panel-soft:#121924;--muted:#9aa7b2;
+  --brand:#6d57ff;--brand-2:#60e6ff;--ok:#31d0aa;--warn:#ffce47;
+  --radius:20px;--shadow:0 12px 34px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#e9eef3;font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+a{color:#e9eef3;text-decoration:none}
+img{display:block;max-width:100%}
+.btn{display:inline-block;padding:12px 18px;border-radius:999px;background:#1b2430;transition:.25s ease}
+.btn.primary{background:linear-gradient(90deg,var(--brand),#7e98ff)}
+.btn.secondary{background:#1b2430}
+.btn:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 8px 22px rgba(109,87,255,.28)}
+.topbar{position:sticky;top:0;z-index:5;background:rgba(10,14,20,.8);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+.topbar .inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand .accent{color:var(--brand-2)}
+.nav-links{display:flex;gap:22px}
+.nav-cta .btn{padding:8px 14px}
+.nav-links a{position:relative;opacity:.9;transition:.25s ease}
+.nav-links a.active,.nav-links a:hover{opacity:1}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;background:linear-gradient(90deg,var(--brand),#7e98ff);border-radius:2px}
+.hero{position:relative;min-height:520px;display:flex;align-items:center;background:url("/img/hero/background.avif") center/cover no-repeat #0c1016;border-bottom:1px solid #141c26;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(80% 60% at 50% 20%,rgba(0,0,0,.0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.85) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,14,.15),rgba(8,10,14,.78))}
+.hero .content{position:relative;z-index:1;text-align:center;padding:28px 22px}
+.hero h1{font-size:clamp(36px,5.2vw,58px);line-height:1.06;margin:0 0 10px}
+.hero p{color:#c7d1db;margin:0 0 24px}
+.hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.kpi{background:rgba(255,255,255,.05);border:1px solid #1b2430;border-radius:14px;padding:14px;text-align:center;transition:.25s ease}
+.kpi .num{font-size:22px;font-weight:800}
+.kpi .lbl{font-size:13px;color:var(--muted)}
+.kpi:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.section{padding:42px 0}
+.section h2{font-size:26px;margin:0 0 18px;text-align:center}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.trust .card{background:var(--panel);border:1px solid #1c2632;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:.25s ease}
+.trust .card h3{margin:8px 0 6px}
+.trust .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vehicle{background:var(--panel);border:1px solid #1b2430;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.28s ease}
+.vehicle img{width:100%;height:220px;object-fit:cover}
+.vehicle .info{padding:14px}
+.vehicle:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(0,0,0,.48)}
+.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#18212d;border:1px solid #223042}
+.price{font-weight:800;margin-top:8px}
+.cta-band{background:linear-gradient(90deg,#101827,#0c1220);border:1px solid #1c2632;border-radius:20px;padding:22px;margin-top:10px}
+.cta-band .row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.cta-band h3{margin:0}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testimonial{background:var(--panel-soft);border:1px solid #1c2632;border-radius:var(--radius);padding:16px;transition:.25s ease}
+.testimonial:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.testimonial .who{color:#c7d1db;font-size:14px;margin-top:10px}
+footer{margin-top:40px;border-top:1px solid #1c2632;background:#0a0f15}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;padding:26px 0}
+footer .muted{color:var(--muted);font-size:14px}
+@media (max-width:960px){
+  .inventory{grid-template-columns:repeat(2,1fr)}
+  .trust{grid-template-columns:1fr}
+  .testimonials{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .hero{min-height:64vh}
+  .hero h1{font-size:32px}
+  .hero .cta-row{grid-template-columns:1fr}
+}
+
+/* ===== LUXURY ACCENTS + TEXT ANIMATIONS (no scroll listeners) ===== */
+:root{
+  --lux:#d4af37;             /* classic gold */
+  --lux-2:#f6e27a;           /* soft champagne */
+  --ink:#e9eef3;
+  --lux-glow:0 0 24px rgba(212,175,55,.25);
+}
+
+/* Subtle premium feel across page */
+body{letter-spacing:.15px}
+.topbar{box-shadow: 0 8px 22px rgba(0,0,0,.18)}
+.brand span{letter-spacing:.4px}
+
+/* Gold gradient accent on the brand name */
+.brand .accent{
+  background:linear-gradient(90deg,var(--lux),var(--lux-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+
+/* Primary button: refined gold edge + soft glow on hover */
+.btn.primary{
+  background:linear-gradient(90deg,#6d57ff,#7e98ff);
+  border:1px solid rgba(255,255,255,.08)
+}
+.btn.primary:hover{
+  box-shadow: var(--lux-glow), 0 10px 26px rgba(109,87,255,.28)
+}
+
+/* Secondary button: hairline gold border */
+.btn.secondary{border:1px solid rgba(212,175,55,.25)}
+.btn.secondary:hover{box-shadow: var(--lux-glow)}
+
+/* HERO headline: luxury gradient + gentle animated shimmer */
+.hero h1{
+  background:linear-gradient(90deg,var(--ink) 0%, var(--lux-2) 35%, var(--ink) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;
+  animation:luxShine 6s linear infinite;
+  text-shadow:none
+}
+@keyframes luxShine{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* HERO subtext: slight fade-in on page load (one-time, not scroll) */
+.hero p{
+  opacity:0; animation:txtIn .6s ease .15s forwards
+}
+@keyframes txtIn{to{opacity:1}}
+
+/* KPI numbers: elegant micro pulse on hover (no layout shift) */
+.kpi .num{
+  background:linear-gradient(90deg,var(--ink),var(--lux-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.kpi:hover .num{animation:kpiPulse 1.2s ease both}
+@keyframes kpiPulse{
+  0%{filter:brightness(1)}
+  50%{filter:brightness(1.25)}
+  100%{filter:brightness(1)}
+}
+
+/* Section titles: gold underline that animates on first paint */
+.section h2{
+  position:relative; display:inline-block; padding-bottom:8px
+}
+.section h2::after{
+  content:""; position:absolute; left:50%; bottom:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--lux),var(--lux-2));
+  transform:translateX(-50%);
+  animation:underlineIn .7s ease .1s forwards
+}
+@keyframes underlineIn{to{width:72%}}
+
+/* Cards & vehicles: hairline luxe borders */
+.trust .card,.vehicle,.testimonial,.cta-band{
+  border:1px solid rgba(212,175,55,.08)
+}
+
+/* Featured price: touch of gold */
+.price{color:var(--lux)}
+.filterbar{background:#0f141b;border:1px solid #1c2632;border-radius:16px;padding:12px;margin:18px 0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr auto;gap:10px}
+.filterbar input,.filterbar select{width:100%;background:#121924;border:1px solid #1b2430;border-radius:10px;color:#e9eef3;padding:10px}
+.filterbar .btn{height:42px}
+.grid-meta{display:flex;justify-content:space-between;align-items:center;margin:8px 0 16px;color:#9aa7b2}
+.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vehicle img{width:100%;height:220px;object-fit:cover;background:#0d1218}
+.vehicle .info{padding:14px}
+.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#18212d;border:1px solid #223042}
+.price{font-weight:800;color:#d4af37;margin-top:8px}
+@media(max-width:960px){.filterbar{grid-template-columns:1fr 1fr 1fr 1fr}.inventory{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.filterbar{grid-template-columns:1fr 1fr}.inventory{grid-template-columns:1fr}}
+
+/* --- Luxe Accent & Card Polish --- */
+:root{
+  --accent:#c6a667;            /* soft gold */
+  --accent-weak:#a89055;
+}
+.accent{ color:var(--accent)!important; }
+.btn.primary{ background:linear-gradient(135deg,var(--accent),#e2cc8f); color:#0b0f14; border:none; }
+.btn.primary:hover{ filter:brightness(1.05); }
+.card{ border:1px solid #222b36; background:#0b1118; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+.topbar .brand span{ letter-spacing:.2px; font-weight:700; }
+select, input, textarea{ border:1px solid #1e2833; border-radius:10px; background:#0f141b; color:#e9eef3; }
+.badge{display:inline-flex;align-items:center;border:1px solid #283444;border-radius:999px;padding:2px 8px;font-size:12px;color:#a8b6c6}
+.badge .dot{width:6px;height:6px;border-radius:999px;background:var(--accent);margin-right:6px}
+
+/* --- Better styling for Compare button --- */
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* --- Better styling for Compare button --- */
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}

@@ -1,0 +1,21 @@
+<div th:fragment="topbar">
+  <header class="topbar">
+    <div class="topbar-bg"></div>
+    <div class="wrap">
+      <div class="brand">Horizon Motors</div>
+      <nav class="nav-links">
+        <a th:href="@{/}"
+           th:classappend="${((#httpServletRequest != null ? #httpServletRequest.requestURI : '') == '/') ? ' active' : ''}">Home</a>
+        <a th:href="@{/browse}"
+           th:classappend="${#httpServletRequest != null and #strings.startsWith((#httpServletRequest.requestURI), '/browse') ? ' active' : ''}">Browse</a>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<div th:fragment="footer">
+  
+</div>
+<script defer th:src="@{/js/layout.js}"></script>
+
+__FOOTER__

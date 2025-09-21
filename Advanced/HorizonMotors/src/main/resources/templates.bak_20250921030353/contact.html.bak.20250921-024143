@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact — Horizon Motors</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#0f141c; --line:rgba(255,255,255,.08);
+      --text:#e6edf3; --muted:#9fb0c2; --gold1:#c8a44d; --gold2:#f0d37a;
+    }
+    html,body{background:var(--bg);color:var(--text);margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+
+    .top-spacer{height:68px}
+
+    /* HERO */
+    .hero{
+      position:relative; isolation:isolate;
+      height:380px; display:grid; place-items:center; overflow:hidden;
+      background:#000 url('/images/garage.jpeg') center/cover no-repeat;
+      z-index:0;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.55) 60%, rgba(0,0,0,.72));
+      z-index:0;
+    }
+    /* Soft fade at the very bottom so panels never look like they’re cutting the photo */
+    .hero::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:140px; z-index:1;
+      background:linear-gradient(180deg,rgba(0,0,0,0), rgba(0,0,0,.85));
+    }
+    .hero-inner{position:relative; z-index:2; text-align:center}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(15,20,28,.7);
+      border:1px solid var(--line); padding:6px 10px;border-radius:999px;color:#dfe6ee;font-size:.84rem;backdrop-filter:blur(6px)}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 0 4px rgba(240,211,122,.18)}
+    .h1{margin:14px 0 8px;font-size:42px;font-weight:900;letter-spacing:.2px;
+      background:linear-gradient(90deg,#fff, #f6f0cf 45%, #fff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:#d7deea;opacity:.9}
+
+    .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+    /* GRID: both panels lift by the same amount for clean alignment */
+    .grid{display:grid;gap:22px; margin-top:-22px; position:relative; z-index:3}
+    @media(min-width:980px){ .grid{grid-template-columns:1.5fr .95fr;} }
+
+    .card,.form{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.03));
+      border:1px solid var(--line); border-radius:16px; padding:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      backdrop-filter:saturate(130%) blur(6px);
+      /* same vertical offset for BOTH panels */
+      margin-top:0;
+    }
+
+    .card h3,.form h3{margin:2px 0 14px;font-size:18px;letter-spacing:.2px}
+    .label{color:#9fb0c2;letter-spacing:.2px}
+
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 14px}
+    .pill{background:#121a24;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#dfe6ee;font-size:.85rem}
+
+    .meta{display:grid;grid-template-columns:112px 1fr;row-gap:12px;color:#cbd6e2}
+
+    .map{overflow:hidden;border-radius:14px;border:1px solid var(--line);margin-top:14px}
+    .map iframe{display:block;width:100%;height:280px;border:0;filter:none!important;opacity:1!important}
+
+    .row{display:grid;gap:12px}
+    @media(min-width:640px){ .row.col2{grid-template-columns:1fr 1fr;} }
+    label{display:block;color:#aeb9c7;font-size:.85rem;margin:6px 2px 6px}
+    input,select,textarea{
+      width:100%;background:#0c1117;color:var(--text);border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;padding:12px 14px;outline:none;transition:border .18s, box-shadow .18s, background .18s;
+    }
+    input::placeholder,textarea::placeholder{color:#7d8893}
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(240,211,122,.55);
+      box-shadow:0 0 0 4px rgba(240,211,122,.18), inset 0 0 0 1px rgba(240,211,122,.25);
+    }
+    textarea{min-height:120px;resize:vertical}
+    .btn{
+      margin-top:10px; display:inline-flex;gap:8px;align-items:center;justify-content:center;cursor:pointer;border:0;
+      background:linear-gradient(90deg,var(--gold1),var(--gold2)); color:#0b0f14; font-weight:800; letter-spacing:.2px;
+      padding:12px 18px; border-radius:999px; box-shadow:0 18px 40px rgba(240,211,122,.28); transition:transform .15s,filter .15s
+    }
+    .btn:hover{transform:translateY(-1px);filter:saturate(110%)}
+    .fine{color:var(--muted);font-size:.85rem}
+    .invalid{border-color:rgba(255,120,120,.65)!important; box-shadow:0 0 0 3px rgba(255,120,120,.18)!important}
+    .err{color:#ff9b9b;font-size:.82rem;margin:4px 2px 0;display:none}
+
+    .footer-pad{height:24px}
+  </style>
+</head>
+<body>
+  <th:block th:replace="~{fragments :: header}"></th:block>
+  <div class="top-spacer" aria-hidden="true"></div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="chip"><span class="dot"></span> Concierge • By Appointment</div>
+      <div class="h1">Talk to a Specialist</div>
+      <div class="sub">Exotics • Financing • Trade-In • Private Viewing</div>
+    </div>
+  </section>
+
+  <div class="wrap grid">
+    <!-- LEFT -->
+    <section class="card">
+      <small class="label">SHOWROOM</small>
+      <h3>Horizon Motors — Toronto</h3>
+
+      <div class="pillrow">
+        <span class="pill">Ferrari</span><span class="pill">Lamborghini</span><span class="pill">McLaren</span>
+        <span class="pill">Porsche</span><span class="pill">Aston Martin</span><span class="pill">Bentley</span>
+      </div>
+
+      <div class="meta">
+        <div>Visit</div><div>1200 Lakeshore Blvd W, Toronto, ON</div>
+        <div>Call</div><div>(416) 555-1234</div>
+        <div>Email</div><div>sales@horizonmotors.ca</div>
+        <div>Hours</div><div>Mon–Fri 10–19 · Sat 10–17 · Sun by appt.</div>
+      </div>
+
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=1200%20Lakeshore%20Blvd%20W%2C%20Toronto%2C%20ON&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="fine">Prefer WhatsApp or iMessage? We can coordinate a private viewing at our lounge.</p>
+    </section>
+
+    <!-- RIGHT -->
+    <aside class="form">
+      <small class="label">CONTACT</small>
+      <h3>Send a Message</h3>
+
+      <form th:action="@{/contact}" method="post" novalidate id="contactForm">
+        <div class="row col2">
+          <div>
+            <label for="name">Name*</label>
+            <input id="name" name="name" placeholder="Alex Driver" required />
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div>
+            <label for="email">Email*</label>
+            <input id="email" name="email" placeholder="alex@email.com" required />
+            <div class="err">Please provide a valid email.</div>
+          </div>
+        </div>
+
+        <div class="row col2">
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="(416) 555-1234" />
+          </div>
+          <div>
+            <label for="reason">Reason</label>
+            <select id="reason" name="reason">
+              <option>Sales Inquiry</option>
+              <option>Trade-In</option>
+              <option>Financing</option>
+              <option>Consignment</option>
+              <option>Service</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="message">Message*</label>
+            <textarea id="message" name="message" placeholder="Which vehicle or service are you interested in?" required></textarea>
+            <div class="err">Please tell us a little about your request.</div>
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Send Message</button>
+        <div class="fine">We respond the same business day.</div>
+      </form>
+    </aside>
+  </div>
+
+  <div class="footer-pad" aria-hidden="true"></div>
+  <th:block th:replace="~{fragments :: footer}"></th:block>
+
+  <script>
+    (function(){
+      const f = document.getElementById('contactForm'); if(!f) return;
+      const ta = f.querySelector('textarea'); const email = f.querySelector('#email');
+      const req = ['name','email','message'];
+
+      function grow(){ if(!ta) return; ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px'; }
+      ta && (ta.addEventListener('input', grow), grow());
+
+      f.addEventListener('submit', function(e){
+        let bad = [];
+        req.forEach(n=>{
+          const el = f.querySelector('#'+n);
+          if(el && !el.value.trim()) bad.push(el);
+        });
+        if(email && email.value.trim()){
+          const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+          if(!ok && !bad.includes(email)) bad.push(email);
+        }
+        f.querySelectorAll('.err').forEach(x=>x.style.display='none');
+        f.querySelectorAll('.invalid').forEach(x=>x.classList.remove('invalid'));
+        if(bad.length){
+          e.preventDefault();
+          bad.forEach(el=>{
+            el.classList.add('invalid');
+            const err = el.parentElement.querySelector('.err'); if(err) err.style.display='block';
+          });
+          bad[0].focus();
+        }
+      });
+      f.addEventListener('input', e=>{
+        const el = e.target;
+        if(el.classList.contains('invalid')){
+          el.classList.remove('invalid');
+          const err = el.parentElement.querySelector('.err'); if(err) err.style.display='none';
+        }
+      });
+      document.querySelectorAll('.map iframe').forEach(i=>{ i.style.filter='none'; i.style.opacity='1'; });
+    })();
+  </script>  <div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

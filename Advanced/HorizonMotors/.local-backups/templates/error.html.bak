@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><title>Oops — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <script defer src="/js/app.js" th:src="@{/js/app.js}"></script>
+</head>
+<body>
+  <div th:replace="~{fragments :: header}"></div>
+  <main class="page container error-wrap">
+    <div class="error-card">
+      <div style="font-size:42px;margin-bottom:6px">😬</div>
+      <h2 style="margin:6px 0 10px">Oops — that’s on us</h2>
+      <p class="muted" style="margin:0 0 16px">Something went wrong. Try the links above, or head home.</p>
+      <a th:href="@{/}" class="btn primary">Back Home</a>
+    </div>
+  </main>
+  <div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Featured — Horizon Motors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- keep your existing site css reference if you have it -->
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <style>
+    /* Minimal styling only for cards; won’t affect your global layout */
+    .featured-hero{max-width:1200px;margin:40px auto 10px;padding:0 20px;text-align:center}
+    .featured-hero h1{font-size:36px;margin:0 0 6px;background:linear-gradient(90deg,#c8a44d,#f0d37a);
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .featured-hero p{opacity:.85;margin:0}
+    .featured-grid{max-width:1200px;margin:24px auto 60px;display:grid;gap:18px;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));padding:0 20px}
+    .car-card{background:#0f141c;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .car-card img{width:100%;height:180px;object-fit:cover;display:block}
+    .car-card .info{padding:14px}
+    .car-card h2{font-size:18px;margin:0 0 4px}
+    .car-card h3{font-size:13px;margin:0 0 8px;opacity:.8;font-weight:500}
+    .car-card .spec{font-size:12px;margin:0 0 8px;opacity:.8}
+    .car-card .blurb{font-size:12px;margin:0;opacity:.85}
+  </style>
+</head>
+<body>
+  <!-- keep your existing fragments usage -->
+  <header th:replace="fragments/navbar :: navbar"></header>
+
+  <section class="featured-hero">
+    <h1>Limited Edition Legends</h1>
+    <p>Curated collection of the rarest exotics ever built</p>
+  </section>
+
+  <section class="featured-grid">
+    <!-- Ferrari Enzo -->
+    <article class="car-card">
+      <img src="/images/featured/enzo.jpg" alt="Ferrari Enzo">
+      <div class="info">
+        <h2>Ferrari Enzo</h2>
+        <h3>2003 • 400 units</h3>
+        <p class="spec">6.0L V12 · 651 hp · RWD</p>
+        <p class="blurb">Legend of the 2000s; carbon monocoque with F1 DNA.</p>
+      </div>
+    </article>
+
+    <!-- Lamborghini Veneno -->
+    <article class="car-card">
+      <img src="/images/featured/veneno.jpg" alt="Lamborghini Veneno">
+      <div class="info">
+        <h2>Lamborghini Veneno</h2>
+        <h3>2013 • 4 coupes / 9 roadsters</h3>
+        <p class="spec">6.5L V12 · 740 hp · AWD</p>
+        <p class="blurb">Wild aero statement built for Lambo’s 50th anniversary.</p>
+      </div>
+    </article>
+
+    <!-- McLaren P1 GTR -->
+    <article class="car-card">
+      <img src="/images/featured/p1gtr.jpg" alt="McLaren P1 GTR">
+      <div class="info">
+        <h2>McLaren P1 GTR</h2>
+        <h3>2015 • ~58 units</h3>
+        <p class="spec">3.8L TT V8 Hybrid · 986 hp · RWD</p>
+        <p class="blurb">Track-only apex P1; ultra-limited client program.</p>
+      </div>
+    </article>
+
+    <!-- Koenigsegg Agera RS -->
+    <article class="car-card">
+      <img src="/images/featured/agera-rs.jpg" alt="Koenigsegg Agera RS">
+      <div class="info">
+        <h2>Koenigsegg Agera RS</h2>
+        <h3>2015 • 25 units</h3>
+        <p class="spec">5.0L TT V8 · 1160+ hp · RWD</p>
+        <p class="blurb">Former top-speed record holder; highly collectible.</p>
+      </div>
+    </article>
+
+    <!-- Porsche 918 Spyder Weissach -->
+    <article class="car-card">
+      <img src="/images/featured/918-weissach.jpg" alt="Porsche 918 Spyder Weissach">
+      <div class="info">
+        <h2>Porsche 918 Spyder (Weissach)</h2>
+        <h3>2015 • 918 units</h3>
+        <p class="spec">4.6L V8 Hybrid · 887 hp · AWD</p>
+        <p class="blurb">Lightweight pack: magnesium wheels, extra downforce.</p>
+      </div>
+    </article>
+
+    <!-- Bugatti Divo -->
+    <article class="car-card">
+      <img src="/images/featured/divo.jpg" alt="Bugatti Divo">
+      <div class="info">
+        <h2>Bugatti Divo</h2>
+        <h3>2020 • 40 units</h3>
+        <p class="spec">8.0L Quad-Turbo W16 · 1500 hp · AWD</p>
+        <p class="blurb">Coachbuilt, handling-focused Chiron variant.</p>
+      </div>
+    </article>
+  </section>
+
+  <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

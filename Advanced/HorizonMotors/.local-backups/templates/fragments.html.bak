@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><body>
+<header class="topbar">
+  <div class="container inner">
+    <a th:href="@{/}" class="brand">
+      <img src="/img/logo.svg" width="28" height="28" alt="">
+      <span>Horizon<span class="accent">Motors</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a th:href="@{/}" th:classappend="${#httpServletRequest.requestURI == '/' ? ' active' : ''}">Home</a>
+      <a th:href="@{/browse}" th:classappend="${#httpServletRequest.requestURI.startsWith('/browse') ? ' active' : ''}">Browse</a>
+      <a th:href="@{/featured}" th:classappend="${#httpServletRequest.requestURI.startsWith('/featured') ? ' active' : ''}">Featured</a>
+      <a th:href="@{/financing}" th:classappend="${#httpServletRequest.requestURI.startsWith('/financing') ? ' active' : ''}">Financing</a>
+      <a th:href="@{/contact}" th:classappend="${#httpServletRequest.requestURI.startsWith('/contact') ? ' active' : ''}">Contact</a>
+    </nav>
+  </div>
+</header>
+<footer th:fragment="footer">
+  <div class="footer"><div class="foot-inner">
+    <div class="foot-brand">© <span>Horizon<span class="accent">Motors</span></span></div>
+    <div class="foot-links">
+      <a th:href="@{/privacy}">Privacy</a>
+      <a th:href="@{/terms}">Terms</a>
+      <a th:href="@{/contact}">Support</a>
+    </div>
+  </div></div>
+</footer>
+</body></html>

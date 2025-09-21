@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Horizon Motors</title>
+  <link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+  <div th:replace="~{fragments/layout :: topbar}"></div>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Find Your Dream Car</h1>
+      <p>Performance, comfort, and style—curated for you.</p>
+      <div class="hero-actions">
+        <a th:href="@{/browse}" class="btn primary">Browse Inventory</a>
+        <a th:href="@{/browse}" class="btn ghost">View Deals</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features container">
+    <div class="feature">
+      <div class="feature-ico">🏁</div>
+      <h3>Performance</h3>
+      <p>Tuned selections that deliver power and precision.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-ico">🛡️</div>
+      <h3>Certified</h3>
+      <p>Inspected vehicles you can trust on every trip.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-ico">💳</div>
+      <h3>Flexible</h3>
+      <p>Options that fit your budget and timeline.</p>
+    </div>
+  </section>
+
+  <section class="showcase container">
+    <div class="section-head">
+      <h2>Popular Picks</h2>
+      <a th:href="@{/browse}" class="link">See all</a>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="img"></div>
+        <div class="card-body">
+          <div class="title">Sport Coupe</div>
+          <div class="meta">$44,990 • 18k km</div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img"></div>
+        <div class="card-body">
+          <div class="title">Luxury Sedan</div>
+          <div class="meta">$39,450 • 22k km</div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img"></div>
+        <div class="card-body">
+          <div class="title">Family SUV</div>
+          <div class="meta">$42,300 • 15k km</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta container">
+    <div class="cta-box">
+      <div class="cta-copy">
+        <h2>Ready for a test drive?</h2>
+        <p>Book a slot and experience it yourself.</p>
+      </div>
+      <a th:href="@{/browse}" class="btn primary">Book Now</a>
+    </div>
+  </section>
+
+  <div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

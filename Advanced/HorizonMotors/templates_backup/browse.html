@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: page(${pageTitle}, ~{::section})}">
+<body>
+<section class="py-16">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold mb-8">Browse Inventory</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <article th:each="car : ${cars}" class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+        <img th:src="@{${car.imageUrl}}" alt="" class="w-full h-48 object-cover">
+        <div class="p-4 space-y-1">
+          <h3 class="text-xl font-semibold" th:text="${car.make} + ' ' + ${car.model}"></h3>
+          <p class="text-gray-400" th:text="'Year: ' + ${car.year}"></p>
+          <p class="text-gray-400" th:text="'Mileage: ' + ${car.mileage}"></p>
+          <p class="text-blue-400 font-semibold pt-2" th:text="${car.price}"></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><body>
+  <th:block th:fragment="header">
+    <th:block th:insert="~{fragments/navbar :: navbar}"></th:block>
+  </th:block>
+  <th:block th:fragment="footer">
+    <th:block __FOOTER__></th:block>
+  </th:block>
+
+
+</body></html>

@@ -1,0 +1,43 @@
+<footer th:fragment="siteFooter">
+  <style>
+    #hf{--bg1:#0b0f14;--bg2:#0a0d12;--text:#cfd6df;--muted:#98a2b3;--white:#fff;--gold:#f0b33a}
+    #hf{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
+    #hf .wrap{max-width:1120px;margin:0 auto;padding:28px 20px}
+    #hf .top{display:flex;align-items:center;justify-content:space-between}
+    #hf .brand{display:flex;align-items:center;gap:12px}
+    #hf .logo{font-size:20px;font-weight:900;letter-spacing:.08em;color:var(--white)}
+    #hf .dash{width:40px;height:3px;border-radius:999px;background:var(--gold)}
+    #hf .tag{font-size:12px;color:#a7b0bd;font-style:italic}
+    #hf .social{display:flex;gap:14px}
+    #hf .social a{color:#9aa3af;text-decoration:none}
+    #hf .social a:hover{color:var(--gold)}
+    #hf .line{height:1px;background:rgba(255,255,255,.06);margin:14px 0}
+    #hf .bottom{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px}
+    @media (max-width:800px){
+      #hf .top, #hf .bottom{flex-direction:column;align-items:flex-start;gap:10px}
+    }
+  </style>
+
+  <div id="hf">
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <div class="logo">HORIZON MOTORS</div>
+          <div class="dash"></div>
+          <div class="tag">Performance • Luxury</div>
+        </div>
+        <div class="social" aria-label="Social links">
+          <a href="#" title="Instagram">IG</a>
+          <a href="#" title="X">X</a>
+          <a href="#" title="YouTube">YT</a>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="bottom">
+        <div>© <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors — All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>

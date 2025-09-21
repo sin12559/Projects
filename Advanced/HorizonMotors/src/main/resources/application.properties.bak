@@ -1,0 +1,9 @@
+spring.thymeleaf.cache=false
+spring.web.resources.cache.period=0
+spring.web.resources.chain.cache=false
+
+spring.web.resources.cache.period=0
+spring.thymeleaf.cache=false
+
+spring.mvc.media-types.avif=image/avif
+server.error.whitelabel.enabled=false

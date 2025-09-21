@@ -1,0 +1,29 @@
+<div th:fragment="navbar">
+  <style>
+    .lux-nav { display:flex;justify-content:space-between;align-items:center;
+      padding:14px 28px;background:#0b0f14;border-bottom:1px solid rgba(255,255,255,.08);
+      position:sticky;top:0;z-index:1000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }
+    .lux-nav .brand { display:flex;align-items:center;gap:12px;text-decoration:none; }
+    .lux-nav .brand img { height:34px;width:auto;object-fit:contain; }
+    .lux-nav .brand span { font-size:20px;font-weight:800;
+      background:linear-gradient(90deg,#c8a44d,#f0d37a);-webkit-background-clip:text;background-clip:text;color:transparent; }
+    .lux-nav ul { display:flex;list-style:none;gap:26px;margin:0;padding:0; }
+    .lux-nav a { text-decoration:none;font-weight:600;font-size:15px;color:#e6edf3;transition:color .2s ease; }
+    .lux-nav a:hover { color:#f0d37a; }
+    .lux-nav .cta { padding:8px 16px;border-radius:999px;font-weight:800;font-size:15px;
+      background:linear-gradient(90deg,#c8a44d,#f0d37a);color:#0b0f14!important;box-shadow:0 6px 16px rgba(240,211,122,.2); }
+  </style>
+  <nav class="lux-nav">
+    <a th:href="@{/}" class="brand">
+      <img src="/img/logo.svg" alt="Horizon Motors"/>
+      <span>Horizon Motors</span>
+    </a>
+    <ul>
+      <li><a th:href="@{/}">Home</a></li>
+      
+      <li><a th:href="@{/featured}">Featured</a></li><li><a th:href="@{/browse}">Browse</a></li>
+      <li><a th:href="@{/contact}">Contact</a></li>
+      <li><a th:href="@{/purchase}" class="cta">Buy Now</a></li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,1011 @@
+:root{
+  --bg:#0b0f14;--panel:#0f141b;--panel-soft:#121924;--muted:#9aa7b2;
+  --brand:#6d57ff;--brand-2:#60e6ff;--ok:#31d0aa;--warn:#ffce47;
+  --radius:20px;--shadow:0 12px 34px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#e9eef3;font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+a{color:#e9eef3;text-decoration:none}
+img{display:block;max-width:100%}
+.btn{display:inline-block;padding:12px 18px;border-radius:999px;background:#1b2430;transition:.25s ease}
+.btn.primary{background:linear-gradient(90deg,var(--brand),#7e98ff)}
+.btn.secondary{background:#1b2430}
+.btn:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 8px 22px rgba(109,87,255,.28)}
+.topbar{position:sticky;top:0;z-index:5;background:rgba(10,14,20,.8);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+.topbar .inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand .accent{color:var(--brand-2)}
+.nav-links{display:flex;gap:22px}
+.nav-cta .btn{padding:8px 14px}
+.nav-links a{position:relative;opacity:.9;transition:.25s ease}
+.nav-links a.active,.nav-links a:hover{opacity:1}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;background:linear-gradient(90deg,var(--brand),#7e98ff);border-radius:2px}
+.hero{position:relative;min-height:520px;display:flex;align-items:center;background:url("/img/hero/background.avif") center/cover no-repeat #0c1016;border-bottom:1px solid #141c26;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(80% 60% at 50% 20%,rgba(0,0,0,.0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.85) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,14,.15),rgba(8,10,14,.78))}
+.hero .content{position:relative;z-index:1;text-align:center;padding:28px 22px}
+.hero h1{font-size:clamp(36px,5.2vw,58px);line-height:1.06;margin:0 0 10px}
+.hero p{color:#c7d1db;margin:0 0 24px}
+.hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.kpi{background:rgba(255,255,255,.05);border:1px solid #1b2430;border-radius:14px;padding:14px;text-align:center;transition:.25s ease}
+.kpi .num{font-size:22px;font-weight:800}
+.kpi .lbl{font-size:13px;color:var(--muted)}
+.kpi:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.section{padding:42px 0}
+.section h2{font-size:26px;margin:0 0 18px;text-align:center}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.trust .card{background:var(--panel);border:1px solid #1c2632;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:.25s ease}
+.trust .card h3{margin:8px 0 6px}
+.trust .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vehicle{background:var(--panel);border:1px solid #1b2430;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.28s ease}
+.vehicle img{width:100%;height:220px;object-fit:cover}
+.vehicle .info{padding:14px}
+.vehicle:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(0,0,0,.48)}
+.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#18212d;border:1px solid #223042}
+.price{font-weight:800;margin-top:8px}
+.cta-band{background:linear-gradient(90deg,#101827,#0c1220);border:1px solid #1c2632;border-radius:20px;padding:22px;margin-top:10px}
+.cta-band .row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.cta-band h3{margin:0}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testimonial{background:var(--panel-soft);border:1px solid #1c2632;border-radius:var(--radius);padding:16px;transition:.25s ease}
+.testimonial:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.testimonial .who{color:#c7d1db;font-size:14px;margin-top:10px}
+footer{margin-top:40px;border-top:1px solid #1c2632;background:#0a0f15}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;padding:26px 0}
+footer .muted{color:var(--muted);font-size:14px}
+@media (max-width:960px){
+  .inventory{grid-template-columns:repeat(2,1fr)}
+  .trust{grid-template-columns:1fr}
+  .testimonials{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .hero{min-height:64vh}
+  .hero h1{font-size:32px}
+  .hero .cta-row{grid-template-columns:1fr}
+}
+
+/* ===== LUXURY ACCENTS + TEXT ANIMATIONS (no scroll listeners) ===== */
+:root{
+  --lux:#d4af37;             /* classic gold */
+  --lux-2:#f6e27a;           /* soft champagne */
+  --ink:#e9eef3;
+  --lux-glow:0 0 24px rgba(212,175,55,.25);
+}
+
+/* Subtle premium feel across page */
+body{letter-spacing:.15px}
+.topbar{box-shadow: 0 8px 22px rgba(0,0,0,.18)}
+.brand span{letter-spacing:.4px}
+
+/* Gold gradient accent on the brand name */
+.brand .accent{
+  background:linear-gradient(90deg,var(--lux),var(--lux-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+
+/* Primary button: refined gold edge + soft glow on hover */
+.btn.primary{
+  background:linear-gradient(90deg,#6d57ff,#7e98ff);
+  border:1px solid rgba(255,255,255,.08)
+}
+.btn.primary:hover{
+  box-shadow: var(--lux-glow), 0 10px 26px rgba(109,87,255,.28)
+}
+
+/* Secondary button: hairline gold border */
+.btn.secondary{border:1px solid rgba(212,175,55,.25)}
+.btn.secondary:hover{box-shadow: var(--lux-glow)}
+
+/* HERO headline: luxury gradient + gentle animated shimmer */
+.hero h1{
+  background:linear-gradient(90deg,var(--ink) 0%, var(--lux-2) 35%, var(--ink) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;
+  animation:luxShine 6s linear infinite;
+  text-shadow:none
+}
+@keyframes luxShine{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* HERO subtext: slight fade-in on page load (one-time, not scroll) */
+.hero p{
+  opacity:0; animation:txtIn .6s ease .15s forwards
+}
+@keyframes txtIn{to{opacity:1}}
+
+/* KPI numbers: elegant micro pulse on hover (no layout shift) */
+.kpi .num{
+  background:linear-gradient(90deg,var(--ink),var(--lux-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.kpi:hover .num{animation:kpiPulse 1.2s ease both}
+@keyframes kpiPulse{
+  0%{filter:brightness(1)}
+  50%{filter:brightness(1.25)}
+  100%{filter:brightness(1)}
+}
+
+/* Section titles: gold underline that animates on first paint */
+.section h2{
+  position:relative; display:inline-block; padding-bottom:8px
+}
+.section h2::after{
+  content:""; position:absolute; left:50%; bottom:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--lux),var(--lux-2));
+  transform:translateX(-50%);
+  animation:underlineIn .7s ease .1s forwards
+}
+@keyframes underlineIn{to{width:72%}}
+
+/* Cards & vehicles: hairline luxe borders */
+.trust .card,.vehicle,.testimonial,.cta-band{
+  border:1px solid rgba(212,175,55,.08)
+}
+
+/* Featured price: touch of gold */
+.price{color:var(--lux)}
+.filterbar{background:#0f141b;border:1px solid #1c2632;border-radius:16px;padding:12px;margin:18px 0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr auto;gap:10px}
+.filterbar input,.filterbar select{width:100%;background:#121924;border:1px solid #1b2430;border-radius:10px;color:#e9eef3;padding:10px}
+.filterbar .btn{height:42px}
+.grid-meta{display:flex;justify-content:space-between;align-items:center;margin:8px 0 16px;color:#9aa7b2}
+.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vehicle img{width:100%;height:220px;object-fit:cover;background:#0d1218}
+.vehicle .info{padding:14px}
+.badges{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:#18212d;border:1px solid #223042}
+.price{font-weight:800;color:#d4af37;margin-top:8px}
+@media(max-width:960px){.filterbar{grid-template-columns:1fr 1fr 1fr 1fr}.inventory{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.filterbar{grid-template-columns:1fr 1fr}.inventory{grid-template-columns:1fr}}
+
+/* --- Luxe Accent & Card Polish --- */
+:root{
+  --accent:#c6a667;            /* soft gold */
+  --accent-weak:#a89055;
+}
+.accent{ color:var(--accent)!important; }
+.btn.primary{ background:linear-gradient(135deg,var(--accent),#e2cc8f); color:#0b0f14; border:none; }
+.btn.primary:hover{ filter:brightness(1.05); }
+.card{ border:1px solid #222b36; background:#0b1118; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+.topbar .brand span{ letter-spacing:.2px; font-weight:700; }
+select, input, textarea{ border:1px solid #1e2833; border-radius:10px; background:#0f141b; color:#e9eef3; }
+.badge{display:inline-flex;align-items:center;border:1px solid #283444;border-radius:999px;padding:2px 8px;font-size:12px;color:#a8b6c6}
+.badge .dot{width:6px;height:6px;border-radius:999px;background:var(--accent);margin-right:6px}
+
+/* --- Better styling for Compare button --- */
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* --- Better styling for Compare button --- */
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* --- Unified Buttons for Browse page --- */
+.btn.buy-now {
+  background: #d4af37;
+  color: #000;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+.btn.buy-now:hover {
+  background: #b7952a;
+}
+
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* --- Unified Button Styles --- */
+
+/* General button base */
+.btn {
+  border-radius: 30px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+/* Buy Now (primary action) */
+.btn.buy-now {
+  background: #d4af37;
+  color: #000;
+  border: none;
+}
+.btn.buy-now:hover {
+  background: #b7952a;
+}
+
+/* Compare (secondary action) */
+.btn.compare {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+}
+.btn.compare:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* Dark utility buttons (Reset, Apply, etc.) */
+.btn.dark {
+  background: #283444;
+  border: none;
+  color: #fff;
+}
+.btn.dark:hover {
+  background: #3a4b61;
+}
+
+/* === LUXRAY BUTTONS ==================================================== */
+.btn.btn-lux{
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease, background .2s ease, color .2s ease;
+  backdrop-filter: saturate(140%) blur(4px);
+  box-shadow: 0 8px 26px rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+/* Primary (Buy Now) — gold gradient, premium */
+.btn-lux--primary{
+  background: linear-gradient(90deg,#c8a44d,#f0d37a);
+  color:#0b0f14;
+  border:1px solid rgba(240,211,122,.45);
+}
+.btn-lux--primary:hover{ filter:brightness(1.04); }
+.btn-lux--primary:active{ transform: translateY(1px); filter:brightness(.98); }
+
+/* Outline (Compare) — transparent with gold stroke */
+.btn-lux--outline{
+  background: rgba(255,255,255,.03);
+  color:#f0d37a;
+  border:1.5px solid rgba(240,211,122,.55);
+}
+.btn-lux--outline:hover{
+  background: rgba(240,211,122,.12);
+  color:#f7e7a8;
+}
+
+/* Ghost/Dark (Reset, utility) */
+.btn-lux--ghost{
+  background:#1b2430;
+  color:#e6edf3;
+  border:1px solid rgba(255,255,255,.06);
+}
+.btn-lux--ghost:hover{ background:#242f40; }
+
+/* Size helper if you need tighter pills later */
+/* .btn-lux--sm{ padding:8px 16px; font-weight:600; } */
+
+/* === LUXRAY+ BUTTONS === */
+.lux-btn{
+  --gold1:#c8a44d; --gold2:#f0d37a; --ink:#0b0f14; --line:rgba(255,255,255,.08);
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:999px; padding:12px 22px; font-weight:800; letter-spacing:.25px;
+  border:1px solid var(--line); cursor:pointer; user-select:none; -webkit-user-select:none;
+  transition:transform .16s ease, filter .2s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  box-shadow:0 10px 28px rgba(0,0,0,.35); backdrop-filter:saturate(140%) blur(6px);
+}
+.lux-btn:hover{ transform:translateY(-1px); filter:brightness(1.04) }
+.lux-btn:active{ transform:translateY(0); filter:brightness(.98) }
+
+/* Animated gradient shimmer */
+.lux-primary{
+  color:var(--ink);
+  background:linear-gradient(90deg,var(--gold1),var(--gold2),var(--gold1));
+  background-size:200% 100%;
+  border:1px solid rgba(240,211,122,.45);
+  animation:luxShimmer 3.5s linear infinite;
+}
+@keyframes luxShimmer{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
+/* Soft outer glow */
+.lux-primary::before,.lux-outline::before{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; pointer-events:none;
+  box-shadow:0 12px 38px rgba(240,211,122,.24);
+}
+
+/* Outline variant (transparent with premium stroke) */
+.lux-outline{
+  color:var(--gold2);
+  background:rgba(255,255,255,.02);
+  border:1.5px solid rgba(240,211,122,.55);
+}
+.lux-outline:hover{ background:rgba(240,211,122,.12); color:#fff2b8 }
+
+/* Ghost variant (dark utility) */
+.lux-ghost{
+  color:#e6edf3; background:#1b2430; border:1px solid var(--line);
+}
+.lux-ghost:hover{ background:#242f40 }
+
+/* Ripple effect (created by JS) */
+.lux-ripple{
+  position:absolute; border-radius:50%; transform:translate(-50%,-50%) scale(0);
+  pointer-events:none; background:rgba(0,0,0,.18); animation:luxRipple .6s ease-out forwards;
+}
+.lux-outline .lux-ripple{ background:rgba(240,211,122,.25) }
+@keyframes luxRipple{
+  to{ transform:translate(-50%,-50%) scale(6); opacity:0 }
+}
+/* === /LUXRAY+ BUTTONS === */
+
+/***** HORIZON LUXCUT BUTTONS *****/
+.hm-btn{
+  --gold1:#c8a44d; --gold2:#f0d37a; --ink:#0b0f14; --line:rgba(255,255,255,.08);
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  gap:10px; padding:12px 24px; font-weight:800; letter-spacing:.25px;
+  color:#e6edf3; background:rgba(255,255,255,.02); border:1px solid var(--line);
+  /* unique shape: pill with a diagonal cut on the right */
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  border-radius:16px; cursor:pointer; user-select:none;
+  transition:transform .16s ease, filter .22s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,.35); backdrop-filter:saturate(140%) blur(6px);
+}
+.hm-btn:hover{ transform:translateY(-1px); filter:brightness(1.04) }
+.hm-btn:active{ transform:translateY(0); filter:brightness(.98) }
+
+/* ripple */
+.hm-btn .ripple{ position:absolute; border-radius:50%; transform:translate(-50%,-50%) scale(0); pointer-events:none;
+  background:rgba(255,255,255,.15); animation:ripple .6s ease-out forwards }
+@keyframes ripple{ to{ transform:translate(-50%,-50%) scale(6); opacity:0 } }
+
+/* BUY (filled gold + shimmer sweep) */
+.hm-btn--buy{
+  color:var(--ink);
+  background:linear-gradient(100deg,var(--gold1),var(--gold2));
+  border:1px solid rgba(240,211,122,.45);
+  box-shadow:0 14px 36px rgba(240,211,122,.28), inset 0 0 0 1px rgba(0,0,0,.05);
+  overflow:hidden;
+}
+.hm-btn--buy::after{
+  content:""; position:absolute; inset:-40%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:translateX(-120%); filter:blur(6px); pointer-events:none;
+  animation:shine 3.5s linear infinite;
+}
+@keyframes shine{ to{ transform:translateX(120%) } }
+
+/* COMPARE (glass outline + glow) */
+.hm-btn--compare{
+  color:var(--gold2);
+  background:rgba(255,255,255,.03);
+  border:1.5px solid rgba(240,211,122,.55);
+  box-shadow:0 10px 28px rgba(240,211,122,.16);
+}
+.hm-btn--compare:hover{ background:rgba(240,211,122,.12); color:#fff3bd }
+
+/* GHOST (dark utility) */
+.hm-btn--ghost{ background:#1b2430; color:#e6edf3; }
+.hm-btn--ghost:hover{ background:#242f40 }
+
+/* Optional icon chip on the cut corner */
+.hm-btn .chip{
+  position:absolute; right:-1px; top:-1px; width:34px; height:34px;
+  display:grid; place-items:center; background:rgba(0,0,0,.18); color:#fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%); border-bottom-left-radius:10px; font-size:12px;
+}
+.hm-btn--buy .chip{ background:rgba(0,0,0,.12); color:#0b0f14 }
+/***** END LUXCUT *****/
+
+/* === RECTANGULAR BUTTONS === */
+.btn-rect{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:44px; padding:0 18px; border-radius:12px; font-weight:700;
+  letter-spacing:.2px; cursor:pointer; user-select:none;
+  transition:transform .12s ease, filter .18s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+}
+.btn-rect:hover{ transform:translateY(-1px); filter:brightness(1.03) }
+.btn-rect:active{ transform:translateY(0); filter:brightness(.98) }
+
+/* Primary (Buy Now) — solid gold */
+.btn-rect--primary{
+  background:#d4af37; color:#0b0f14; border:1px solid rgba(240,211,122,.55);
+}
+.btn-rect--primary:hover{ background:#b8952f }
+
+/* Secondary (Compare) — dark outline */
+.btn-rect--secondary{
+  background:transparent; color:#f0d37a; border:2px solid rgba(240,211,122,.55);
+}
+.btn-rect--secondary:hover{ background:rgba(240,211,122,.12); color:#fff3bd }
+
+/* Utility (Reset/toolbar) */
+.btn-rect--ghost{
+  background:#1b2430; color:#e6edf3; border:1px solid rgba(255,255,255,.08);
+}
+.btn-rect--ghost:hover{ background:#242f40 }
+
+/* Actions row inside the card */
+.card-actions{
+  display:flex; gap:10px; margin-top:10px;
+}
+.card-actions .btn-rect{ flex:1 1 0; }  /* two equal rectangular buttons */
+/* === /RECTANGULAR BUTTONS === */
+
+/* === RECTANGULAR BUTTON SIZE FIX === */
+.btn-rect{
+  height:36px;               /* down from 44px */
+  padding:0 14px;            /* narrower horizontal padding */
+  font-size:0.85rem;         /* smaller font */
+  border-radius:8px;         /* less rounded */
+}
+
+.card-actions{
+  gap:6px;                   /* tighter spacing */
+  margin-top:6px;
+}
+.card-actions .btn-rect{
+  flex:1 1 0;
+  max-width: 120px;          /* keep them from stretching too wide */
+}
+/* === /RECTANGULAR BUTTON SIZE FIX === */
+
+/* === RECTANGULAR BUTTON WIDTH FIX === */
+.card-actions{
+  display:flex; gap:6px; margin-top:6px; justify-content:flex-start;
+}
+
+.card-actions .btn-rect{
+  flex:0 0 auto;       /* no stretch */
+  height:32px;         /* smaller height */
+  padding:0 12px;      /* tighter padding */
+  font-size:0.8rem;    /* compact font */
+  border-radius:6px;   /* small rounded corners */
+  min-width:90px;      /* fixed width so they look uniform */
+  max-width:95px;
+  text-align:center;
+}
+/* === /RECTANGULAR BUTTON WIDTH FIX === */
+
+/* === COMPACT RECTANGULAR BUTTONS === */
+.card-actions{
+  display:flex;
+  gap:5px;
+  margin-top:6px;
+  justify-content:center;   /* center under card */
+}
+
+.card-actions .btn-rect{
+  flex:0 0 auto;
+  height:28px;          /* smaller height */
+  padding:0 10px;       /* tighter padding */
+  font-size:0.75rem;    /* smaller font */
+  border-radius:4px;    /* almost square corners */
+  min-width:75px;       /* small fixed width */
+  max-width:80px;
+  text-align:center;
+}
+/* === /COMPACT RECTANGULAR BUTTONS === */
+
+/* === COMPACT RECTANGULAR INVENTORY BUTTONS === */
+.card-actions{
+  display:flex;
+  gap:6px;
+  margin-top:6px;
+  justify-content:center;
+}
+
+/* Only affect buttons inside inventory cards */
+.card-actions .btn-rect--primary,
+.card-actions .btn-rect--secondary {
+  flex:0 0 auto;
+  height:28px;         /* smaller height */
+  padding:0 10px;      /* narrow padding */
+  font-size:0.75rem;   /* smaller font */
+  border-radius:4px;   /* rectangular look */
+  min-width:78px;      /* fixed width */
+  max-width:82px;
+  text-align:center;
+}
+
+/***** INVENTORY CARD: FORCE COMPACT RECTANGLE BUTTONS *****/
+.card-actions{ display:flex; gap:6px; margin-top:6px; justify-content:center }
+
+.card-actions a.btn-rect.btn-rect--primary,
+.card-actions button.btn-rect.btn-rect--primary,
+.card-actions a.btn-rect.btn-rect--secondary,
+.card-actions button.btn-rect.btn-rect--secondary{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:28px !important;            /* compact height  */
+  min-width:78px !important;          /* small, fixed width */
+  max-width:82px !important;
+  padding:0 10px !important;
+  font-size:.75rem !important;
+  font-weight:700 !important;
+  border-radius:4px !important;       /* true rectangle corners */
+  line-height:1 !important;
+  box-shadow:0 8px 16px rgba(0,0,0,.25) !important;
+}
+
+/* Primary (Buy Now): solid gold */
+.card-actions .btn-rect--primary{
+  background:#d4af37 !important;
+  color:#0b0f14 !important;
+  border:1px solid rgba(240,211,122,.55) !important;
+}
+.card-actions .btn-rect--primary:hover{ background:#b8952f !important }
+
+/* Secondary (Compare): gold outline, transparent fill */
+.card-actions .btn-rect--secondary{
+  background:transparent !important;
+  color:#f0d37a !important;
+  border:2px solid rgba(240,211,122,.55) !important;
+}
+.card-actions .btn-rect--secondary:hover{
+  background:rgba(240,211,122,.12) !important;
+  color:#fff3bd !important;
+}
+/***** END FORCE RECTANGLE *****/
+
+/***** FORCE COMPACT RECTANGLE BUTTONS (BROWSE CARDS ONLY) *****/
+.card-actions{
+  display:flex !important;
+  gap:6px !important;
+  margin-top:6px !important;
+  justify-content:center !important;
+}
+
+/* Compare (outlined rectangle) */
+.card-actions [data-role="compare"]{
+  all: unset !important;
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  height:28px !important; min-width:80px !important; max-width:84px !important;
+  padding:0 10px !important; font:700 0.75rem/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  border-radius:4px !important; text-align:center !important; cursor:pointer !important;
+  background:transparent !important; color:#f0d37a !important;
+  border:2px solid rgba(240,211,122,.55) !important;
+  box-shadow:0 6px 14px rgba(0,0,0,.22) !important;
+}
+.card-actions [data-role="compare"]:hover{
+  background:rgba(240,211,122,.12) !important; color:#fff3bd !important;
+}
+
+/* Buy Now (filled rectangle) */
+.card-actions [data-role="buy"]{
+  all: unset !important;
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  height:28px !important; min-width:80px !important; max-width:84px !important;
+  padding:0 10px !important; font:800 0.75rem/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  border-radius:4px !important; text-align:center !important; cursor:pointer !important;
+  background:#d4af37 !important; color:#0b0f14 !important;
+  border:1px solid rgba(240,211,122,.55) !important;
+  box-shadow:0 6px 14px rgba(240,211,122,.20) !important;
+}
+.card-actions [data-role="buy"]:hover{ background:#b8952f !important }
+/***** END FORCE *****/
+
+/***** INVENTORY CARD ACTIONS — REFINED *****/
+.card-actions{
+  display:flex !important;
+  justify-content:center !important;
+  gap:8px !important;
+  margin-top:10px !important;
+  padding-top:8px !important;
+  border-top:1px solid rgba(255,255,255,.06) !important; /* subtle divider */
+}
+
+/* Shared button polish */
+.card-actions [data-role="compare"],
+.card-actions [data-role="buy"]{
+  all: unset !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:30px !important;              /* a hair taller so text breathes */
+  min-width:96px !important;           /* ensure "Buy Now" fits cleanly */
+  max-width:96px !important;
+  padding:0 12px !important;
+  font:600 0.78rem/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing:.15px !important;
+  border-radius:6px !important;        /* crisp rectangle */
+  white-space:nowrap !important;
+  box-shadow:0 4px 10px rgba(0,0,0,.18) !important;  /* lighter, premium */
+  transition:background .18s ease, color .18s ease, border-color .18s ease, transform .12s ease !important;
+}
+.card-actions [data-role="compare"]:active,
+.card-actions [data-role="buy"]:active{ transform:translateY(0) !important }
+
+/* Compare — clean dark outline (no gold fill) */
+.card-actions [data-role="compare"]{
+  background:transparent !important;
+  color:#cfd7df !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+}
+.card-actions [data-role="compare"]:hover{
+  background:rgba(255,255,255,.06) !important;
+  color:#ffffff !important;
+  border-color:rgba(255,255,255,.28) !important;
+}
+
+/* Buy Now — solid gold with refined hover */
+.card-actions [data-role="buy"]{
+  background:#d4af37 !important;
+  color:#0b0f14 !important;
+  border:1px solid rgba(240,211,122,.55) !important;
+}
+.card-actions [data-role="buy"]:hover{ background:#c19a2f !important }
+
+/* Remove any older pill styles that might still leak through */
+.card-actions .btn,
+.card-actions .btn-rect,
+.card-actions .lux-btn{ all: unset !important }
+
+/***** LUXURY INVENTORY BUTTONS *****/
+.card-actions{
+  display:flex !important;
+  justify-content:center !important;
+  gap:10px !important;
+  margin-top:12px !important;
+  padding-top:10px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Shared luxury button base */
+.card-actions button,
+.card-actions [data-role="compare"],
+.card-actions [data-role="buy"]{
+  all: unset !important;
+  cursor:pointer !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:110px !important;
+  height:34px !important;
+  padding:0 14px !important;
+  border-radius:8px !important;
+  font:600 0.8rem/1.2 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing:.2px !important;
+  transition:all .25s ease !important;
+  white-space:nowrap !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1), 0 4px 14px rgba(0,0,0,.2) !important;
+}
+
+/* Luxury Compare Button (dark glass) */
+.card-actions [data-role="compare"]{
+  background:rgba(255,255,255,.05) !important;
+  backdrop-filter:blur(4px) !important;
+  color:#e0e0e0 !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+}
+.card-actions [data-role="compare"]:hover{
+  background:rgba(255,255,255,.15) !important;
+  color:#ffffff !important;
+  box-shadow:0 0 8px rgba(255,255,255,.2) !important;
+}
+
+/* Luxury Buy Now Button (gold gradient) */
+.card-actions [data-role="buy"]{
+  background:linear-gradient(135deg, #d4af37, #f9e076) !important;
+  color:#0c0c0c !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+  text-shadow:0 1px 1px rgba(255,255,255,.5) !important;
+}
+.card-actions [data-role="buy"]:hover{
+  background:linear-gradient(135deg, #f1c40f, #f9e076) !important;
+  box-shadow:0 0 12px rgba(212,175,55,.8), 0 6px 20px rgba(0,0,0,.25) !important;
+  transform:translateY(-2px) !important;
+}
+
+/* Click animation */
+.card-actions [data-role="buy"]:active,
+.card-actions [data-role="compare"]:active{
+  transform:scale(.97) !important;
+  box-shadow:0 0 6px rgba(0,0,0,.3) inset !important;
+}
+
+/***** FIXED LUXURY INVENTORY BUTTONS *****/
+.card-actions{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin-top:10px !important;
+  padding-top:8px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+  flex-wrap:nowrap !important;
+}
+
+/* Shared button base */
+.card-actions button,
+.card-actions [data-role="compare"],
+.card-actions [data-role="buy"]{
+  all:unset !important;
+  cursor:pointer !important;
+  flex:1 1 auto !important;   /* allow shrink/grow */
+  max-width:48% !important;   /* keep both buttons inside card */
+  height:32px !important;
+  padding:0 10px !important;
+  border-radius:6px !important;
+  font:600 0.78rem/1.2 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif !important;
+  letter-spacing:.2px !important;
+  text-align:center !important;
+  transition:all .25s ease !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* Compare: glassy dark */
+.card-actions [data-role="compare"]{
+  background:rgba(255,255,255,.06) !important;
+  backdrop-filter:blur(3px) !important;
+  color:#e6e6e6 !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+}
+.card-actions [data-role="compare"]:hover{
+  background:rgba(255,255,255,.15) !important;
+  color:#fff !important;
+}
+
+/* Buy Now: luxury gold */
+.card-actions [data-role="buy"]{
+  background:linear-gradient(135deg,#d4af37,#f9e076) !important;
+  color:#0d0d0d !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+}
+.card-actions [data-role="buy"]:hover{
+  background:linear-gradient(135deg,#f1c40f,#f9e076) !important;
+  transform:translateY(-1px) !important;
+  box-shadow:0 3px 10px rgba(212,175,55,.5) !important;
+}
+.card-actions [data-role="buy"]:active,
+.card-actions [data-role="compare"]:active{
+  transform:scale(.96) !important;
+}
+
+/***** HORIZON — LUX MATCHED BUTTON ROW *****/
+.card-actions{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  margin-top:12px !important;
+  padding-top:10px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Shared base: identical size & weight */
+.card-actions [data-role="compare"],
+.card-actions [data-role="buy"]{
+  all:unset !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex:1 1 0% !important;          /* equal halves */
+  max-width:calc(50% - 5px) !important;
+  height:32px !important;
+  padding:0 12px !important;
+  border-radius:6px !important;    /* crisp rectangle */
+  font:600 0.78rem/1 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif !important;
+  letter-spacing:.2px !important;
+  white-space:nowrap !important;
+  text-overflow:ellipsis !important;
+  overflow:hidden !important;
+  box-shadow:0 3px 10px rgba(0,0,0,.18) !important;
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .12s ease !important;
+}
+.card-actions [data-role="compare"]:active,
+.card-actions [data-role="buy"]:active{ transform:translateY(0) scale(.98) !important }
+
+/* Compare — elegant glass outline */
+.card-actions [data-role="compare"]{
+  background:rgba(255,255,255,.06) !important;
+  color:#e6edf3 !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  backdrop-filter:blur(3px) !important;
+}
+.card-actions [data-role="compare"]:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(255,255,255,.30) !important;
+  color:#ffffff !important;
+}
+
+/* Buy Now — refined gold fill */
+.card-actions [data-role="buy"]{
+  background:linear-gradient(135deg,#d4af37,#f6dc7a) !important;
+  color:#0b0f14 !important;
+  border:1px solid rgba(240,211,122,.55) !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.35) !important;
+}
+.card-actions [data-role="buy"]:hover{
+  background:linear-gradient(135deg,#cda532,#f0d167) !important;
+}
+/***** END LUX MATCHED BUTTON ROW *****/
+
+/* --- Horizon card footer buttons: small luxury rectangles (CSS-only) --- */
+/* Scope: only buttons inside vehicle cards (won't affect toolbar) */
+.card .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:28px;
+  padding:0 10px;
+  min-width:80px;
+  max-width:100px;
+  border-radius:4px;            /* rectangular corners */
+  font:600 0.75rem/1 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  letter-spacing:.2px;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  transition:background .2s ease, border-color .2s ease, color .2s ease, transform .12s ease;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+/* Compare (plain .btn inside card) — dark glass outline */
+.card .btn:not(.primary){
+  background:rgba(255,255,255,.06);
+  color:#e6edf3;
+  border:1px solid rgba(255,255,255,.20);
+}
+.card .btn:not(.primary):hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.28);
+  color:#ffffff;
+}
+
+/* Buy Now (.btn.primary inside card) — refined gold fill */
+.card .btn.primary{
+  background:linear-gradient(135deg,#d4af37,#f6dc7a);
+  color:#0b0f14;
+  border:1px solid rgba(240,211,122,.55);
+  text-shadow:0 1px 0 rgba(255,255,255,.3);
+}
+.card .btn.primary:hover{
+  background:linear-gradient(135deg,#cda532,#f0d167);
+}
+
+/* Keep the two buttons tidy on one row */
+.card .btn + .btn{ margin-left:8px }
+
+/* --- Fix buttons staying inside card footer --- */
+.card .card-footer{
+  display:flex;
+  justify-content:space-between;   /* spread Compare + Ask evenly */
+  align-items:center;
+  gap:6px;
+  flex-wrap:nowrap;
+  padding:6px 8px;
+}
+
+.card .btn{
+  flex:1;                          /* buttons scale equally */
+  max-width:48%;                   /* each stays within half the footer */
+  height:28px;
+  padding:0 8px;
+  border-radius:4px;
+  font-size:0.75rem;
+  font-weight:600;
+  text-align:center;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+/* Compare button */
+.card .btn:not(.primary){
+  background:rgba(255,255,255,.06);
+  color:#e6edf3;
+  border:1px solid rgba(255,255,255,.2);
+}
+.card .btn:not(.primary):hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.28);
+}
+
+/* Ask (Buy) button */
+.card .btn.primary{
+  background:linear-gradient(135deg,#d4af37,#f6dc7a);
+  color:#0b0f14;
+  border:1px solid rgba(240,211,122,.55);
+}
+.card .btn.primary:hover{
+  background:linear-gradient(135deg,#cda532,#f0d167);
+}
+
+/* === Card footer grid to stop button overflow === */
+.card .card-footer{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;   /* two equal columns for the buttons */
+  grid-auto-rows: auto !important;
+  gap: 8px !important;
+  padding: 8px 10px !important;
+  box-sizing: border-box !important;
+}
+
+/* Put the first item (ID badge) on its own row across both columns */
+.card .card-footer > :first-child{
+  grid-column: 1 / -1 !important;
+  margin-bottom: 2px !important;
+}
+
+/* Buttons: full-width cells inside the grid (no overflow) */
+.card .card-footer .btn{
+  grid-column: auto / span 1 !important;   /* each occupies one column */
+  width: 100% !important;
+  min-width: 0 !important;                 /* allow shrink */
+  height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 4px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+}
+
+/* Compare (outline) */
+.card .card-footer .btn:not(.primary){
+  background: rgba(255,255,255,.06) !important;
+  color: #e6edf3 !important;
+  border: 1px solid rgba(255,255,255,.20) !important;
+}
+.card .card-footer .btn:not(.primary):hover{
+  background: rgba(255,255,255,.12) !important;
+  border-color: rgba(255,255,255,.28) !important;
+}
+
+/* Ask / Buy (gold) */
+.card .card-footer .btn.primary{
+  background: linear-gradient(135deg,#d4af37,#f6dc7a) !important;
+  color: #0b0f14 !important;
+  border: 1px solid rgba(240,211,122,.55) !important;
+}
+.card .card-footer .btn.primary:hover{
+  background: linear-gradient(135deg,#cda532,#f0d167) !important;
+}

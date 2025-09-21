@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Browse Inventory — Horizon Motors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container inner">
+      <a href="/" class="brand">
+        <img src="/img/logo.svg" alt="" width="28" height="28">
+        <span>Horizon<span class="accent">Motors</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" >Home</a>
+        <a href="/browse" >Browse</a>
+        <a href="/financing">Financing</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/contact" class="btn">Sell / Trade</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>Browse Our Inventory</h1>
+      <div class="inventory">
+        <div class="vehicle" th:each="v : ${vehicles}">
+          <img th:src="@{${v.image}}" th:alt="${v.make} + ' ' + ${v.model}">
+          <div class="info">
+            <strong th:text="${v.make} + ' ' + ${v.model}">Car</strong>
+            <div class="badges">
+              <span class="badge" th:each="b : ${v.badges}" th:text="${b}">Spec</span>
+            </div>
+            <div class="price" th:text="'Starting at $' + ${v.price}">Price</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container cols">
+      <div>
+        <div class="brand"><img src="/img/logo.svg" alt="" width="22" height="22"><span>Horizon<span class="accent">Motors</span></span></div>
+        <p class="muted">Performance & premium used vehicles. Serving GTA and beyond.</p>
+      </div>
+      <div>
+        <div class="muted">Visit</div>
+        <div>1200 Lakeshore Blvd W<br>Toronto, ON</div>
+      </div>
+      <div>
+        <div class="muted">Contact</div>
+        <div><a href="tel:+14165551234">(416) 555-1234</a><br><a href="mailto:sales@horizonmotors.ca">sales@horizonmotors.ca</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

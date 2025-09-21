@@ -1,0 +1,41 @@
+<footer th:fragment="siteFooter" class="site-footer">
+  <style>
+    .site-footer { background: linear-gradient(180deg, #0b0f14, #0a0d12); color: #cfd6df; }
+    .site-footer .container { max-width: 1120px; margin: 0 auto; padding: 20px; }
+    .site-footer .row { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .site-footer .brand { display:flex; align-items:center; gap:12px; }
+    .site-footer .logo { font-weight:900; letter-spacing:.08em; color:#fff; font-size:18px; }
+    .site-footer .accent { width:36px; height:3px; border-radius:999px; background:#f0b33a; }
+    .site-footer .muted { color:#98a2b3; font-size:12px; }
+    .site-footer .line { height:1px; background:rgba(255,255,255,.06); margin:12px 0; }
+    .site-footer .social a { margin-left:14px; color:#9aa3af; text-decoration:none; }
+    .site-footer .social a:hover { color:#f0b33a; }
+    @media (max-width:800px){
+      .site-footer .row { flex-direction:column; align-items:flex-start; }
+      .site-footer .social a { margin-left:0; margin-right:14px; }
+    }
+  </style>
+
+  <div class="container">
+    <div class="row">
+      <div class="brand">
+        <div class="logo">HORIZON MOTORS</div>
+        <div class="accent"></div>
+        <div class="muted">Performance • Luxury</div>
+      </div>
+      <div class="social" aria-label="Social links">
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="X">X</a>
+        <a href="#" title="YouTube">YT</a>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="row">
+      <div class="muted">
+        © <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Horizon Motors — All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,10 @@
+document.addEventListener("DOMContentLoaded",()=>{
+  const here = location.pathname.replace(/\/+$/,'') || '/';
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    const href = (a.getAttribute('href')||'').replace(/\/+$/,'') || '/';
+    if((here === '/' && href === '/') || (here !== '/' && here.startsWith(href))) {
+      a.style.opacity = "1";
+      a.style.fontWeight = "700";
+    }
+  });
+});

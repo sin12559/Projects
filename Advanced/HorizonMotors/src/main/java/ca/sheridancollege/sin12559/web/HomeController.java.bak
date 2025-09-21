@@ -1,0 +1,85 @@
+package ca.sheridancollege.sin12559.web;
+
+import java.util.List;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class HomeController {
+
+    public record Car(String id, String make, String model, int year,
+                      String price, String mileage, String transmission, String imageUrl) {}
+
+    private List<Car> sampleCars() {
+        return List.of(
+            new Car("1","Tesla","Model S",2022,"$89,990","24,500 km","Automatic","/images/tesla.jpg"),
+            new Car("2","Ferrari","488 GTB",2019,"$279,900","12,300 km","DCT","/images/ferrari.jpg"),
+            new Car("3","BMW","M3",2021,"$86,500","18,200 km","Automatic","/images/bmw.jpg"),
+            new Car("4","Mercedes","C300",2020,"$39,800","35,000 km","Automatic","/images/merc.jpg"),
+            new Car("5","Lamborghini","Huracán",2018,"$315,000","9,100 km","DCT","/images/lambo.jpg")
+        );
+    }
+
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("pageTitle", "Home");
+        return "index";
+    }
+
+    @GetMapping("/cars")
+    public String cars(Model model) {
+        model.addAttribute("pageTitle", "Cars");
+        model.addAttribute("cars", sampleCars());
+        return "cars/list";
+    }
+
+    @GetMapping("/browse")
+    public String browse(Model model) {
+        model.addAttribute("pageTitle", "Browse");
+        model.addAttribute("cars", sampleCars());
+        return "browse";
+    }
+
+    @GetMapping("/financing")
+    public String financing(
+        @RequestParam(value="price", required=false) Integer price,
+        @RequestParam(value="rate", required=false) Double rate,
+        @RequestParam(value="months", required=false) Integer months,
+        Model model
+    ) {
+        model.addAttribute("pageTitle", "Financing");
+        if (price != null && rate != null && months != null && price > 0 && months > 0 && rate >= 0) {
+            double r = rate / 100.0 / 12.0;
+            double pmt = (r == 0) ? (price / (double) months)
+                    : (price * r) / (1 - Math.pow(1 + r, -months));
+            model.addAttribute("payment", String.format("$%,.2f", pmt));
+        }
+        model.addAttribute("price", price);
+        model.addAttribute("rate", rate);
+        model.addAttribute("months", months);
+        return "financing";
+    }
+
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        model.addAttribute("pageTitle", "Contact");
+        return "contact";
+    }
+
+    @PostMapping("/contact")
+    public String contactSubmit(@RequestParam String name,
+                                @RequestParam String email,
+                                @RequestParam(required=false) String phone,
+                                @RequestParam String message,
+                                Model model) {
+        model.addAttribute("sent", true);
+        model.addAttribute("pageTitle", "Contact");
+        return "contact";
+    }
+}
+
+    @GetMapping("/browse")
+    public String browseRedirect() {
+        return "redirect:/cars";
+    }

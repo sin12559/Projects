@@ -1,16 +1,16 @@
 package ca.sheridancollege.sin12559.Database;
 
-import ca.sheridancollege.sin12559.beans.Horizon;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HorizonDBMS {
-  public static ArrayList<Horizon> horizondata = new ArrayList<>();
-}
+    private static final List<String> data = new ArrayList<>();
 
-import java.util.ArrayList;
+    public static void add(String item) {
+        data.add(item);
+    }
 
-import ca.sheridancollege.sin12559.beans.Horizon;
-
-public class HorizonDBMS {
-	public static ArrayList<Horizon> horizondata = new ArrayList<>();
+    public static List<String> getAll() {
+        return new ArrayList<>(data);
+    }
 }

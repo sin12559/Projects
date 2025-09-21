@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><title>Featured — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <style>
+    .ribbon{position:absolute;left:12px;top:12px;background:var(--accent);color:#07101a;padding:6px 10px;border-radius:8px;font-weight:700}
+    .status{position:absolute;right:12px;top:12px;background:#e63946;padding:4px 10px;border-radius:8px;font-size:12px}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container inner">
+    <a th:href="@{/}" class="brand">
+      <img src="/img/logo.svg" width="28" height="28" alt="">
+      <span>Horizon<span class="accent">Motors</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a th:href="@{/}" th:classappend="${#httpServletRequest.requestURI == '/' ? ' active' : ''}">Home</a>
+      <a th:href="@{/browse}" th:classappend="${#httpServletRequest.requestURI.startsWith('/browse') ? ' active' : ''}">Browse</a>
+      <a th:href="@{/featured}" th:classappend="${#httpServletRequest.requestURI.startsWith('/featured') ? ' active' : ''}">Featured</a>
+      <a th:href="@{/financing}" th:classappend="${#httpServletRequest.requestURI.startsWith('/financing') ? ' active' : ''}">Financing</a>
+      <a th:href="@{/contact}" th:classappend="${#httpServletRequest.requestURI.startsWith('/contact') ? ' active' : ''}">Contact</a>
+    </nav>
+  </div>
+</header>
+<main class="section">
+  <div class="container">
+    <h1>Featured Collection</h1>
+    <p class="muted">Curated exotics & flagship models. Some vehicles are POA / Sold / Coming Soon.</p>
+
+    <div class="grid cars" style="margin-top:16px">
+      <div class="card" th:each="v : ${featured}" style="position:relative">
+        <div class="ribbon">Featured</div>
+        <div class="status" th:if="${v.status != 'AVAILABLE'}" th:text="${v.status}">SOLD</div>
+        <img th:src="${v.img}" alt="" style="width:100%;height:180px;object-fit:cover;border-top-left-radius:12px;border-top-right-radius:12px">
+        <div class="body" style="padding:14px">
+          <div style="display:flex;justify-content:space-between;gap:10px">
+            <strong th:text="${v.year + ' ' + v.make + ' ' + v.model}">2020 Huracán EVO</strong>
+            <div style="font-weight:800" th:text="${v.price>0 ? '$' + #numbers.formatInteger(v.price,3,'COMMA') : 'POA'}">$429,900</div>
+          </div>
+          <div class="muted" th:text="${v.body + ' • ' + v.drive}">Coupe • AWD</div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+            <a class="btn" href="/browse?q=">See All</a>
+            <a class="btn primary" href="/contact">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container cols">
+    <div><div class="brand"><img src="/img/logo.svg" width="22" height="22" alt=""><span>Horizon<span class="accent">Motors</span></span></div>
+      <p class="muted" style="max-width:520px">Performance & premium used vehicles. Serving GTA and beyond.</p></div>
+    <div><div class="muted">Contact</div>
+      <div><a href="tel:+14165551234">(416) 555-1234</a><br><a href="mailto:sales@horizonmotors.ca">sales@horizonmotors.ca</a></div></div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+
+
+/* === Specialist hero (contact top) === */
+.specialist-hero{
+  /* subtle dark overlay + image */
+  background-image: linear-gradient( to bottom, rgba(8,12,16,.55), rgba(8,12,16,.55) ), url("/images/garage.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 56px 28px;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.specialist-hero h1,
+.specialist-hero h2,
+.specialist-hero p { color: #e8edf4; }
+.specialist-hero .chip,
+.specialist-hero .badge { box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+
+/* === Contact — Specialist hero background (applied via JS class) === */
+.specialist-hero{
+  background-image:
+    linear-gradient(to bottom, rgba(8,12,16,.55), rgba(8,12,16,.55)),
+    url("/images/garage.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+.specialist-hero h1,
+.specialist-hero h2,
+.specialist-hero p{ color:#e8edf4; }

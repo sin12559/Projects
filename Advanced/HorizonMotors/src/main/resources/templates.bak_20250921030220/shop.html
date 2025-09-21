@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+<link rel="stylesheet" th:href="@{/css/site.css}" href="/css/site.css">
+    <meta charset="UTF-8">
+    <title>Browse Cars - HorizonMotors</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{~{fragments :: header}}"></div>
+<main class="page container">
+<div th:replace="~{fragments :: header}"></div>
+<main>
+    <h1>Browse Cars</h1>
+    <div class="car-grid">
+        <div class="car" th:each="car : ${cars}">
+            <img th:src="@{${car.image}}" th:alt="${car.make} + ' ' + ${car.model}">
+            <h2 th:text="${car.make} + ' ' + ${car.model}"></h2>
+            <p th:text="${car.description}"></p>
+            <p th:text="${car.price}"></p>
+        </div>
+    </div>
+</main>
+
+
+</main>
+<div th:replace="~{~{fragments :: footer}}"></div>
+
+__FOOTER__
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><title>Featured — HorizonMotors</title>
+  <link rel="stylesheet" href="/css/site.css" th:href="@{/css/site.css}">
+  <style>
+    .grid.cars{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+    .ribbon{position:absolute;left:12px;top:12px;background:var(--accent);color:#0b0f14;padding:4px 10px;border-radius:999px;font-size:12px}
+    .status{position:absolute;top:12px;right:12px;background:#e63946;padding:4px 10px;border-radius:8px;font-size:12px}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container inner">
+    <a href="/" class="brand"><img src="/img/logo.svg" width="28" height="28" alt=""><span>Horizon<span class="accent">Motors</span></span></a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/browse">Browse</a>
+      <a href="/featured" class="active">Featured</a>
+      <a href="/financing">Financing</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <h1>Featured Collection</h1>
+    <p class="muted">Curated exotics & flagship models. Some are <b>POA</b> or marked <b>Sold</b>/<b>Coming Soon</b>.</p>
+
+    <div class="grid cars" style="margin-top:16px">
+      <!-- Loop everything, show only featured -->
+      <div class="card" style="position:relative"
+           th:each="v : ${#beans['inMemoryStore'].vehicles}"
+           th:if="${v.featured}">
+        <div class="ribbon">Featured</div>
+        <div class="status" th:if="${v.status!='AVAILABLE'}" th:text="${v.status}">SOLD</div>
+        <img th:src="${v.img}"
+             onerror="this.onerror=null;this.src='/img/placeholder.jpg';"
+             alt="">
+        <div class="body">
+          <div style="display:flex;justify-content:space-between;gap:10px">
+            <strong th:text="${v.year + ' ' + v.make + ' ' + v.model}">2020 Huracán EVO</strong>
+            <div style="font-weight:800" th:text="${v.price>0 ? '$' + #numbers.formatInteger(v.price,3,'COMMA') : 'POA'}">POA</div>
+          </div>
+          <div class="muted" th:text="${v.body + ' • ' + v.drive}">Coupe • AWD</div>
+          <div style="margin-top:8px;text-align:right">
+            <a class="btn primary" href="/contact">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

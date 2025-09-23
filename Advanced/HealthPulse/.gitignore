@@ -1,5 +1,16 @@
-node_modules
+# Node
+node_modules/
 npm-debug.log*
-.env
+yarn-debug.log*
+yarn-error.log*
 .DS_Store
-coverage
+
+# Env & build
+.env
+coverage/
+dist/
+build/
+
+# Local backups
+backups/
+src/server.js.bak.*

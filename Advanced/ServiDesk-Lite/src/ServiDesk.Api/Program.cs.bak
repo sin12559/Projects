@@ -12,8 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 // Ensure DB & tables exist
 using (var scope = app.Services.CreateScope())
@@ -49,7 +47,4 @@ app.MapDelete("/api/tickets/{id:int}", async (AppDb db, int id) => {
   db.Tickets.Remove(t); await db.SaveChangesAsync(); return Results.NoContent();
 });
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-app.MapGet("/", () => Results.Redirect("/index.html"));
 app.Run();

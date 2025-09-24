@@ -1,0 +1,35 @@
+:root { --radius: 14px; --stroke: #e5e7eb; --txt: #0f172a; }
+body { background: #f6f8fb; color: var(--txt); }
+
+/* Surfaces */
+.card { border: 1px solid var(--stroke); border-radius: var(--radius); background: #fff; }
+.card-header { border-bottom: 1px solid var(--stroke); }
+.kpi-value { font-size: 1.8rem; font-weight: 800; letter-spacing: .2px; }
+.table-striped>tbody>tr:nth-of-type(odd)>* { --bs-table-bg-type: #f8fafc; }
+.form-control, .form-select { border-color: #cbd5e1; }
+.form-control:focus, .form-select:focus { border-color:#94a3b8; box-shadow:none; }
+.toast-container { position: fixed; top: 1rem; right: 1rem; z-index: 1080; }
+
+/* ===== Tasteful animations (guarded for reduced motion) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  /* Page content fade-in */
+  body { animation: contentFade .45s ease-out; }
+  @keyframes contentFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Card hover lift */
+  .card { transition: transform .2s ease, box-shadow .2s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(2,6,23,.10); }
+
+  /* Row stagger-in (applied via JS by adding .row-in) */
+  .row-in { opacity: 0; transform: translateY(6px); animation: rowIn .4s ease forwards; }
+  @keyframes rowIn { to { opacity: 1; transform: none; } }
+
+  /* Button press ripple (very subtle) */
+  .btn { position: relative; overflow: hidden; }
+  .btn:active::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(0,0,0,.08), transparent 60%);
+    animation: ripple .35s ease; pointer-events: none;
+  }
+  @keyframes ripple { from { opacity: .6; } to { opacity: 0; } }
+}
